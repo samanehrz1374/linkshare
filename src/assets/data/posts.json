@@ -6,7 +6,7 @@
         "caption":"you can use it for creating json file",
         "discription":"I want to fake new data insertion into a server using https://jsonplaceholder.typicode.com/ fake server. I am trying to send data using this ...2 answers·Top answer: The issue is the form.",
         "image":"../images/json_placeholder.png",
-        "tags":"['post', 'instagram' ,'love', 'like', 'instagood', 'follow' ,'likeforlikes' ,'viral' ,'new', 'photography', 'newpost', 'trending', 'followforfollowback']",
+        "tags":["post","love", "like", "instagood", "follow" ,"likeforlikes" ,"viral" ,"new", "photography", "newpost", "trending", "followforfollowback"],
         "vote":10,
         "shared_date":"2014-02-01T09:28:56.321-10:00"
 
@@ -20,7 +20,7 @@
         "caption":"the best music you heard",
         "discription":"Using art to inspire people to create a world free of war, hunger, poverty, and pollution. A new generation ruled by love, global unity, and respect for the planet. Be a part of the change! Find meaning to life! Join the Movement!",
         "image":"../images/sound_cloud.png",
-        "tags":"['post', 'instagram' ,'love','new', 'photography', 'newpost', 'trending', 'followforfollowback']",
+        "tags":["post","love", "like", "instagood", "newpost", "trending", "followforfollowback"],
         "vote":300,
         "shared_date":"2015-02-01T09:28:56.321-10:00"
 
@@ -33,7 +33,7 @@
         "caption":"use it fo folder structure for your angular page",
         "discription":"By default, NgModules are eagerly loaded, which means that as soon as the application loads, so do all the NgModules, whether or not they are immediately necessary.",
         "image":"../images/json_placeholder.png",
-        "tags":"['post', 'instagram' ,'love', 'like', 'instagood', 'follow' ,'likeforlikes' ,'viral' ,'new', 'photography', 'newpost', 'trending', 'followforfollowback']",
+        "tags":["photography", "newpost", "trending", "followforfollowback"],
         "vote":2500,
         "shared_date":"2014-02-01T09:28:56.321-10:00"
 

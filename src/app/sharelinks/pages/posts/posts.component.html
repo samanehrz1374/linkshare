@@ -1,8 +1,25 @@
-<p>posts works!</p>
-<p *ngFor="let post of posts.items">
-    {{post.username}}
-    {{post.link}}
-    {{post.caption}}
+
+<div class="container">
+
+    <div class="row">
+    
+        <div class="col-lg-4 my-3 " *ngFor="let post of posts">
+        
+        
+                {{post.userName}}
+                {{post.link}}
+                {{post.caption}}
+                <!-- {{post.tags}} -->
+               
+                
+                
+                
+          
+        </div>
+     </div> 
+</div>
 
 
-</p>
+
+ 
+
