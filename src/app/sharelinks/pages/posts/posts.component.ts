@@ -7,6 +7,8 @@ import { environment } from 'src/environments/environment';
 // import {data} from '../../../../assets/data/posts.json';
 
 
+
+
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -14,16 +16,13 @@ import { environment } from 'src/environments/environment';
 })
 export class PostsComponent implements OnInit {
   posts:any;
-
-
-
   constructor(private postsApi:PostApiService,private http:HttpClient) { }
 
   ngOnInit(): void {
 
     this.http.get(environment.url).subscribe(result => 
       {this.posts=result 
-        
+
       });
   }
 

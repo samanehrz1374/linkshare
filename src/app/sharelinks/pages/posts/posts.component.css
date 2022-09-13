@@ -1,0 +1,13 @@
+.fa.fa-heart:hover {
+    color: #f44336 !important;
+  }
+  
+.fa.fa-share:hover {
+color: #2c77e7 !important;
+}
+.img-fluid{
+    width: 100%;
+}
+.div2{
+    height: 50%;
+}

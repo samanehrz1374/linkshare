@@ -23,7 +23,7 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/bootstrap-4.5.2-dist-rtl/css/bootstrap.min.rtl.css",
               "src/styles.css"
             ],
             "scripts": ["node_modules/jquery/dist/jquery.min.js"]
