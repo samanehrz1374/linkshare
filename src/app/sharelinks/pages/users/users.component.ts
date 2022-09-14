@@ -12,7 +12,7 @@ import { isArray } from 'jquery';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  user_posts:any|(string | number)[];
+  user_posts:any=[];
   posts:any|(string | number)[];
   id = '';
 
@@ -33,27 +33,30 @@ export class UsersComponent implements OnInit {
       this.posts=result;
 
           
-    // const indexes = [];
+    const indexes = [];
 
-    // for (let index = 0; index < this.posts.length; index++) {
-    //   if (this.posts[index].userName === this.id) {
-    //     indexes.push(index);
-    //   }
-    // }
-    // for (let i=0; i<indexes.length; i++){
+    for (let index = 0; index < this.posts.length; index++) {
+      if (this.posts[index].userName === this.id) {
+        indexes.push(index);
+      }
+    }
 
-    //   if(i > -1){
-    //     this.user_posts.push(this.posts[indexes[i]]);
-    //   }
-    // }
+    console.log(indexes)
+  
+    for (let i=0; i<indexes.length; i++){
+      if(i > -1){
+        this.user_posts.push(this.posts[indexes[i]]);
+      }
+    }
+    console.log(this.user_posts)
     // console.log(this.user_posts)
       // console.log(Array.isArray(this.posts))
       
-      let index = this.posts.findIndex((posts:{userName:string;})=> posts.userName == this.id);
+      // let index = this.posts.findIndex((posts:{userName:string;})=> posts.userName == this.id);
      
-      if(index > -1){
-        this.user_posts = this.posts[index];
-      }
+      // if(index > -1){
+      //   this.user_posts = this.posts[index];
+      // }
       // console.log(this.user_posts)
       
     });

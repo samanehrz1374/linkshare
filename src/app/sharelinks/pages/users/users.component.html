@@ -1,8 +1,8 @@
 <app-header></app-header>
-{{user_posts.userName}}
-<!-- <div class="container">
+<!-- {{user_posts.userName}} -->
+<div class="container">
     <div class="container"  >
-        <div class="col-lg-4"  >
+        <div class="col" *ngFor="let post of user_posts"  >
             <section class="mx-auto my-5" style="max-width: 50rem;">
       
                 <div class="card">
@@ -83,5 +83,5 @@
 
     </div>
 
-</div> -->
+</div>
 
