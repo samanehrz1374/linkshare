@@ -8,7 +8,8 @@ import { PostsComponent } from './pages/posts/posts.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { SortComponent } from './pages/sort/sort.component';
-import { DateAsAgoPipe } from '../shared/pipes/date-as-ago.pipe';
+import { PipesModule } from '../shared/pipes/pipes.module';
+
 
 
 @NgModule({
@@ -19,11 +20,14 @@ import { DateAsAgoPipe } from '../shared/pipes/date-as-ago.pipe';
     HeaderComponent,
     FooterComponent,
     SortComponent,
-    DateAsAgoPipe,
+    
+
+    
   ],
   imports: [
     CommonModule,
-    SharelinksRoutingModule
+    SharelinksRoutingModule,
+    PipesModule
   ]
 })
 export class SharelinksModule { }

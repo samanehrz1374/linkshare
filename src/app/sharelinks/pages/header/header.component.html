@@ -1,42 +1,77 @@
 
-<header class="w-100 sticky-top ">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">لینک</a>
+
+   
+<!-- <div class="container">
+
+  <div class="p-1 text-white">
+    
+      <div class="flex1">
+   
+      </div>
+      <div class="flex2">
+        
+        <div><strong><a class="navbar-brand" href="#">لینک</a></strong></div>
+      </div>
+      
+      
+  </div>
+</div> -->
+  <header id="menuHolder" class="sticky-top">
+  
+    <nav class="navbar navbar-expand-lg navbar-light nav-color">
+      <div class="container">
+
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" [routerLink]="['']">خانه</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" [routerLink]="['/personalpage']">صفحه شخصی</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">خروج</a>
-            </li>
-            <!-- <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li> -->
-            <!-- <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li> -->
-          </ul>
-          <!-- <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form> -->
-        </div>
-      </nav>
+          <div class="col-lg-4">
 
-    </header>
+            <ul class="navbar-nav mr-auto">
+              <li>
+                <img class="userimage rounded-circle" src="../../../../assets/images/user_images/user2.jpg" alt="">
+                
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/personalpage']">سمانه رضایی</a>
+              </li>
+              
+              <li class="nav-item active">
+                <a [routerLink]="['']" class="nav-link"><i class="fa fa-fw fa-home"></i> خانه</a>
+                <!-- <a class="nav-link" [routerLink]="['']">خانه</a> -->
+              </li>
+            
+             
+              
+            </ul>
+          </div>
+
+          <div class="col-lg-2 " style="text-align: center;">
+            <div ><strong ><a class="navbar-brand " href="#">لینک</a></strong></div>
+
+
+          </div>
+
+          <div class="col-lg-6" style="text-align: left;">
+            <div class="custom-search">
+              <input type="text" class="custom-search-input" placeholder="">
+              <button class="custom-search-botton" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>  
+            </div>
+            <button class="btn  mx-2 my-sm-0 rounded-pill logsignbtn" type="submit">ورود</button>
+            <button class="btn  my-sm-0 rounded-pill logsignbtn" type="submit">ثبت نام</button>
+
+          </div>
+          <!-- <form class="form-search form-inline">
+            <input type="text" class="search-query" placeholder="Search..." />
+          </form> -->
+          
+       
+
+
+        </div>
+      </div>
+    </nav>
+    
+  </header>
