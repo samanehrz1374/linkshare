@@ -12,6 +12,7 @@ import { isArray } from 'jquery';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  username:any[];
   user_posts:any=[];
   posts:any|(string | number)[];
   id = '';
@@ -20,53 +21,37 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.http.get(environment.url).subscribe(result => 
-    //   {this.posts=result 
-
-    //   });
+  
 
     this.id = this.route.snapshot.params['userName'];
+    this.username=[this.id];
     console.log(this.id)
 
 
-    this.http.get(environment.url).subscribe((result:any=[])=>{
-      this.posts=result;
+    // this.http.get(environment.url).subscribe((result:any=[])=>{
+    //   this.posts=result;
 
           
-    const indexes = [];
+    // const indexes = [];
 
-    for (let index = 0; index < this.posts.length; index++) {
-      if (this.posts[index].userName === this.id) {
-        indexes.push(index);
-      }
-    }
-
-    console.log(indexes)
-  
-    for (let i=0; i<indexes.length; i++){
-      if(i > -1){
-        this.user_posts.push(this.posts[indexes[i]]);
-      }
-    }
-    console.log(this.user_posts)
-    // console.log(this.user_posts)
-      // console.log(Array.isArray(this.posts))
-      
-      // let index = this.posts.findIndex((posts:{userName:string;})=> posts.userName == this.id);
-     
-      // if(index > -1){
-      //   this.user_posts = this.posts[index];
-      // }
-      // console.log(this.user_posts)
-      
-    });
-    // this.route.params.subscribe(
-    //   params => {
-    //     const id= params['userName'];
-    //     this.posts= this.contentfullService.getEntryById(id);
-        
+    // for (let index = 0; index < this.posts.length; index++) {
+    //   if (this.posts[index].userName === this.id) {
+    //     indexes.push(index);
     //   }
-    // )
+    // }
+
+    // console.log(indexes)
+  
+    // for (let i=0; i<indexes.length; i++){
+    //   if(i > -1){
+    //     this.user_posts.push(this.posts[indexes[i]]);
+    //   }
+    // }
+    // console.log(this.user_posts)
+   
+      
+    // });
+   
     
   }
 

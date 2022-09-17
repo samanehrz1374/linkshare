@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { observable, Observable } from 'rxjs';
 import { PostApiService } from '../../http/post-api.service';
 import { Posts } from '../../models/posts.model';
@@ -16,6 +16,7 @@ import { DateAsAgoPipe } from 'src/app/shared/pipes/date-as-ago.pipe';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
+  @Input() username:any[];
   posts:any;
   constructor(private postsApi:PostApiService,private http:HttpClient) { }
 
