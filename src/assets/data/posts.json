@@ -6,10 +6,12 @@
         "caption":"برای ساختار فایلبندی انگولار از این لینک استفاده  کنید",
         "discription":"By default, NgModules are eagerly loaded, which means that as soon as the application loads, so do all the NgModules, whether or not they are immediately necessary.",
         "image":"http://localhost:4200/assets/images/post_images/post1.jpg",
-        "tags":"['post','love', 'like', 'instagood', 'newpost', 'trending', 'followforfollowback']",
+        "tags":["انگولار","ساختار", "فولدربندی", "طراحی", "سایت", "UI", "UX"],
         "vote":2500,
         "shared_date":"2014-02-01T09:28:56.321-10:00",
-        "user_images":"http://localhost:4200/assets/images/user_images/user1.jpg"
+        "user_images":"http://localhost:4200/assets/images/user_images/user1.jpg",
+        "comments":10,
+        "shared":20
     
     
     },
@@ -20,10 +22,12 @@
         "caption":"برای ساخت فایل json از لینک زیر میتونی کمک بگیری",
         "discription":"I want to fake new data insertion into a server using https://jsonplaceholder.typicode.com/ fake server. I am trying to send data using this ...2 answers·Top answer: The issue is the form.",
         "image":"http://localhost:4200/assets/images/post_images/json_placeholder.png",
-        "tags":"['post','love', 'like', 'instagood', 'newpost', 'trending', 'followforfollowback']",
+        "tags":["انگولار","ساختار", "فولدربندی", "طراحی", "سایت", "UI", "UX"],
         "vote":10,
         "shared_date":"2014-02-01T09:28:56.321-10:00",
-        "user_images":"http://localhost:4200/assets/images/user_images/user4.jpg"
+        "user_images":"http://localhost:4200/assets/images/user_images/user4.jpg",
+        "comments":70,
+        "shared":50
 
       
 
@@ -37,10 +41,12 @@
         "caption":"این موزیکو گوش کن و لذت ببر",
         "discription":"Using art to inspire people to create a world free of war, hunger, poverty, and pollution. A new generation ruled by love, global unity, and respect for the planet. Be a part of the change! Find meaning to life! Join the Movement!",
         "image":"http://localhost:4200/assets/images/post_images/sound_cloud.png",
-        "tags":"['post','love', 'like', 'instagood', 'newpost', 'trending', 'followforfollowback']",
+        "tags":["انگولار","ساختار", "فولدربندی", "طراحی", "سایت", "UI", "UX"],
         "vote":300,
         "shared_date":"2015-02-01T09:28:56.321-10:00",
-        "user_images":"http://localhost:4200/assets/images/user_images/user3.jpg"
+        "user_images":"http://localhost:4200/assets/images/user_images/user3.jpg",
+        "comments":20,
+        "shared":90
 
     },
 
@@ -51,10 +57,12 @@
         "caption":"این موزیکو گوش کن و لذت ببر",
         "discription":"Using art to inspire people to create a world free of war, hunger, poverty, and pollution. A new generation ruled by love, global unity, and respect for the planet. Be a part of the change! Find meaning to life! Join the Movement!",
         "image":"http://localhost:4200/assets/images/post_images/sound_cloud.png",
-        "tags":"['post','love', 'like', 'instagood', 'newpost', 'trending', 'followforfollowback']",
+        "tags":["انگولار","ساختار", "فولدربندی", "طراحی", "سایت", "UI", "UX"],
         "vote":300,
         "shared_date":"2015-02-01T09:28:56.321-10:00",
-        "user_images":"http://localhost:4200/assets/images/user_images/user3.jpg"
+        "user_images":"http://localhost:4200/assets/images/user_images/user3.jpg",
+        "comments":80,
+        "shared":200
 
     }
 ]

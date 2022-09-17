@@ -1,24 +1,5 @@
 
-<!-- <div class="container">
-
-    <div class="row">
-    
-        <div class="col-lg-4 my-3 " *ngFor="let post of posts">
-        
-        
-                {{post.userName}}
-                {{post.link}}
-                {{post.caption}}
-                <img [src]="post?.image">
-              
-               
-                
-                
-                
-          
-        </div>
-     </div> 
-</div> -->
+<!-- 
 
 <div class="container">
     <div *ngFor="let post of posts">
@@ -100,71 +81,98 @@
         </section>
     </div>
 
-  </div>
+  </div> -->
+
 
   
-  <section class="light" >
-    <div class="container py-2" *ngFor="let post of posts">
-    
+
+<div class="container">
+
+    <div class="profile-content" >
+   <!-- begin tab-content -->
+   <div class="tab-content p-0">
+      <!-- begin #profile-post tab -->
+      <div class="tab-pane fade active show" id="profile-post">
+         <!-- begin timeline -->
+         <ul class="timeline">
+            <li *ngFor="let post of posts">
+               <!-- begin timeline-time -->
+               <div class="timeline-time">
+                  <span class="date">today</span>
+                  <span class="time">04:20</span>
+               </div>
+               <!-- end timeline-time -->
+               <!-- begin timeline-icon -->
+               <div class="timeline-icon">
+                  <a href="javascript:;">&nbsp;</a>
+               </div>
+               <!-- end timeline-icon -->
+               <!-- begin timeline-body -->
+               <div class="timeline-body">
+                  <div class="timeline-header" >
+                     <span class="userimage"><img src={{post.user_images}} alt=""></span>
+                     <span class="username" ><a [routerLink]="['personalpage',post.userName]">{{post.userName}}</a> <small></small></span>
+                     <!-- <span class="pull-right text-muted">18 Views</span> -->
+                  </div>
+               
+
+                  <div class="timeline-content">
+                    <p>
+
+                      {{post.link}}
+                    </p>
+                     <p>
+                      {{post.caption}}
+                     </p>
+
+                     <div class="col-md-12 div2">
+
+                      <p class="card-text collapse" id="collapseContent">
+                          {{post.discription}}.
+                      </p>
+                      <!-- <a  class="btn btn-secondary btn-block" href="{{post.link}}">لینک</a> -->
+                      
+                      </div>
+
+                      <span *ngFor="let tag of post.tags">
+                        {{'#'+tag}}
+
+                      </span>
+                  </div>
+                  
+                  <div class="d-flex timeline-footer justify-content-between">
+                    <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-share fa-fw fa-lg m-r-3"></i>{{post.shared}}</a>
+                    <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-comments fa-fw fa-lg m-r-3"></i>{{post.comments}}</a> 
+                    <a href="javascript:;" class="m-r-15 text-inverse-lighter">{{post.vote}}<i class="fa fa-heart fa-fw fa-lg m-r-3"></i></a>
+                  </div>
+                  <div class="timeline-comment-box">
+                     <div class="input">
+                        <form action="">
+                           <div class="input-group">
+                              <input type="text" class="form-control rounded-corner" placeholder="نظر خود را بنویسید...">
+                              <span class="input-group-btn p-l-10">
+                              <button class="btn btn-primary f-s-12 rounded-corner" type="button">ارسال نظر</button>
+                              </span>
+                           </div>
+                        </form>
+                     </div>
+                     <!-- <div class="user"><img src="https://bootdey.com/img/Content/avatar/avatar3.png"></div> -->
+
+                  </div>
+               </div>
+               <!-- end timeline-body -->
+            </li>
+            
+         </ul>
+         <!-- end timeline -->
+      </div>
+      <!-- end #profile-post tab -->
+   </div>
+   <!-- end tab-content -->
+</div>
+
   
-      <article class="postcard light blue">
-
-        <a class="postcard__img_link" href="#">
-          <img class="postcard__img" src="{{post.image}}" alt="Image Title" />
-          <div class="overlay">
-            <h2>Effect 11</h2>
-          <p>
-            <a href="#">LINK HERE</a>
-          </p>
-          </div>
-        </a>
-        <div class="postcard__text t-dark">
-          <div class="row ">
-
-            <div class="card-body d-flex flex-row border-bottom" style="padding: 0.75 rem;">
-              <div class="col-lg-1">
-                  <img src={{post.user_images}} class="rounded-circle pull-left" height="50px"
-                    width="50px" alt="avatar" />
-              </div>
-              <div class="col-lg-11  align-self-center">
-                  <a [routerLink]="['personalpage',post.userName]">
-                      <h5 class="font-weight-bold">{{post.userName}}</h5>
-                  </a>
-              </div>
-  
-            </div>
-          </div>
-        
-          <!-- <div class="postcard__subtitle small">
-            <time datetime="2020-05-25 12:00:00">
-              <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
-            </time>
-          </div> -->
-          <!-- <div class="postcard__bar"></div> -->
-
-          
-          
-          <div class="postcard__preview-txt mt-3">{{post.caption}}</div>
-          <ul class="postcard__tagbox border-top">
-            <i class="fa fa-share text-muted p-md-1 my-1 me-2" data-mdb-toggle="tooltip"
-            data-mdb-placement="top" title="Share this post"></i>
-
-            <i class="fa fa-heart text-muted p-md-1 my-1 me-0" data-mdb-toggle="tooltip" data-mdb-placement="top"
-            title="I like it"></i>
-            <span>{{post.vote}}</span>
-            <!-- <li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
-            <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
-            <li class="tag__item play blue">
-              <a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
-            </li> -->
-          </ul>
-        </div>
-      </article>
-      
-    </div>
-  </section>
-
-
+</div>
 
 
 
