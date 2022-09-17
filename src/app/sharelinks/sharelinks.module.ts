@@ -8,6 +8,7 @@ import { PostsComponent } from './pages/posts/posts.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { SortComponent } from './pages/sort/sort.component';
+import { DateAsAgoPipe } from '../shared/pipes/date-as-ago.pipe';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SortComponent } from './pages/sort/sort.component';
     PostsComponent,
     HeaderComponent,
     FooterComponent,
-    SortComponent
+    SortComponent,
+    DateAsAgoPipe,
   ],
   imports: [
     CommonModule,

@@ -5,6 +5,7 @@ import { PostApiService } from '../../http/post-api.service';
 import { Posts } from '../../models/posts.model';
 import { environment } from 'src/environments/environment';
 // import {data} from '../../../../assets/data/posts.json';
+import { DateAsAgoPipe } from 'src/app/shared/pipes/date-as-ago.pipe';
 
 
 

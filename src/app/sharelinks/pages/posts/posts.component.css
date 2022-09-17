@@ -535,7 +535,7 @@ select.form-control:not([size]):not([multiple]) {
     right: 0;
     width: 18%;
     text-align: left;
-    top: 30px
+    top: 42px
 }
 
 .timeline .timeline-time .date,

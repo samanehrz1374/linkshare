@@ -6,12 +6,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DateAsAgoPipe } from './shared/pipes/date-as-ago.pipe';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    DateAsAgoPipe,
     // TimeAgoPipe
     
   ],
@@ -24,6 +26,9 @@ import { AppComponent } from './app.component';
       
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    DateAsAgoPipe
+  ]
 })
 export class AppModule { }

@@ -98,8 +98,8 @@
             <li *ngFor="let post of posts">
                <!-- begin timeline-time -->
                <div class="timeline-time">
-                  <span class="date">today</span>
-                  <span class="time">04:20</span>
+                  <span class="date">{{post.shared_date| dateAsAgo }}</span>
+                  <!-- <span class="time">04:20</span> -->
                </div>
                <!-- end timeline-time -->
                <!-- begin timeline-icon -->
