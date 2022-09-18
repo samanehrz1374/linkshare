@@ -2,15 +2,15 @@
 
 <app-header></app-header>
 <div class="container d-flex">
-    <div class="col-lg-2">
+    <div class="col-lg-2" style="padding: 0;">
 
         <app-footer></app-footer>
     </div>
-    <div class="col-lg-8">
-        <app-posts [username]="username"></app-posts>
+    <div class="col-lg-8"  style="padding: 0;">
+        <app-sort (newestpost)="allert($event)"></app-sort>
+        <app-posts [username]="username" [typeOfEvent]="typeOfEvent"></app-posts>
     </div>
-    <div class="col-lg-2">
-        <app-sort></app-sort>
+    <div class="col-lg-2"  style="padding: 0;">
     </div>
     
     

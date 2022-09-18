@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { observable, Observable } from 'rxjs';
 import { PostApiService } from '../../http/post-api.service';
 import { Posts } from '../../models/posts.model';
@@ -15,17 +15,46 @@ import { DateAsAgoPipe } from 'src/app/shared/pipes/date-as-ago.pipe';
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css']
 })
-export class PostsComponent implements OnInit {
+export class PostsComponent implements OnInit,OnChanges {
   @Input() username:any[];
+  @Input() typeOfEvent:string='';
   posts:any;
+  
   constructor(private postsApi:PostApiService,private http:HttpClient) { }
 
   ngOnInit(): void {
 
     this.http.get(environment.url).subscribe(result => 
-      {this.posts=result 
-
+      {this.posts=result
+        
       });
+  
+  }
+ ngOnChanges(changes:any) {
+  if (this.typeOfEvent && changes.typeOfEvent){
+
+    if(changes.typeOfEvent.currentValue==='newest'){
+      this.posts=[]
+    }else if(changes.typeOfEvent.currentValue==='oldest'){
+      this.posts=['o']
+  
+  
+    }else if(changes.typeOfEvent.currentValue==='mostliked'){
+      this.posts=['m']
+  
+  
+    }else if(changes.typeOfEvent.currentValue==='leastliked'){
+      this.posts=['l']
+  
+    }
   }
 
+  
+
+
+  
+
+  }
+
+ 
 }

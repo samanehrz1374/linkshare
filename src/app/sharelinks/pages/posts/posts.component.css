@@ -770,3 +770,8 @@ select.form-control:not([size]):not([multiple]) {
 .tags{
     font-size: 13px;
 }
+
+.card-header{
+    text-align: center;
+    padding: 0px ;
+}

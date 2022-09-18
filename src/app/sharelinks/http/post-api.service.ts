@@ -16,7 +16,7 @@ export class PostApiService {
 
   getposts():Observable<any>{
 
-  return this.http.get(environment.url) 
+  return this.http.get(environment.url)
   // return 
 
   }

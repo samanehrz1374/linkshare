@@ -1,0 +1,26 @@
+
+.profile-content {
+    padding: 25px 25px;
+    border-radius: 4px;
+    margin-right: 10%;
+}
+
+.profile-content:after,
+.profile-content:before {
+    content: '';
+    display: table;
+    clear: both
+}
+
+.sorts-box{
+    background-color: rgba(242, 239, 239, 0.5);
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 1px solid  #fca311;
+    
+}
+
+.dropdown-item{
+    text-align: center;
+}
+

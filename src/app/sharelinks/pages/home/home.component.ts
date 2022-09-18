@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { PostApiService } from '../../http/post-api.service';
@@ -13,6 +13,9 @@ import { Posts } from '../../models/posts.model';
 export class HomeComponent implements OnInit {
   username:any[];
   posts:any|(string | number)[];
+  typeOfEvent:string='';
+  
+
 
   constructor(private postsApi:PostApiService,private http:HttpClient) { }
 
@@ -29,6 +32,11 @@ export class HomeComponent implements OnInit {
       this.username=indexes;
   })
 
+  }
+
+
+  allert(name:any){
+    this.typeOfEvent=name;
   }
 
 }

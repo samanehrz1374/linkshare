@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -7,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  userName:string='سمانه';
 
-  constructor() { }
+  
+
+
+  constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
+
    
     
     
