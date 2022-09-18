@@ -1,7 +1,7 @@
   
-<div class="container">
 
-    <div class="profile-content" >
+
+<div class="profile-content" >
    <!-- begin tab-content -->
    <div class="tab-content p-0">
       <!-- begin #profile-post tab -->
@@ -51,18 +51,25 @@
                          
                          </div>
    
-                         <span *ngFor="let tag of post.tags">
-                           {{'#'+tag}}
-   
-                         </span>
+                       
                      </div>
+
+                     <div class="timeline-footer border-top" >
+                        <span class="tags"  *ngFor="let tag of post.tags">
+                          {{'#'+tag}}
+        
+                        </span>
+                           
+                      </div>
                      
                      <div class="d-flex timeline-footer justify-content-between">
-                       <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-share fa-fw fa-lg m-r-3"></i>{{post.shared}}</a>
-                       <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-comments fa-fw fa-lg m-r-3"></i>{{post.comments}}</a> 
+                     <span class="date">{{post.shared_date | date:'h:mm' }}</span>
+
+                       <!-- <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-share fa-fw fa-lg m-r-3"></i>{{post.shared}}</a> -->
+                       <!-- <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-comments fa-fw fa-lg m-r-3"></i>{{post.comments}}</a>  -->
                        <a href="javascript:;" class="m-r-15 text-inverse-lighter">{{post.vote}}<i class="fa fa-heart fa-fw fa-lg m-r-3"></i></a>
                      </div>
-                     <div class="timeline-comment-box">
+                     <!-- <div class="timeline-comment-box">
                         <div class="input">
                            <form action="">
                               <div class="input-group">
@@ -76,7 +83,7 @@
                         </div>
                   
    
-                     </div>
+                     </div> -->
                   </div>
                   <!-- end timeline-body -->
                 </div>
@@ -91,8 +98,7 @@
    <!-- end tab-content -->
 </div>
 
-  
-</div>
+
 
 
 

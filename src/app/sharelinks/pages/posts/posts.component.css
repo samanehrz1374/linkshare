@@ -520,8 +520,8 @@ select.form-control:not([size]):not([multiple]) {
     bottom: 5px;
     width: 3px;
     background: #fca311;
-    right: 20%;
-    margin-right: -2.5px
+    /* right: 20%; */
+    margin-right: 10%
 }
 
 .timeline>li {
@@ -533,7 +533,7 @@ select.form-control:not([size]):not([multiple]) {
 .timeline .timeline-time {
     position: absolute;
     right: 0;
-    width: 18%;
+    /* width: 18%; */
     text-align: left;
     top: 42px
 }
@@ -556,9 +556,9 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .timeline .timeline-icon {
-    right: 15%;
+    right: 8.5%;
     position: absolute;
-    width: 10%;
+    /* width: 10%; */
     text-align: center;
     top: 40px
 }
@@ -578,8 +578,8 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .timeline .timeline-body {
-    margin-right: 23%;
-    margin-left: 23%;
+    margin-right: 15%;
+    /* margin-left: 23%; */
     background: rgba(242, 239, 239, 0.5);
     position: relative;
     padding: 20px 25px;
@@ -766,3 +766,7 @@ select.form-control:not([size]):not([multiple]) {
     border-radius: 100px;
     z-index: 2;
   }
+
+.tags{
+    font-size: 13px;
+}
