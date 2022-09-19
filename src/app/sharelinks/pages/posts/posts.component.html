@@ -8,13 +8,15 @@
       <div class="tab-pane fade active show" id="profile-post">
          <!-- begin timeline -->
        
+         <div *ngIf="username; else other_content">
          <ul class="timeline">
 
 
-           <div *ngIf="username; else other_content">
+             
                <li *ngFor="let post of posts">
-                
+                 
                  <div *ngFor="let user of username">
+                   
 
 
                     <div *ngIf="post.userName===user">
@@ -114,103 +116,106 @@
                     
                   </div>
                 </li>
-              </div>
-              
-            </ul>
+                
+              </ul>
+            </div>
             <ng-template #other_content>
-              <li *ngFor="let post of posts">
+              <ul class="timeline">
 
-                     <!-- begin timeline-time -->
-                     <div class="timeline-time">
-                        <span class="date">{{post.shared_date| dateAsAgo }}</span>
-                        <!-- <span class="time">04:20</span> -->
-                     </div>
-                     <!-- end timeline-time -->
-                     <!-- begin timeline-icon -->
-                     <div class="timeline-icon">
-                        <a href="javascript:;">&nbsp;</a>
-                     </div>
-                     <!-- end timeline-icon -->
-                     <!-- begin timeline-body -->
-                     <div class="timeline-body">
-                        <div class="timeline-header" >
-                           <span class="userimage"><img src={{post.user_images}} alt=""></span>
-                           <span class="username" ><a [routerLink]="['personalpage',post.userName]">{{post.userName}}</a> <small></small></span>
-                           <!-- <span class="pull-right text-muted">18 Views</span> -->
-                        </div>
-                     
-      
-                        <div class="timeline-content">
-                          <p>
-      
-                            {{post.link}}
-                          </p>
-                           <p>
-                            {{post.caption}}
-                           </p>
-      
-                           <div class="col-md-12 div2">
-                              <div id="accordion">
-   
-                                 <div class="card">
-                                    <div class="card-header" id="headingTwo">
-                                      <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                          بیشتر
-                                        </button>
-                                      </h5>
-                                    </div>
-                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                      <div class="card-body">
-                                       {{post.discription}}.
+                <li *ngFor="let post of posts">
+  
+                       <!-- begin timeline-time -->
+                       <div class="timeline-time">
+                          <span class="date">{{post.shared_date| dateAsAgo }}</span>
+                          <!-- <span class="time">04:20</span> -->
+                       </div>
+                       <!-- end timeline-time -->
+                       <!-- begin timeline-icon -->
+                       <div class="timeline-icon">
+                          <a href="javascript:;">&nbsp;</a>
+                       </div>
+                       <!-- end timeline-icon -->
+                       <!-- begin timeline-body -->
+                       <div class="timeline-body">
+                          <div class="timeline-header" >
+                             <span class="userimage"><img src={{post.user_images}} alt=""></span>
+                             <span class="username" ><a [routerLink]="['personalpage',post.userName]">{{post.userName}}</a> <small></small></span>
+                             <!-- <span class="pull-right text-muted">18 Views</span> -->
+                          </div>
+                       
+        
+                          <div class="timeline-content">
+                            <p>
+        
+                              {{post.link}}
+                            </p>
+                             <p>
+                              {{post.caption}}
+                             </p>
+        
+                             <div class="col-md-12 div2">
+                                <div id="accordion">
+     
+                                   <div class="card">
+                                      <div class="card-header" id="headingTwo">
+                                        <h5 class="mb-0">
+                                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            بیشتر
+                                          </button>
+                                        </h5>
+                                      </div>
+                                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <div class="card-body">
+                                         {{post.discription}}.
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
-                              </div>
-      
-                           
-                               
-                           
-                            <!-- <a  class="btn btn-secondary btn-block" href="{{post.link}}">لینک</a> -->
-                            
-                            </div>
-      
-                          
-                        </div>
-   
-                        <div class="timeline-footer border-top" >
-                           <span class="tags"  *ngFor="let tag of post.tags">
-                             {{'#'+tag}}
-           
-                           </span>
+                                </div>
+        
+                             
+                                 
+                             
+                              <!-- <a  class="btn btn-secondary btn-block" href="{{post.link}}">لینک</a> -->
                               
-                         </div>
-                        
-                        <div class="d-flex timeline-footer justify-content-between">
-                        <span class="date">{{post.shared_date | date:'h:mm' }}</span>
-   
-                          <!-- <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-share fa-fw fa-lg m-r-3"></i>{{post.shared}}</a> -->
-                          <!-- <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-comments fa-fw fa-lg m-r-3"></i>{{post.comments}}</a>  -->
-                          <a href="javascript:;" class="m-r-15 text-inverse-lighter">{{post.vote}}<i class="fa fa-heart fa-fw fa-lg m-r-3"></i></a>
-                        </div>
-                        <!-- <div class="timeline-comment-box">
-                           <div class="input">
-                              <form action="">
-                                 <div class="input-group">
-                                  <div class="custom-search">
-                                    <input type="text" class="custom-search-input" placeholder="">
-                                    <button class="custom-search-botton" type="submit">ارسال نظر</button>  
-                                  </div>
+                              </div>
+        
+                            
+                          </div>
+     
+                          <div class="timeline-footer border-top" >
+                             <span class="tags"  *ngFor="let tag of post.tags">
+                               {{'#'+tag}}
+             
+                             </span>
                                 
-                                 </div>
-                              </form>
                            </div>
-                     
-      
-                        </div> -->
-                     </div>
-                     <!-- end timeline-body -->
-               </li>
+                          
+                          <div class="d-flex timeline-footer justify-content-between">
+                          <!-- <span class="date">{{post.shared_date | date:'h:mm' }}</span> -->
+     
+                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-share fa-fw fa-lg m-r-3"></i>{{post.shared}}</a>
+                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-comments fa-fw fa-lg m-r-3"></i>{{post.comments}}</a> 
+                            <a href="javascript:;" class="m-r-15 text-inverse-lighter">{{post.vote}}<i class="fa fa-heart fa-fw fa-lg m-r-3"></i></a>
+                          </div>
+                          <div class="timeline-comment-box">
+                             <div class="input">
+                                <form action="">
+                                   <div class="input-group">
+                                    <div class="custom-search">
+                                      <input type="text" class="custom-search-input" placeholder="">
+                                      <button class="custom-search-botton" type="submit">ارسال نظر</button>  
+                                    </div>
+                                  
+                                   </div>
+                                </form>
+                             </div>
+                       
+        
+                          </div>
+                       </div>
+                       <!-- end timeline-body -->
+                 </li>
+              </ul>
             </ng-template>
          
          <!-- end timeline -->

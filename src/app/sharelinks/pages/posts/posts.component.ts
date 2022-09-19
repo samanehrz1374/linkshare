@@ -78,12 +78,10 @@ export class PostsComponent implements OnInit,OnChanges {
           this.posts=indexes;
     
       })
-    
-
-
+  }
   }
 
-  }
+
 
 
  

@@ -3,8 +3,6 @@
 <app-header (searchTextChanged)="search($event)"></app-header>
 <div class="container-fluid d-flex">
     <div class="col-lg-3" style="padding: 0;">
-
-        <app-footer></app-footer>
     </div>
     <div class="col-lg-6"  style="padding: 0;">
         <app-sort (newestpost)="allert($event)"></app-sort>
@@ -12,6 +10,9 @@
     </div>
     <div class="col-lg-3"  style="padding: 0;">
     </div>
+    <div style="clear: Both;"></div>
     
     
 </div>
+
+<app-footer></app-footer>

@@ -35,7 +35,7 @@
                 
               </li>
               <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['/personalpage',userName]">سمانه</a>
+                <a class="nav-link" [routerLink]="['/personalpage',userName]">{{userName}}</a>
               </li>
               
               <li class="nav-item active">
@@ -75,3 +75,4 @@
     </nav>
     
   </header>
+  <router-outlet></router-outlet>

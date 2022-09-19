@@ -1,10 +1,45 @@
-<app-header></app-header>
+<app-header (searchTextChanged)="search($event)"></app-header>
 <!-- {{user_posts.userName}} -->
-<div class="container d-flex">
-    <div class="col-lg-2"></div>
-    <div class="col-lg-8"><app-posts [username]="username"></app-posts></div>
-    <div class="col-lg-2"></div>
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-lg-4">
+            <div class="profile-content">
+    
+                <div class="card card-blog">
+                    <div class="card-image">
+                        <a href="#"> <img class="img" src={{user_posts.user_images}} style="height: 300px;">
+                            <div class="card-caption"> {{user_posts.userName}} </div>
+                        </a>
+                        <div class="ripple-cont"></div>
+                    </div>
+                    <div class="table mt-3">
+                        <h6 class="category text-info">تعداد لایک ها: {{votes}}</h6>
+                        <p class="card-description"> تعداد پست ها: {{posts_count}} </p>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+        <div class="col-lg-8">
+            <app-sort (newestpost)="allert($event)"></app-sort>
+            <app-posts [username]="username" [typeOfEvent]="typeOfEvent" [searchValue]="searchValue"></app-posts>
+        </div>
+    </div>
+    <!-- <div class="col-lg-2"></div> -->
 
     
 </div>
+<router-outlet></router-outlet>
+
+
+    
+        
+                
+                    
+                    
+                
+           
+
+    
 

@@ -13,9 +13,15 @@ import { isArray } from 'jquery';
 })
 export class UsersComponent implements OnInit {
   username:any[];
-  user_posts:any=[];
+  profile_image:any;
+  user_posts:any='';
+  votes:number=0;
   posts:any|(string | number)[];
   id = '';
+  typeOfEvent:string='';
+  searchValue:string;
+  all_voted:number;
+  posts_count:number=0;
 
   constructor(private postsApi:PostApiService,private http:HttpClient,private route:ActivatedRoute) { }
 
@@ -26,21 +32,40 @@ export class UsersComponent implements OnInit {
     this.id = this.route.snapshot.params['userName'];
     this.username=[this.id];
     console.log(this.id)
+    
 
 
-    // this.http.get(environment.url).subscribe((result:any=[])=>{
-    //   this.posts=result;
+    this.http.get(environment.url).subscribe((result:any=[])=>{
+      this.posts=result;
+      
 
           
-    // const indexes = [];
+    const indexes = [];
 
-    // for (let index = 0; index < this.posts.length; index++) {
-    //   if (this.posts[index].userName === this.id) {
-    //     indexes.push(index);
-    //   }
-    // }
+    for (let index = 0; index < this.posts.length; index++) {
+      if (this.posts[index].userName === this.id) {
+        indexes.push(index);
+      }
+    }
+    for (let i=0; i<indexes.length; i++){
+        if(i > -1){
+          this.user_posts=this.posts[indexes[i]];
+          // console.log(this.user_posts)
+          break
+        }
+      }
 
-    // console.log(indexes)
+    for (let i=0; i<indexes.length; i++){
+      if(i > -1){
+        this.votes=this.posts[indexes[i]].vote +this.votes;
+        this.posts_count++;
+        
+      }
+    }
+    console.log(this.votes)
+
+      
+    })
   
     // for (let i=0; i<indexes.length; i++){
     //   if(i > -1){
@@ -53,6 +78,16 @@ export class UsersComponent implements OnInit {
     // });
    
     
+  }
+
+  allert(name:any){
+    this.typeOfEvent=name;
+  }
+
+  search(searchValue:string){
+    this.searchValue=searchValue;
+
+
   }
 
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 
@@ -9,7 +10,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  userName:string='سمانه';
+  userName:string='نسیم';
   searchValue:string;
   @Output() searchTextChanged: EventEmitter<string> = new EventEmitter();
 
@@ -17,7 +18,7 @@ export class HeaderComponent implements OnInit {
   
 
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     
@@ -26,6 +27,14 @@ export class HeaderComponent implements OnInit {
   onSearchTextCahnged(){
     this.searchTextChanged.emit(this.searchValue);
 
+
+  }
+
+  profile(){
+    
+    
+    console.log(this.router.url)
+    this.router.navigate(['personalpage',this.userName])
 
   }
  
