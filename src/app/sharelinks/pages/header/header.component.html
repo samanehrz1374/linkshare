@@ -31,11 +31,11 @@
 
             <ul class="navbar-nav mr-auto">
               <li>
-                <img class="userimage rounded-circle" src="../../../../assets/images/user_images/user2.jpg" alt="">
+                <img class="userimage rounded-circle" src="../../../../assets/images/user_images/user4.jpg" alt="">
                 
               </li>
               <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['/personalpage',userName]">سمانه رضایی</a>
+                <a class="nav-link" [routerLink]="['/personalpage',userName]">سمانه</a>
               </li>
               
               <li class="nav-item active">
@@ -56,8 +56,8 @@
 
           <div class="col-lg-6" style="text-align: left;">
             <div class="custom-search">
-              <input type="text" class="custom-search-input" placeholder="">
-              <button class="custom-search-botton" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>  
+              <input type="text" class="custom-search-input"  [(ngModel)]="searchValue">
+              <button class="custom-search-botton" type="submit" (click)="onSearchTextCahnged()"><i class="fa fa-search" aria-hidden="true"></i></button>  
             </div>
             <button class="btn  mx-2 my-sm-0 rounded-pill logsignbtn" type="submit">ورود</button>
             <button class="btn  my-sm-0 rounded-pill logsignbtn" type="submit">ثبت نام</button>

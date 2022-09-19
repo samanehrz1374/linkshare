@@ -14,29 +14,37 @@ export class HomeComponent implements OnInit {
   username:any[];
   posts:any|(string | number)[];
   typeOfEvent:string='';
+  searchValue:string;
   
 
 
   constructor(private postsApi:PostApiService,private http:HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get(environment.url).subscribe((result:any=[])=>{
-      this.posts=result;
+  //   this.http.get(environment.url).subscribe((result:any=[])=>{
+  //     this.posts=result;
 
-      const indexes = [];
-      for (let index = 0; index < this.posts.length; index++) {
+  //     const indexes = [];
+  //     for (let index = 0; index < this.posts.length; index++) {
       
-        indexes.push(this.posts[index].userName);
+  //       indexes.push(this.posts[index].userName);
     
-      }
-      this.username=indexes;
-  })
+  //     }
+  //     this.username=indexes;
+
+  // })
 
   }
 
 
   allert(name:any){
     this.typeOfEvent=name;
+  }
+
+  search(searchValue:string){
+    this.searchValue=searchValue;
+
+
   }
 
 }

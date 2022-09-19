@@ -18,43 +18,73 @@ import { DateAsAgoPipe } from 'src/app/shared/pipes/date-as-ago.pipe';
 export class PostsComponent implements OnInit,OnChanges {
   @Input() username:any[];
   @Input() typeOfEvent:string='';
+  @Input() searchValue:string;
   posts:any;
   
   constructor(private postsApi:PostApiService,private http:HttpClient) { }
 
   ngOnInit(): void {
-
+    
+    
     this.http.get(environment.url).subscribe(result => 
       {this.posts=result
         
+        
       });
+
   
   }
  ngOnChanges(changes:any) {
   if (this.typeOfEvent && changes.typeOfEvent){
 
     if(changes.typeOfEvent.currentValue==='newest'){
-      this.posts=[]
+      this.posts=this.posts.sort((a:any, b:any) => {return  (new Date(b.shared_date)).getTime() -(new Date(a.shared_date)).getTime();});
+      // console.log(this.posts.sort((a:any, b:any) => parseInt(a.id) - parseInt(b.id))) 
+      console.log(this.posts)
+   
     }else if(changes.typeOfEvent.currentValue==='oldest'){
-      this.posts=['o']
+      this.posts=this.posts.sort((a:any, b:any) => {return (new Date(a.shared_date)).getTime() - (new Date(b.shared_date)).getTime();});
+
+     
   
   
     }else if(changes.typeOfEvent.currentValue==='mostliked'){
-      this.posts=['m']
+      this.posts=this.posts.sort((a:any, b:any) => {return  parseInt(b.vote) -parseInt(a.vote);});
+
   
   
     }else if(changes.typeOfEvent.currentValue==='leastliked'){
-      this.posts=['l']
+      this.posts=this.posts.sort((a:any, b:any) => {return parseInt(a.vote) - parseInt(b.vote);});
+
   
     }
   }
 
-  
+  if (this.searchValue && changes.searchValue){
+    this.http.get(environment.url).subscribe((result:any=[])=>{
+          this.posts=result;
+    
+          // console.log(this.posts)
+          const indexes = [];
+          for (let index = 0; index < this.posts.length; index++) {
+          
+          //   indexes.push(this.posts[index].userName);
+            // console.log(this.posts[index].tags);
+            if(this.posts[index].tags.includes(this.searchValue)){
 
+              indexes.push(this.posts[index]);
+            }
+           }
+          this.posts=indexes;
+    
+      })
+    
 
-  
 
   }
+
+  }
+
 
  
 }

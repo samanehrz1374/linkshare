@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 
@@ -10,6 +10,9 @@ import { environment } from 'src/environments/environment';
 })
 export class HeaderComponent implements OnInit {
   userName:string='سمانه';
+  searchValue:string;
+  @Output() searchTextChanged: EventEmitter<string> = new EventEmitter();
+
 
   
 
@@ -17,15 +20,13 @@ export class HeaderComponent implements OnInit {
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
-
-   
     
-    
+  }
+
+  onSearchTextCahnged(){
+    this.searchTextChanged.emit(this.searchValue);
 
 
-
-    
-    
   }
  
     
