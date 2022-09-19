@@ -132,3 +132,7 @@
     border-radius: 100px;
     z-index: 2;
   }
+
+.container-fluid{
+  width: 80%;
+}

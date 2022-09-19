@@ -1,16 +1,16 @@
 
 
 <app-header (searchTextChanged)="search($event)"></app-header>
-<div class="container d-flex">
-    <div class="col-lg-2" style="padding: 0;">
+<div class="container-fluid d-flex">
+    <div class="col-lg-3" style="padding: 0;">
 
         <app-footer></app-footer>
     </div>
-    <div class="col-lg-8"  style="padding: 0;">
+    <div class="col-lg-6"  style="padding: 0;">
         <app-sort (newestpost)="allert($event)"></app-sort>
         <app-posts [username]="username" [typeOfEvent]="typeOfEvent" [searchValue]="searchValue"></app-posts>
     </div>
-    <div class="col-lg-2"  style="padding: 0;">
+    <div class="col-lg-3"  style="padding: 0;">
     </div>
     
     
