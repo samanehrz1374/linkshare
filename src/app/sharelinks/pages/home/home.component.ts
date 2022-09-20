@@ -16,11 +16,17 @@ export class HomeComponent implements OnInit {
   typeOfEvent:string='';
   searchValue:string;
   
+  
 
 
   constructor(private postsApi:PostApiService,private http:HttpClient) { }
 
   ngOnInit(): void {
+
+    this.http.get(environment.url).subscribe((result:any=[])=>{
+          this.posts=result;
+          console.log(this.posts)
+    })
   //   this.http.get(environment.url).subscribe((result:any=[])=>{
   //     this.posts=result;
 

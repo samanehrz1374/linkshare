@@ -23,94 +23,96 @@
       
                       <!-- begin timeline-time -->
                       <div class="timeline-time">
-                         <span class="date">{{post.shared_date| dateAsAgo }}</span>
-                         <!-- <span class="time">04:20</span> -->
-                      </div>
-                      <!-- end timeline-time -->
-                      <!-- begin timeline-icon -->
-                      <div class="timeline-icon">
-                         <a href="javascript:;">&nbsp;</a>
-                      </div>
-                      <!-- end timeline-icon -->
-                      <!-- begin timeline-body -->
-                      <div class="timeline-body">
-                         <div class="timeline-header" >
-                            <span class="userimage"><img src={{post.user_images}} alt=""></span>
-                            <span class="username" ><a [routerLink]="['personalpage',post.userName]">{{post.userName}}</a> <small></small></span>
-                            <!-- <span class="pull-right text-muted">18 Views</span> -->
-                         </div>
-                      
-       
-                         <div class="timeline-content">
+                        <span class="date">{{post.shared_date| dateAsAgo }}</span>
+                        <!-- <span class="time">04:20</span> -->
+                     </div>
+                     <!-- end timeline-time -->
+                     <!-- begin timeline-icon -->
+                     <div class="timeline-icon">
+                        <a href="javascript:;">&nbsp;</a>
+                     </div>
+                     <!-- end timeline-icon -->
+                     <!-- begin timeline-body -->
+                     <div class="timeline-body">
+                        <div class="timeline-header" >
+                           <span class="userimage"><img src={{post.user_images}} alt=""></span>
+                           <span class="username" ><a [routerLink]="['personalpage',post.userName]">{{post.userName}}</a> <small></small></span>
+                           <!-- <span class="pull-right text-muted">18 Views</span> -->
+                        </div>
+                     
+      
+                        <div class="timeline-content">
+                          <div class="text-right mb-3">
+
+                            <a   style="text-decoration:underline; color:#007bff; font-size: 15px;">{{post.link}}</a>
+                          </div>
+
                            <p>
-       
-                             {{post.link}}
+                            {{post.caption}}
                            </p>
-                            <p>
-                             {{post.caption}}
-                            </p>
-       
-                            <div class="col-md-12 div2">
-                               <div id="accordion">
-    
-                                  <div class="card">
-                                     <div class="card-header" id="headingTwo">
-                                       <h5 class="mb-0">
-                                         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                           بیشتر
-                                         </button>
-                                       </h5>
-                                     </div>
-                                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                       <div class="card-body">
-                                        {{post.discription}}.
-                                       </div>
-                                     </div>
-                                   </div>
-                               </div>
-       
-                            
-                                
-                            
-                             <!-- <a  class="btn btn-secondary btn-block" href="{{post.link}}">لینک</a> -->
-                             
-                             </div>
-       
+      
+                           <div class="col-md-12 div2">
+                              <!-- <div id="accordion">
+   
+                                 <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                      <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                          بیشتر
+                                        </button>
+                                      </h5>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                      <div class="card-body">
+                                       {{post.discription}}.
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+       -->
                            
-                         </div>
-    
-                         <div class="timeline-footer border-top" >
-                            <span class="tags"  *ngFor="let tag of post.tags">
+                               
+                           
+                            <!-- <a  class="btn btn-secondary btn-block" href="{{post.link}}">لینک</a> -->
+                            
+                            </div>
+      
+                          
+                        </div>
+   
+                        <div class="" >
+
+                            <span class="tags btn "  *ngFor="let tag of post.tags" (click)="tag_search(tag)">
                               {{'#'+tag}}
             
                             </span>
-                               
-                          </div>
-                         
-                         <div class="d-flex timeline-footer justify-content-between">
-                         <span class="date">{{post.shared_date | date:'h:mm' }}</span>
-    
-                           <!-- <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-share fa-fw fa-lg m-r-3"></i>{{post.shared}}</a> -->
-                           <!-- <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-comments fa-fw fa-lg m-r-3"></i>{{post.comments}}</a>  -->
-                           <a href="javascript:;" class="m-r-15 text-inverse-lighter">{{post.vote}}<i class="fa fa-heart fa-fw fa-lg m-r-3"></i></a>
-                         </div>
-                         <!-- <div class="timeline-comment-box">
-                            <div class="input">
-                               <form action="">
-                                  <div class="input-group">
-                                   <div class="custom-search">
-                                     <input type="text" class="custom-search-input" placeholder="">
-                                     <button class="custom-search-botton" type="submit">ارسال نظر</button>  
-                                   </div>
-                                 
+                              
+                        </div>
+                        
+                        <div class="d-flex timeline-footer justify-content-between">
+                        <!-- <span class="date">{{post.shared_date | date:'h:mm' }}</span> -->
+   
+                          <!-- <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-share fa-fw fa-lg m-r-3"></i>{{post.shared}}</a> -->
+                          <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-comments fa-fw fa-lg m-r-3"></i>{{post.comments}}</a> 
+                          <a href="javascript:;" class="m-r-15 text-inverse-lighter">{{post.vote}}<i class="fa fa-heart fa-fw fa-lg m-r-3"></i></a>
+                        </div>
+                        <div class="timeline-comment-box">
+                           <div class="input">
+                              <form action="">
+                                 <div class="input-group">
+                                  <div class="custom-search">
+                                    <input type="text" class="custom-search-input" placeholder="">
+                                    <button class="custom-search-botton" type="submit">ارسال نظر</button>  
                                   </div>
-                               </form>
-                            </div>
-                      
-       
-                         </div> -->
-                      </div>
-                      <!-- end timeline-body -->
+                                
+                                </div>
+                              </form>
+                           </div>
+                     
+      
+                        </div>
+                     </div>
+                     <!-- end timeline-body -->
                     </div>
                     
                     
@@ -122,7 +124,7 @@
             <ng-template #other_content>
               <ul class="timeline">
 
-                <li *ngFor="let post of posts">
+                <li *ngFor="let post of posts;let i=index">
   
                        <!-- begin timeline-time -->
                        <div class="timeline-time">
@@ -145,16 +147,17 @@
                        
         
                           <div class="timeline-content">
-                            <p>
-        
-                              {{post.link}}
-                            </p>
+                            <div class="text-right mb-3">
+
+                              <a   style="text-decoration:underline; color:#007bff; font-size: 15px;">{{post.link}}</a>
+                            </div>
+
                              <p>
                               {{post.caption}}
                              </p>
         
                              <div class="col-md-12 div2">
-                                <div id="accordion">
+                                <!-- <div id="accordion">
      
                                    <div class="card">
                                       <div class="card-header" id="headingTwo">
@@ -171,7 +174,7 @@
                                       </div>
                                     </div>
                                 </div>
-        
+         -->
                              
                                  
                              
@@ -182,18 +185,19 @@
                             
                           </div>
      
-                          <div class="timeline-footer border-top" >
-                             <span class="tags"  *ngFor="let tag of post.tags">
-                               {{'#'+tag}}
-             
-                             </span>
+                          <div class="" >
+
+                              <span class="tags btn "  *ngFor="let tag of post.tags" (click)="tag_search(tag)">
+                                {{'#'+tag}}
+              
+                              </span>
                                 
-                           </div>
+                          </div>
                           
                           <div class="d-flex timeline-footer justify-content-between">
                           <!-- <span class="date">{{post.shared_date | date:'h:mm' }}</span> -->
      
-                            <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-share fa-fw fa-lg m-r-3"></i>{{post.shared}}</a>
+                            <!-- <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-share fa-fw fa-lg m-r-3"></i>{{post.shared}}</a> -->
                             <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-comments fa-fw fa-lg m-r-3"></i>{{post.comments}}</a> 
                             <a href="javascript:;" class="m-r-15 text-inverse-lighter">{{post.vote}}<i class="fa fa-heart fa-fw fa-lg m-r-3"></i></a>
                           </div>
@@ -206,7 +210,7 @@
                                       <button class="custom-search-botton" type="submit">ارسال نظر</button>  
                                     </div>
                                   
-                                   </div>
+                                  </div>
                                 </form>
                              </div>
                        

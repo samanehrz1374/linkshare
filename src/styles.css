@@ -15,5 +15,28 @@
 body{
   overflow-x: hidden;
   background:white;
+  font-family: Yekan,IranianSans,Bnazanin;
 
+
+}
+
+@font-face {
+  font-family: 'BNazanin';
+  src: url('../src/assets/bootstrap-4.5.2-dist-rtl/fonts/BNazanin.eot') format('eot'),  /* IE6–8 */
+       url('../src/assets/bootstrap-4.5.2-dist-rtl/fonts/BNazanin.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+       url('../src/assets/bootstrap-4.5.2-dist-rtl/fonts/BNazanin.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+
+@font-face {
+  font-family: 'IranianSans';
+  src: url('../src/assets/bootstrap-4.5.2-dist-rtl/fonts/IranianSans.eot?#') format('eot'),  /* IE6–8 */
+       url('../src/assets/bootstrap-4.5.2-dist-rtl/fonts/IranianSans.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+       url('../src/assets/bootstrap-4.5.2-dist-rtl/fonts/IranianSans.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+
+@font-face {
+  font-family: 'Yekan';
+  src: url('../src/assets/bootstrap-4.5.2-dist-rtl/fonts/Yekan.eot?#') format('eot'),  /* IE6–8 */
+       url('../src/assets/bootstrap-4.5.2-dist-rtl/fonts/Yekan.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+       url('../src/assets/bootstrap-4.5.2-dist-rtl/fonts/Yekan.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
 }

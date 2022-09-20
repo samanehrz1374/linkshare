@@ -9,7 +9,7 @@ import { HeaderComponent } from './pages/header/header.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { SortComponent } from './pages/sort/sort.component';
 import { PipesModule } from '../shared/pipes/pipes.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -29,7 +29,11 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     SharelinksRoutingModule,
     PipesModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
+
+    
+
   ]
 })
 export class SharelinksModule { }

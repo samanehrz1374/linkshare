@@ -19,18 +19,14 @@ export class PostsComponent implements OnInit,OnChanges {
   @Input() username:any[];
   @Input() typeOfEvent:string='';
   @Input() searchValue:string;
-  posts:any;
+  @Input() posts:any;
   
   constructor(private postsApi:PostApiService,private http:HttpClient) { }
 
   ngOnInit(): void {
     
     
-    this.http.get(environment.url).subscribe(result => 
-      {this.posts=result
-        
-        
-      });
+   
 
   
   }
@@ -79,6 +75,28 @@ export class PostsComponent implements OnInit,OnChanges {
     
       })
   }
+  }
+
+
+  tag_search(tag:string){
+    this.http.get(environment.url).subscribe((result:any=[])=>{
+      this.posts=result;
+
+      // console.log(this.posts)
+      const indexes = [];
+      for (let index = 0; index < this.posts.length; index++) {
+      
+      //   indexes.push(this.posts[index].userName);
+        // console.log(this.posts[index].tags);
+        if(this.posts[index].tags.includes(tag)){
+
+          indexes.push(this.posts[index]);
+        }
+       }
+      this.posts=indexes;
+
+  })
+
   }
 
 
