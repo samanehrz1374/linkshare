@@ -8,10 +8,10 @@
         "image":"http://localhost:4200/assets/images/post_images/post1.jpg",
         "tags":["ساختار", "فولدربندی", "طراحی", "سایت", "UI", "UX"],
         "vote":2500,
-        "shared_date":"2014-02-01T09:28:56.321-10:00",
-        "user_images":"http://localhost:4200/assets/images/user_images/user1.jpg",
+        "sharedDate":"2014-02-01T09:28:56.321-10:00",
+        "userImages":"http://localhost:4200/assets/images/user_images/user1.jpg",
         "comments":10,
-        "shared":20
+        "likedBy":[]
     
     
     },
@@ -24,10 +24,10 @@
         "image":"http://localhost:4200/assets/images/post_images/json_placeholder.png",
         "tags":["انگولار","ساختار", "فولدربندی", "طراحی", "سایت", "UI", "UX"],
         "vote":10,
-        "shared_date":"2015-02-01T09:28:56.321-10:00",
-        "user_images":"http://localhost:4200/assets/images/user_images/user4.jpg",
+        "sharedDate":"2015-02-01T09:28:56.321-10:00",
+        "userImages":"http://localhost:4200/assets/images/user_images/user4.jpg",
         "comments":70,
-        "shared":50
+        "likedBy":[]
 
       
 
@@ -43,10 +43,10 @@
         "image":"http://localhost:4200/assets/images/post_images/sound_cloud.png",
         "tags":["ساختار", "فولدربندی", "طراحی", "سایت", "UI", "UX"],
         "vote":300,
-        "shared_date":"2015-02-01T09:28:56.321-10:00",
-        "user_images":"http://localhost:4200/assets/images/user_images/user3.jpg",
+        "sharedDate":"2015-02-01T09:28:56.321-10:00",
+        "userImages":"http://localhost:4200/assets/images/user_images/user3.jpg",
         "comments":20,
-        "shared":90
+        "likedBy":[]
 
     },
 
@@ -59,10 +59,10 @@
         "image":"http://localhost:4200/assets/images/post_images/sound_cloud.png",
         "tags":["انگولار","ساختار", "فولدربندی", "طراحی", "سایت", "UI", "UX"],
         "vote":300,
-        "shared_date":"2013-02-01T09:28:56.321-10:00",
-        "user_images":"http://localhost:4200/assets/images/user_images/user3.jpg",
+        "sharedDate":"2013-02-01T09:28:56.321-10:00",
+        "userImages":"http://localhost:4200/assets/images/user_images/user3.jpg",
         "comments":80,
-        "shared":200
+        "likedBy":[]
 
     }
 ]

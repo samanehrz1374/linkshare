@@ -6,6 +6,7 @@ import { Posts } from '../../models/posts.model';
 import { environment } from 'src/environments/environment';
 // import {data} from '../../../../assets/data/posts.json';
 import { DateAsAgoPipe } from 'src/app/shared/pipes/date-as-ago.pipe';
+import { post } from 'jquery';
 
 
 
@@ -20,6 +21,7 @@ export class PostsComponent implements OnInit,OnChanges {
   @Input() typeOfEvent:string='';
   @Input() searchValue:string;
   @Input() posts:any;
+  liked:boolean[]=[];
   
   constructor(private postsApi:PostApiService,private http:HttpClient) { }
 
@@ -34,12 +36,12 @@ export class PostsComponent implements OnInit,OnChanges {
   if (this.typeOfEvent && changes.typeOfEvent){
 
     if(changes.typeOfEvent.currentValue==='newest'){
-      this.posts=this.posts.sort((a:any, b:any) => {return  (new Date(b.shared_date)).getTime() -(new Date(a.shared_date)).getTime();});
+      this.posts=this.posts.sort((a:any, b:any) => {return  (new Date(b.sharedDate)).getTime() -(new Date(a.sharedDate)).getTime();});
       // console.log(this.posts.sort((a:any, b:any) => parseInt(a.id) - parseInt(b.id))) 
       console.log(this.posts)
    
     }else if(changes.typeOfEvent.currentValue==='oldest'){
-      this.posts=this.posts.sort((a:any, b:any) => {return (new Date(a.shared_date)).getTime() - (new Date(b.shared_date)).getTime();});
+      this.posts=this.posts.sort((a:any, b:any) => {return (new Date(a.sharedDate)).getTime() - (new Date(b.sharedDate)).getTime();});
 
      
   
@@ -97,6 +99,50 @@ export class PostsComponent implements OnInit,OnChanges {
 
   })
 
+  }
+
+
+  onLiked(post_id:number){
+    console.log(post_id)
+
+    // console.log(this.posts)
+
+
+    
+      for (let index = 0; index < this.posts.length; index++) {
+      
+      //   indexes.push(this.posts[index].userName);
+        // console.log(this.posts[index].tags);
+        if(this.posts[index].id===post_id){
+          this.posts[index].vote=this.posts[index].vote+1
+
+          
+        }
+       }
+      
+    this.liked[post_id]=!this.liked[post_id]
+    console.log(this.liked)
+  }
+
+  onDissLiked(post_id:number){
+    console.log(post_id)
+
+    console.log(this.posts)
+
+      for (let index = 0; index < this.posts.length; index++) {
+      
+      //   indexes.push(this.posts[index].userName);
+        // console.log(this.posts[index].tags);
+        if(this.posts[index].id===post_id){
+          this.posts[index].vote=this.posts[index].vote-1
+
+          
+        }
+       }
+      
+      this.liked[post_id]=!this.liked[post_id]
+      console.log(this.liked)
+    
   }
 
 

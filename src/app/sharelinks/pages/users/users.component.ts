@@ -29,6 +29,7 @@ export class UsersComponent implements OnInit {
   formGroup:any;
   showPostAddDiv:boolean=false;
   showSuccessMessage:boolean=false;
+  all_tags:string[]=[];
  
 
   constructor(private postsApi:PostApiService,private http:HttpClient,private route:ActivatedRoute,private router:Router) { }
@@ -80,12 +81,13 @@ export class UsersComponent implements OnInit {
 
     this.formGroup = new FormGroup({
       'username': new FormControl( `${this.username}`, [ Validators.required ]),
-      'user_images': new FormControl( `${this.user_posts.user_images}`, [ Validators.required ]),
+      'userImages': new FormControl( `${this.user_posts.userImages}`, [ Validators.required ]),
       'link': new FormControl('', [ Validators.required ]),
       'caption': new FormControl('', [  ]),
       'discription': new FormControl('', [  ]),
-      'tags': new FormControl('', [ ]),
-      'image':new FormControl('', [  ]),
+      'tags': new FormControl([], [ ]),
+      'image':new FormControl([''], [  ]),
+      
   
     });
   
@@ -119,7 +121,7 @@ export class UsersComponent implements OnInit {
 
   onClickSubmit(data:any){
   
-    console.log(data.user_images)
+    console.log(data.userImages)
 
     const newpost={
       id:1,
@@ -128,12 +130,12 @@ export class UsersComponent implements OnInit {
       caption:`${data.caption}`,
       discription:`${data.discription}`,
       image:`${data.image}`,
-      tags:`${data.tags}`,
+      tags:this.all_tags,
       vote:0,
-      shared_date:new Date(),
+      sharedDate:new Date(),
       comments:0,
       shared:0,
-      user_images:`${this.user_posts.user_images}`
+      userImages:`${this.user_posts.userImages}`
       
     }
 
@@ -146,8 +148,8 @@ export class UsersComponent implements OnInit {
       "image":"http://localhost:4200/assets/images/post_images/json_placeholder.png",
       "tags":["انگولار","ساختار", "فولدربندی", "طراحی", "سایت", "UI", "UX"],
       "vote":10,
-      "shared_date":"2015-02-01T09:28:56.321-10:00",
-      "user_images":"http://localhost:4200/assets/images/user_images/user4.jpg",
+      "sharedDate":"2015-02-01T09:28:56.321-10:00",
+      "userImages":"http://localhost:4200/assets/images/user_images/user4.jpg",
       "comments":70,
       "shared":5,
 
@@ -170,9 +172,21 @@ export class UsersComponent implements OnInit {
     setTimeout(()=>{                           // <<<---using ()=> syntax
       this.showSuccessMessage = false;
     }, 2000);
+  }
 
+  addTag(tag:string){
+    if(tag){
 
+      this.all_tags.push(tag)
+      console.log(this.all_tags)
+      this.formGroup.get('tags').reset();
     
+    }
+  }
+
+  onRemoveTag(i:number){
+    this.all_tags.splice(0,i+1);
+  
   }
 
 

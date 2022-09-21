@@ -346,3 +346,39 @@ h6, .h6 {
 }
 
 
+.tags{
+    font-size: 13px;
+    border-radius: 1rem;
+    background-color: rgb(250,250,250);
+    border: 1px solid rgb(168, 163, 163);
+    margin-left: 5px;
+    line-height: 1.2rem;
+    /* font-size: 15px; */
+    margin-bottom: 1rem;
+    position: relative;
+    animation-name: example;
+    animation-duration: 1s;
+}
+
+.tags:hover{
+    background-color: #d3cbcb;
+}
+.tags p{
+    margin-bottom: 0;
+}
+
+
+@keyframes example {
+    0%   { left:0px; top:50px;}
+    100%  { left:0px; top:0px;}
+    
+  }
+
+
+.sorts-box{
+    background-color: rgba(242, 239, 239, 0.5);
+
+    border-radius: 10px;
+    border: 1px solid  #fca311;
+    
+}

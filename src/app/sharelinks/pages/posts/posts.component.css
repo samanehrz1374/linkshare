@@ -1,10 +1,8 @@
-.fa.fa-heart:hover {
+.fa.fa-heart {
     color: #f44336 !important;
   }
   
-.fa.fa-share:hover {
-color: #2c77e7 !important;
-}
+
 .img-fluid{
     width: 100%;
 }
@@ -743,15 +741,23 @@ select.form-control:not([size]):not([multiple]) {
     position: relative;
     width: 540px;
   }
-  .custom-search-input {
-    width: 100%;
-    border: 1px solid #fca311;
-    border-radius: 100px;
-    padding: 5px 100px 10px 20px; 
-    /* line-height: 1; */
-    box-sizing: border-box;
-    outline: none;
-  }
+
+.custom-search-personal {
+  display: inline-block;
+  position: relative;
+  width: 745px;
+}
+.custom-search-input {
+  width: 100%;
+  border: 1px solid #fca311;
+  border-radius: 100px;
+  padding: 5px 100px 10px 20px; 
+  /* line-height: 1; */
+  box-sizing: border-box;
+  outline: none;
+}
+
+
   .custom-search-botton {
     position: absolute;
     left: 5px; 
@@ -766,6 +772,8 @@ select.form-control:not([size]):not([multiple]) {
     border-radius: 100px;
     z-index: 2;
   }
+
+
 
 .tags{
     font-size: 13px;

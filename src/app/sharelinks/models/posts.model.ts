@@ -7,6 +7,6 @@ export interface Posts {
     image:string;
     tags:[];
     vote:number;
-    shared_date:string;
+    sharedDate:string;
 
 }
