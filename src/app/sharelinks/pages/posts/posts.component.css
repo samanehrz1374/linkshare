@@ -793,3 +793,17 @@ select.form-control:not([size]):not([multiple]) {
     text-align: center;
     padding: 0px ;
 }
+
+
+.dropdown-toggle::after{
+    content: none;
+}
+
+/* .dropdown-menu{
+    background-color: #d3cbcb;
+
+} */
+
+.delete-item{
+    background-color: rgb(247, 144, 144);
+}

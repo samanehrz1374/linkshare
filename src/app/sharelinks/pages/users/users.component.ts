@@ -171,7 +171,11 @@ export class UsersComponent implements OnInit {
     this.showSuccessMessage=!this.showSuccessMessage;
     setTimeout(()=>{                           // <<<---using ()=> syntax
       this.showSuccessMessage = false;
+      this.showPostAddDiv=false;
     }, 2000);
+
+    
+
   }
 
   addTag(tag:string){

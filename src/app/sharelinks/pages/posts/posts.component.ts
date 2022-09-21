@@ -22,6 +22,7 @@ export class PostsComponent implements OnInit,OnChanges {
   @Input() searchValue:string;
   @Input() posts:any;
   liked:boolean[]=[];
+  didnMatchSearchValue:boolean=false;
   
   constructor(private postsApi:PostApiService,private http:HttpClient) { }
 
@@ -59,6 +60,7 @@ export class PostsComponent implements OnInit,OnChanges {
   }
 
   if (this.searchValue && changes.searchValue){
+    
     this.http.get(environment.url).subscribe((result:any=[])=>{
           this.posts=result;
     
@@ -69,8 +71,12 @@ export class PostsComponent implements OnInit,OnChanges {
           //   indexes.push(this.posts[index].userName);
             // console.log(this.posts[index].tags);
             if(this.posts[index].tags.includes(this.searchValue)){
+              this.didnMatchSearchValue=false;
 
               indexes.push(this.posts[index]);
+            }
+            else{
+              this.didnMatchSearchValue=true;
             }
            }
           this.posts=indexes;
@@ -103,7 +109,7 @@ export class PostsComponent implements OnInit,OnChanges {
 
 
   onLiked(post_id:number){
-    console.log(post_id)
+   
 
     // console.log(this.posts)
 
@@ -121,11 +127,11 @@ export class PostsComponent implements OnInit,OnChanges {
        }
       
     this.liked[post_id]=!this.liked[post_id]
-    console.log(this.liked)
+    
   }
 
   onDissLiked(post_id:number){
-    console.log(post_id)
+
 
     console.log(this.posts)
 
@@ -135,14 +141,21 @@ export class PostsComponent implements OnInit,OnChanges {
         // console.log(this.posts[index].tags);
         if(this.posts[index].id===post_id){
           this.posts[index].vote=this.posts[index].vote-1
-
-          
         }
        }
       
       this.liked[post_id]=!this.liked[post_id]
-      console.log(this.liked)
+  
     
+  }
+
+
+  onDeletePost(i:number){
+
+    this.posts.splice(0,i+1);
+
+
+
   }
 
 

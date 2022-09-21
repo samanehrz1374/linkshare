@@ -1,6 +1,11 @@
   
 <!-- <p (click)="show()">salam</p> -->
+<div style="padding: 25px 25px; margin-right: 10%;" *ngIf="didnMatchSearchValue">
+  <div class="alert alert-success alert-dismissible">
+    نتیجه یافت نشد.
 
+  </div>
+</div>
 <div class="profile-content" >
    <!-- begin tab-content -->
    <div class="tab-content p-0">
@@ -13,7 +18,7 @@
 
 
              
-               <li *ngFor="let post of posts">
+               <li *ngFor="let post of posts;let i =index">
                  
                  <div *ngFor="let user of username">
                    
@@ -35,17 +40,33 @@
                      <!-- begin timeline-body -->
                      <div class="timeline-body">
                         <div class="timeline-header" >
-                           <span class="userimage"><img src={{post.userImages}} alt=""></span>
-                           <span class="username" ><a [routerLink]="['personalpage',post.userName]">{{post.userName}}</a> <small></small></span>
-                           <!-- <span class="pull-right text-muted">18 Views</span> -->
+                          <div class="row"> 
+                            <div class="col-lg-10">
+
+                              <span class="userimage"><img src={{post.userImages}} alt=""></span>
+                              <span class="username" ><a [routerLink]="['personalpage',post.userName]">{{post.userName}}</a> <small></small></span>
+                            </div>
+
+                            <div class="col-lg-2">
+                              <button class="btn delete-item" (click)="onDeletePost(i)">حذف پست</button>
+
+                            </div>
+
+                          </div>
+                          <!-- <span class="pull-right text-muted">18 Views</span> -->
+                          
+                       
                         </div>
                      
       
                         <div class="timeline-content">
-                          <div class="text-right mb-3">
+                          <p class=" mb-3" >
 
-                            <a   style="text-decoration:underline; color:#007bff; font-size: 15px;">{{post.link}}</a>
-                          </div>
+                         
+  
+                              <a   style="text-decoration:underline; color:#007bff; font-size: 15px;">{{post.link}}</a>
+                            
+                          </p>
 
                            <p>
                             {{post.caption}}
@@ -141,9 +162,27 @@
                        <!-- begin timeline-body -->
                        <div class="timeline-body">
                           <div class="timeline-header" >
-                             <span class="userimage"><img src={{post.userImages}} alt=""></span>
-                             <span class="username" ><a [routerLink]="['personalpage',post.userName]">{{post.userName}}</a> <small></small></span>
-                             <!-- <span class="pull-right text-muted">18 Views</span> -->
+                            <div class="row">
+
+                              <div class="col-3">
+    
+                                <span class="userimage"><img src={{post.userImages}} alt=""></span>
+                                <span class="username" ><a [routerLink]="['personalpage',post.userName]">{{post.userName}}</a> <small></small></span>
+                              </div>
+    
+                               <!-- <span class="pull-right text-muted">18 Views</span> -->
+                               <div class="col-9 text-right " >
+    
+                                 
+                                 <a  class="m-r-15 text-inverse-lighter dropdown" style="color: black;"><i class=" fa fa-fw fa-lg material-icons dropdown-toggle" data-toggle="dropdown">more_vert</i>
+                                  <div class="dropdown-menu">
+                                    <a class="dropdown-item delete-item" (click)="onDeletePost(i)">حذف پست</a>
+                                    
+                                  </div></a> 
+                                 
+                               </div>
+                            </div>
+                        
                           </div>
                        
         

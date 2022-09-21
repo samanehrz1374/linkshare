@@ -31,8 +31,6 @@ export class HeaderComponent implements OnInit {
   }
 
   profile(){
-    
-    
     console.log(this.router.url)
     this.router.navigate(['personalpage',this.userName])
 
