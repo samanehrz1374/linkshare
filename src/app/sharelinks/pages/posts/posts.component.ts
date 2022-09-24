@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 // import {data} from '../../../../assets/data/posts.json';
 import { DateAsAgoPipe } from 'src/app/shared/pipes/date-as-ago.pipe';
 import { post } from 'jquery';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 
@@ -23,7 +24,10 @@ export class PostsComponent implements OnInit,OnChanges {
   @Input() posts:any;
   liked:boolean[]=[];
   isMore:boolean[]=[];
+  editing:boolean[]=[];
+  all_tags:string[]=[]
   didnMatchSearchValue:boolean=false;
+  editFormGroup:any;
 
 
   
@@ -34,7 +38,7 @@ export class PostsComponent implements OnInit,OnChanges {
   
   }
 
-  
+
 
  ngOnChanges(changes:any) {
   if (this.typeOfEvent && changes.typeOfEvent){
@@ -153,15 +157,10 @@ export class PostsComponent implements OnInit,OnChanges {
   }
 
   
-  onDeletePost(i:number){
+  onDeletePost(post_id:number){
 
-
-
-    console.log(i)
-    this.posts.splice(i,1);
+    this.posts.splice(post_id,1);
     console.log(this.posts)
-
-
 
   }
 
@@ -171,6 +170,45 @@ export class PostsComponent implements OnInit,OnChanges {
     this.isMore[post_id+1]=!this.isMore[post_id+1]
     console.log(this.isMore)
           
+  }
+
+
+  onEditPostClicked(post_id:number){
+    this.editing[post_id+1]=!this.editing[post_id+1]
+
+   
+    this.all_tags=this.posts[post_id].tags
+    console.log(this.all_tags)
+
+    this.editFormGroup = new FormGroup({
+      // 'username': new FormControl( `${this.posts[post_id].userName}`, [ Validators.required ]),
+      // 'userImages': new FormControl( `${this.user_posts.userImages}`, [ Validators.required ]),
+      'link': new FormControl(`${this.posts[post_id].link}`, [ Validators.required ]),
+      // 'title': new FormControl('', [ ]),
+      'caption': new FormControl(`${this.posts[post_id].caption}`, [  ]),
+      'discription': new FormControl(`${this.posts[post_id].discription}`, [  ]),
+      'image':new FormControl([''], [  ]),
+      
+  
+    });
+
+  }
+  onClickSubmit(data:any,post_id:number){
+
+    this.posts[post_id].caption=data.caption
+    this.posts[post_id].discription=data.discription
+    this.posts[post_id].link=data.link
+    this.posts[post_id].tags=this.all_tags
+    console.log(data.tags)
+
+    this.editing[post_id+1]=!this.editing[post_id+1]
+
+
+  }
+
+  onRemoveTag(i:number){
+    this.all_tags.splice(i,1);
+  
   }
 
 

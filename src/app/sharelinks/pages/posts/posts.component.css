@@ -811,3 +811,8 @@ select.form-control:not([size]):not([multiple]) {
 .more{
     color: #007bff;
 }
+
+
+.edit-item{
+    background-color: rgb(144, 247, 230);
+}

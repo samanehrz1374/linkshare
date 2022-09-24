@@ -191,7 +191,7 @@ export class UsersComponent implements OnInit {
   }
 
   onRemoveTag(i:number){
-    this.all_tags.splice(0,i+1);
+    this.all_tags.splice(i,1);
   
   }
 
