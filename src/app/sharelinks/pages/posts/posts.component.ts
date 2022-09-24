@@ -22,6 +22,7 @@ export class PostsComponent implements OnInit,OnChanges {
   @Input() typeOfEvent:string='';
   @Input() searchValue:string;
   @Input() posts:any;
+  @Input() logged_in_username:string;
   liked:boolean[]=[];
   isMore:boolean[]=[];
   editing:boolean[]=[];

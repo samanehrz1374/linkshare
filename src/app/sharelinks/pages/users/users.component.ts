@@ -32,27 +32,23 @@ export class UsersComponent implements OnInit {
   all_tags:string[]=[];
   link_image:string=environment.link_image;
   user_selected_image:any;
+  logged_in_username:string='نسیم'
+
+  
  
 
   constructor(private postsApi:PostApiService,private http:HttpClient,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
 
-  
-
-  
-
     this.id = this.route.snapshot.params['userName'];
     this.username=[this.id];
     console.log(this.id)
-    
-
+  
 
     this.http.get(environment.url).subscribe((result:any=[])=>{
       this.posts=result;
-      
-
-          
+         
     const indexes = [];
 
     for (let index = 0; index < this.posts.length; index++) {
@@ -159,9 +155,7 @@ export class UsersComponent implements OnInit {
     this.posts.push(newpost)
 
     console.log(this.posts)
-    // this.user.email=email;
-    // this.router.navigate([''])
-    // this.modalService.dismissAll('Dismissed after saving data');
+ 
   }
 
   showAddPost(){
@@ -170,7 +164,7 @@ export class UsersComponent implements OnInit {
 
   addedPostMessage(){
     this.showSuccessMessage=!this.showSuccessMessage;
-    setTimeout(()=>{                           // <<<---using ()=> syntax
+    setTimeout(()=>{                       
       this.showSuccessMessage = false;
       this.showPostAddDiv=false;
     }, 2000);
@@ -192,7 +186,6 @@ export class UsersComponent implements OnInit {
 
   onRemoveTag(i:number){
     this.all_tags.splice(i,1);
-  
   }
 
   onFileChanged(event: any): void {

@@ -48,11 +48,11 @@
                                   <span class="username" ><a [routerLink]="['personalpage',post.userName]">{{post.userName}}</a> <small></small></span>
                                 </div>
     
-                                <div class="col-lg-2">
+                                <div class="col-lg-2"  *ngIf="post.userName===logged_in_username">
                                   <button class="btn delete-item" (click)="onDeletePost(i)">حذف پست</button>
                                   
                                 </div>
-                                <div class="col-lg-2" style="padding-right: 0;">
+                                <div class="col-lg-2" style="padding-right: 0;"  *ngIf="post.userName===logged_in_username">
                                   <button class="btn edit-item" (click)="onEditPostClicked(i)" >ویرایش پست</button>
     
                                 </div>
@@ -153,11 +153,11 @@
                                   <span class="username" ><a [routerLink]="['personalpage',post.userName]">{{post.userName}}</a> <small></small></span>
                                 </div>
     
-                                <div class="col-lg-2">
+                                <div class="col-lg-2"  *ngIf="post.userName===logged_in_username">
                                   <button class="btn delete-item" (click)="onDeletePost(i)">حذف پست</button>
                                   
                                 </div>
-                                <div class="col-lg-2" style="padding-right: 0;">
+                                <div class="col-lg-2" style="padding-right: 0;"  *ngIf="post.userName===logged_in_username">
                                   <button class="btn edit-item" (click)="onEditPostClicked(i)" >ویرایش پست</button>
     
                                 </div>
@@ -274,16 +274,19 @@
                               </div>
     
                                <!-- <span class="pull-right text-muted">18 Views</span> -->
-                               <div class="col-9 text-right " >
-    
-                                 
-                                 <a  class="m-r-15 text-inverse-lighter dropdown" style="color: black;"><i class=" fa fa-fw fa-lg material-icons dropdown-toggle" data-toggle="dropdown">more_vert</i>
-                                  <div class="dropdown-menu">
-                                    <a class="dropdown-item delete-item" (click)="onDeletePost(i)">حذف پست</a>
-                                    
-                                  </div></a> 
-                                 
-                               </div>
+                               
+
+                                 <div class="col-9 text-right " *ngIf="post.userName===logged_in_username" >
+      
+                                   
+                                   <a  class="m-r-15 text-inverse-lighter dropdown" style="color: black;"><i class=" fa fa-fw fa-lg material-icons dropdown-toggle" data-toggle="dropdown">more_vert</i>
+                                    <div class="dropdown-menu">
+                                      <a class="dropdown-item delete-item" (click)="onDeletePost(i)">حذف پست</a>
+                                      
+                                    </div></a> 
+                                   
+                                 </div>
+                              
                             </div>
                         
                           </div>
