@@ -64,7 +64,7 @@
                       </div>
                       <div class="col-lg-9">
                         
-                        <input class="form-control mb-2" required type="text" placeholder="عنوان" formControlName="link" >
+                        <input class="form-control mb-2" required type="text" placeholder="عنوان" formControlName="link"  onkeydown="return (event.keyCode!=13);" >
                         <div class="custom-file mb-2">
 
                           <input type="file" class="custom-file-input" id="exampleInputFile" formControlName="image" (change)="onFileChanged($event)">
@@ -93,7 +93,7 @@
                     <div class="row">
                       <div class="col-lg-11">
 
-                        <input class="form-control mb-2"  type="text" placeholder="برچسب" #tags  formControlName="tags" />
+                        <input class="form-control mb-2"  type="text" placeholder="برچسب" #tags  formControlName="tags" onkeydown="return (event.keyCode!=13);"/>
                       </div>
                       <div class="col-lg-1">
 
