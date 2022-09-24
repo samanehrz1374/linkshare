@@ -69,7 +69,15 @@
                           </p>
 
                            <p>
-                            {{post.caption}}
+                            {{post.caption}}&nbsp;&nbsp;<span class="more" (click)="onMoreClicked(i)">بیشتر</span>
+                            
+                           </p>
+                           <p *ngIf="isMore[post.id]">
+                            {{post.discription+'.'}}
+
+                           </p>
+                           <p *ngIf="!isMore[post.id]">
+                            
                            </p>
       
                            <div class="col-md-12 div2">
@@ -193,8 +201,17 @@
                             </div>
 
                              <p>
-                              {{post.caption}}
-                             </p>
+                              {{post.caption}}&nbsp;&nbsp;<span class="more" (click)="onMoreClicked(i)">بیشتر</span>
+                            
+                           </p>
+                           <p *ngIf="isMore[post.id]">
+                            {{post.discription+'.'}}
+
+                           </p>
+                           <p *ngIf="!isMore[post.id]">
+                            
+                           </p>
+
         
                              <div class="col-md-12 div2">
                                 <!-- <div id="accordion">

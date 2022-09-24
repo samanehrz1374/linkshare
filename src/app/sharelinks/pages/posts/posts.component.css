@@ -807,3 +807,7 @@ select.form-control:not([size]):not([multiple]) {
 .delete-item{
     background-color: rgb(247, 144, 144);
 }
+
+.more{
+    color: #007bff;
+}

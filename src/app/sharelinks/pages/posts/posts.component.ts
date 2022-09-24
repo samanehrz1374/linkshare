@@ -22,17 +22,20 @@ export class PostsComponent implements OnInit,OnChanges {
   @Input() searchValue:string;
   @Input() posts:any;
   liked:boolean[]=[];
+  isMore:boolean[]=[];
   didnMatchSearchValue:boolean=false;
+
+
   
   constructor(private postsApi:PostApiService,private http:HttpClient) { }
 
   ngOnInit(): void {
     
-    
-   
-
   
   }
+
+  
+
  ngOnChanges(changes:any) {
   if (this.typeOfEvent && changes.typeOfEvent){
 
@@ -149,13 +152,25 @@ export class PostsComponent implements OnInit,OnChanges {
     
   }
 
-
+  
   onDeletePost(i:number){
 
-    this.posts.splice(0,i+1);
+
+
+    console.log(i)
+    this.posts.splice(i,1);
+    console.log(this.posts)
 
 
 
+  }
+
+
+  onMoreClicked(post_id:number){
+
+    this.isMore[post_id+1]=!this.isMore[post_id+1]
+    console.log(this.isMore)
+          
   }
 
 
