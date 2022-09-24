@@ -2,6 +2,7 @@
     {
         "id":1,
         "userName":"مریم",
+        "title":"Angular",
         "link":"https://www.tektutorialshub.com/angular/angular-folder-structure-best-practices/",
         "caption":"برای ساختار فایلبندی انگولار از این لینک استفاده  کنید",
         "discription":"پس از نصب انگولار یک پوشه که نام آن را خودتان مشخص کرده‌ اید در مسیر مورد نظرتان ایجاد می‌گردد. توضیح هر یک از این فایل‌ها به صورت زیر است:        پوشه e2e: به عنوان یک پوشه برای تست کردن پروژه مورد استفاده قرار می‌گیرد که مخفف عبارت End 2 End است.پوشه src: به عنوان پوشه اصلی نرم‌افزار شما محسوب شده که درون آن فایل‌هایی با فرمت‌های html و ts و ... وجود دارند و اصلی‌ ترین فایل آن به نام index.html است که بدنه‌ی اصلی نرم‌ افزار می‌باشد.سایر فایل‌ها: به عنوان فایل‌های برای تنظیمات نرم‌افزار بوده که اغلب به صورت پیش فرض توسط خط فرمان Angular CLI ایجاد شده است.",
@@ -18,6 +19,7 @@
     {
         "id":2,
         "userName":"نسیم",
+        "title":"json",
         "link":"https://jsonplaceholder.typicode.com/",
         "caption":"برای ساخت فایل json از لینک زیر میتونی کمک بگیری",
         "discription":"ساختار دستورات JSON زیر مجموعه ای از ساختار ایجاد شیء در جاوا اسکریپت (JavaScript) است، در این مقاله چگونگی ایجاد یک فایل JSON را با استفاده از کلاس JavaScriptSerializer توضیح می دهیم.",
@@ -37,6 +39,7 @@
     {
         "id":3,
         "userName":"محسن",
+        "title":"Music",
         "link":"https://jsonplaceholder.typicode.com/",
         "caption":"این موزیکو گوش کن و لذت ببر",
         "discription":"",
@@ -53,6 +56,7 @@
     {
         "id":4,
         "userName":"محسن",
+        "title":"Music",
         "link":"https://jsonplaceholder.typicode.com/",
         "caption":"این موزیکو گوش کن و لذت ببر",
         "discription":"Using art to inspire people to create a world free of war, hunger, poverty, and pollution. A new generation ruled by love, global unity, and respect for the planet. Be a part of the change! Find meaning to life! Join the Movement!",

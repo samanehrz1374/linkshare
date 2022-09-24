@@ -69,16 +69,26 @@
                           </p>
 
                            <p>
-                            {{post.caption}}&nbsp;&nbsp;<span class="more" (click)="onMoreClicked(i)">بیشتر</span>
-                            
-                           </p>
-                           <p *ngIf="isMore[post.id]">
-                            {{post.discription+'.'}}
+                            {{post.caption}}&nbsp;&nbsp;
 
-                           </p>
-                           <p *ngIf="!isMore[post.id]">
+                            <span *ngIf="post.discription">
+
+                              <span class="more" (click)="onMoreClicked(i)">بیشتر</span>
+  
+                              <p *ngIf="isMore[post.id]">
+                                {{post.discription+'.'}}
+    
+                               </p>
+                               <p *ngIf="!isMore[post.id]">
+                                
+                               </p>
+                            </span>
+                            
+                            
                             
                            </p>
+                           
+                           
       
                            <div class="col-md-12 div2">
                               <!-- <div id="accordion">
@@ -201,16 +211,23 @@
                             </div>
 
                              <p>
-                              {{post.caption}}&nbsp;&nbsp;<span class="more" (click)="onMoreClicked(i)">بیشتر</span>
-                            
-                           </p>
-                           <p *ngIf="isMore[post.id]">
-                            {{post.discription+'.'}}
+                              {{post.caption}}&nbsp;&nbsp;
+                              <span *ngIf="post.discription">
 
-                           </p>
-                           <p *ngIf="!isMore[post.id]">
+                                <span class="more" (click)="onMoreClicked(i)">بیشتر</span>
+    
+                                <p *ngIf="isMore[post.id]" style="text-align: justify;">
+                                  {{post.discription+'.'}}
+      
+                                 </p>
+                                 <p *ngIf="!isMore[post.id]">
+                                  
+                                 </p>
+                              </span>
+                              
                             
                            </p>
+                         
 
         
                              <div class="col-md-12 div2">
