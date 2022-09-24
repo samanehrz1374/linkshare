@@ -56,10 +56,24 @@
                   <form [formGroup]="formGroup"  (ngSubmit)="onClickSubmit(formGroup.value)">
                     
                     <input class="form-control mb-2" required type="text"  formControlName="username" hidden/>
-                    <div class="custom-file mb-2">
-                      <input type="file" class="custom-file-input" id="exampleInputFile" formControlName="image">
-                      <label class="custom-file-label" for="exampleInputFile" data-browse="انتخاب تصویر"></label>
+
+                    <div class="row">
+                      <div class="col-lg-3" style="text-align: center; padding-left: 0;" >
+                        
+                        <img [src]="link_image || user_selected_image" height="85px" width="145">
+                      </div>
+                      <div class="col-lg-9">
+                        
+                        <input class="form-control mb-2" required type="text" placeholder="عنوان" formControlName="link" >
+                        <div class="custom-file mb-2">
+
+                          <input type="file" class="custom-file-input" id="exampleInputFile" formControlName="image" (change)="onFileChanged($event)">
+                          <label class="custom-file-label" for="exampleInputFile" data-browse="انتخاب تصویر"></label>
+                        </div>
+                      </div>
+
                     </div>
+
                     <!-- <input class="filestyle mb-2"  type="file" id="formFile" formControlName="image"/> -->
                     <div class="row">
 

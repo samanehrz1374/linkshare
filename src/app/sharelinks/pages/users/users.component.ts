@@ -30,6 +30,8 @@ export class UsersComponent implements OnInit {
   showPostAddDiv:boolean=false;
   showSuccessMessage:boolean=false;
   all_tags:string[]=[];
+  link_image:string=environment.link_image;
+  user_selected_image:any;
  
 
   constructor(private postsApi:PostApiService,private http:HttpClient,private route:ActivatedRoute,private router:Router) { }
@@ -83,6 +85,7 @@ export class UsersComponent implements OnInit {
       'username': new FormControl( `${this.username}`, [ Validators.required ]),
       'userImages': new FormControl( `${this.user_posts.userImages}`, [ Validators.required ]),
       'link': new FormControl('', [ Validators.required ]),
+      'title': new FormControl('', [ ]),
       'caption': new FormControl('', [  ]),
       'discription': new FormControl('', [  ]),
       'tags': new FormControl([], [ ]),
@@ -191,6 +194,19 @@ export class UsersComponent implements OnInit {
     this.all_tags.splice(0,i+1);
   
   }
+
+  onFileChanged(event: any): void {
+    
+    if (event.target.files && event.target.files[0]) {
+        const file = event.target.files[0];
+
+        const reader = new FileReader();
+        reader.onload = e => this.user_selected_image = reader.result;
+
+        reader.readAsDataURL(file);
+        this.link_image=""
+    }
+}
 
 
 }
