@@ -120,11 +120,9 @@ export class UsersComponent implements OnInit {
   }
 
   onClickSubmit(data:any){
-  
-    console.log(data.userImages)
 
     const newpost={
-      id:1,
+      id:this.posts.length+1,
       userName:data.username,
       link:`${data.link}`,
       caption:`${data.caption}`,
@@ -139,21 +137,21 @@ export class UsersComponent implements OnInit {
       
     }
 
-    const dommypost={
-      "id":2,
-      "userName":"نسیم",
-      "link":"https://jsonplaceholder.typicode.com/",
-      "caption":"برای ساخت فایل json از لینک زیر میتونی کمک بگیری",
-      "discription":"ساختار دستورات JSON زیر مجموعه ای از ساختار ایجاد شیء در جاوا اسکریپت (JavaScript) است، در این مقاله چگونگی ایجاد یک فایل JSON را با استفاده از کلاس JavaScriptSerializer توضیح می دهیم.",
-      "image":"http://localhost:4200/assets/images/post_images/json_placeholder.png",
-      "tags":["انگولار","ساختار", "فولدربندی", "طراحی", "سایت", "UI", "UX"],
-      "vote":10,
-      "sharedDate":"2015-02-01T09:28:56.321-10:00",
-      "userImages":"http://localhost:4200/assets/images/user_images/user4.jpg",
-      "comments":70,
-      "shared":5,
+  //   const dommypost={
+  //     "id":2,
+  //     "userName":"نسیم",
+  //     "link":"https://jsonplaceholder.typicode.com/",
+  //     "caption":"برای ساخت فایل json از لینک زیر میتونی کمک بگیری",
+  //     "discription":"ساختار دستورات JSON زیر مجموعه ای از ساختار ایجاد شیء در جاوا اسکریپت (JavaScript) است، در این مقاله چگونگی ایجاد یک فایل JSON را با استفاده از کلاس JavaScriptSerializer توضیح می دهیم.",
+  //     "image":"http://localhost:4200/assets/images/post_images/json_placeholder.png",
+  //     "tags":["انگولار","ساختار", "فولدربندی", "طراحی", "سایت", "UI", "UX"],
+  //     "vote":10,
+  //     "sharedDate":"2015-02-01T09:28:56.321-10:00",
+  //     "userImages":"http://localhost:4200/assets/images/user_images/user4.jpg",
+  //     "comments":70,
+  //     "shared":5,
 
-  }
+  // }
 
     this.posts.push(newpost)
 
@@ -179,10 +177,11 @@ export class UsersComponent implements OnInit {
   }
 
   addTag(tag:string){
+    console.log('sss')
     if(tag){
 
       this.all_tags.push(tag)
-      console.log(this.all_tags)
+      
       this.formGroup.get('tags').reset();
     
     }
