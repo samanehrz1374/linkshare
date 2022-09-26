@@ -100,6 +100,12 @@ export class UsersComponent implements OnInit {
   
     });
 
+    this.formGroup.controls['image'].disable();
+    this.formGroup.controls['title'].disable();
+    this.formGroup.controls['discription'].disable();
+
+    
+
 
 
     
@@ -141,6 +147,7 @@ export class UsersComponent implements OnInit {
       caption:`${data.caption}`,
       discription:`${data.discription}`,
       image:`${data.image}`,
+      title:`${data.title}`,
       tags:this.all_tags,
       vote:0,
       sharedDate:new Date(),

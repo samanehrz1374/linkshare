@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 // import {data} from '../../../../assets/data/posts.json';
 import { DateAsAgoPipe } from 'src/app/shared/pipes/date-as-ago.pipe';
 import { post } from 'jquery';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 
 
@@ -24,11 +24,15 @@ export class PostsComponent implements OnInit,OnChanges {
   @Input() posts:any;
   @Input() logged_in_username:string;
   liked:boolean[]=[];
+  commentliked:boolean[]=[];
   isMore:boolean[]=[];
   editing:boolean[]=[];
   all_tags:string[]=[]
   didnMatchSearchValue:boolean=false;
   editFormGroup:any;
+  selected_post_image:string;
+  isCommentShow:boolean=false;
+  post_comments:any[]
 
 
   
@@ -117,20 +121,12 @@ export class PostsComponent implements OnInit,OnChanges {
 
 
   onLiked(post_id:number){
-   
-
-    // console.log(this.posts)
-
-
     
       for (let index = 0; index < this.posts.length; index++) {
       
-      //   indexes.push(this.posts[index].userName);
-        // console.log(this.posts[index].tags);
         if(this.posts[index].id===post_id){
           this.posts[index].vote=this.posts[index].vote+1
 
-          
         }
        }
       
@@ -176,6 +172,7 @@ export class PostsComponent implements OnInit,OnChanges {
 
   onEditPostClicked(post_id:number){
     this.editing[post_id+1]=!this.editing[post_id+1]
+    console.log(post)
 
    
     this.all_tags=this.posts[post_id].tags
@@ -185,13 +182,19 @@ export class PostsComponent implements OnInit,OnChanges {
       // 'username': new FormControl( `${this.posts[post_id].userName}`, [ Validators.required ]),
       // 'userProfile': new FormControl( `${this.user_posts.userProfile}`, [ Validators.required ]),
       'link': new FormControl(`${this.posts[post_id].link}`, [ Validators.required ]),
-      // 'title': new FormControl('', [ ]),
+      'title': new FormControl('', [ ]),
       'caption': new FormControl(`${this.posts[post_id].caption}`, [  ]),
       'discription': new FormControl(`${this.posts[post_id].discription}`, [  ]),
-      'image':new FormControl([''], [  ]),
       
   
     });
+    this.selected_post_image=`${this.posts[post_id].image}`
+
+
+    this.editFormGroup.controls['link'].disable();
+    this.editFormGroup.controls['discription'].disable();
+    this.editFormGroup.controls['title'].disable();
+
 
   }
   onClickSubmit(data:any,post_id:number){
@@ -212,7 +215,78 @@ export class PostsComponent implements OnInit,OnChanges {
   
   }
 
+  onSubmit(post_id:number,form:NgForm){
 
+    const comment={
+      "username":String,
+      "comment":String
+      
+    }
+    for (let index = 0; index < this.posts.length; index++) {
+      
+      //   indexes.push(this.posts[index].userName);
+        // console.log(this.posts[index].tags);
+        if(this.posts[index].id===post_id){
+          this.posts[index].comments.push(comment)
+
+        }
+    }
+
+  }
+
+  showComments(post_comments:any[]){
+    this.isCommentShow=!this.isCommentShow
+
+    this.post_comments=post_comments;
+  }
+
+
+  onCommentDissLiked(commentindex:number,post_comments:any,commentId:number){
+
+    for(let i=0; i< this.post_comments.length; i++){
+      if(post_comments[i].commentId === commentId){
+        post_comments[i].likes
+        post_comments[i].likes=this.post_comments[i].likes-1
+        break
+
+      }
+    }
+    this.commentliked[commentindex]=!this.commentliked[commentindex];
+
+
+
+    
+
+ 
+    
+
+    // for (let index = 0; index < this.posts.length; index++) {
+      
+    //   if(this.posts[index].id===post_id){
+
+  //       this.posts[index].comments[commentId]=this.posts[index].vote+1
+
+  //     }
+  //    }
+    
+  // this.commentliked[post_id]=!this.commentliked[post_id]
+
+  }
+
+  onCommentLiked(commentindex:number,post_comments:any,commentId:number){
+    
+    for(let i=0; i< this.post_comments.length; i++){
+      if(post_comments[i].commentId === commentId){
+        post_comments[i].likes
+        post_comments[i].likes=this.post_comments[i].likes+1
+        break
+        
+      }
+    }
+    this.commentliked[commentindex]=!this.commentliked[commentindex];
+    console.log(this.commentliked)
+
+  }
 
 
  

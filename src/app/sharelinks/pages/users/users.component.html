@@ -54,7 +54,7 @@
                     <!-- <a href="#"> <img class="img " src={{user_posts.userProfile}} style="height: 300px;"></a> -->
 
                   </div>
-                  <div class="col-11" style="padding: 20px;">{{user_posts.userName}}</div>
+                  <div class="col-11" style="padding: 20px;">{{user_posts.firstName}}&nbsp;{{user_posts.lastName}}</div>
                 </div>
                 <div class="">
 
@@ -69,7 +69,7 @@
                       </div>
                       <div class="col-lg-9">
                         
-                        <input class="form-control mb-2" required type="text" placeholder="عنوان" formControlName="link"  onkeydown="return (event.keyCode!=13);" >
+                        <input class="form-control mb-2" required type="text" placeholder="عنوان" formControlName="title"  onkeydown="return (event.keyCode!=13);" >
                         <div class="custom-file mb-2">
 
                           <input type="file" class="custom-file-input" id="exampleInputFile" formControlName="image" (change)="onFileChanged($event)">
@@ -159,7 +159,7 @@
               </div> -->
         </div>
 
-            <app-posts [username]="username" [typeOfEvent]="typeOfEvent" [searchValue]="searchValue" [posts]="user_all_posts" [logged_in_username]="logged_in_username" ></app-posts>
+            <app-posts [username]="username" [typeOfEvent]="typeOfEvent" [searchValue]="searchValue" [posts]="posts" [logged_in_username]="logged_in_username" ></app-posts>
         </div>
     </div>
     <!-- <div class="col-lg-2"></div> -->

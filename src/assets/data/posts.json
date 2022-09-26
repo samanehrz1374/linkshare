@@ -11,7 +11,27 @@
         "vote":2500,
         "sharedDate":"2014-02-01T09:28:56.321-10:00",
         "userProfile":"http://localhost:4200/assets/images/user_images/user1.jpg",
-        "comments":10,
+        "comments":[
+            {
+                "commentId":1,
+                "firstName":"محسن",
+                "lastName":"آقاخانی",
+                "comment":"لینک جالبی بود  ممنون از اینکه با ما در اشتراک گذاشتید",
+                "userProfile":"http://localhost:4200/assets/images/user_images/user3.jpg",
+                "commentDate":"2014-02-01T09:28:56.321-10:00",
+                "likes":10
+                
+            },
+            {
+                "commentId":2,
+                "firstName":"نسیم",
+                "lastName":"گلستانی",
+                "comment":"خوب بود",
+                "userProfile":"http://localhost:4200/assets/images/user_images/user4.jpg",
+                "commentDate":"2014-02-01T09:28:56.321-10:00",
+                "likes":2
+            }
+        ],
         "likedBy":[],
         "firstName":"مریم",
         "lastName":"سلمانیون"
@@ -30,7 +50,7 @@
         "vote":10,
         "sharedDate":"2015-02-01T09:28:56.321-10:00",
         "userProfile":"http://localhost:4200/assets/images/user_images/user4.jpg",
-        "comments":70,
+        "comments":[],
         "likedBy":[],
         "firstName":"نسیم",
         "lastName":"گلستانی"
@@ -52,7 +72,7 @@
         "vote":300,
         "sharedDate":"2015-02-01T09:28:56.321-10:00",
         "userProfile":"http://localhost:4200/assets/images/user_images/user3.jpg",
-        "comments":20,
+        "comments":[],
         "likedBy":[],
         "firstName":"محسن",
         "lastName":"آقاخانی"
@@ -71,7 +91,7 @@
         "vote":300,
         "sharedDate":"2013-02-01T09:28:56.321-10:00",
         "userProfile":"http://localhost:4200/assets/images/user_images/user3.jpg",
-        "comments":80,
+        "comments":[],
         "likedBy":[],
         "firstName":"محسن",
         "lastName":"آقاخانی"
