@@ -17,7 +17,6 @@ import { disableDebugTools } from '@angular/platform-browser';
 })
 export class UsersComponent implements OnInit {
   username:any[];
-  profile_image:any;
   user_posts:any='';
   votes:number=0;
   posts:any|(string | number)[];
