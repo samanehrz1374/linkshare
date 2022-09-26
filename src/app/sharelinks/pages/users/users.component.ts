@@ -18,6 +18,7 @@ import { disableDebugTools } from '@angular/platform-browser';
 export class UsersComponent implements OnInit {
   username:any[];
   user_posts:any='';
+  user_all_posts:any[]=[];
   votes:number=0;
   posts:any|(string | number)[];
   id = '';
@@ -31,7 +32,8 @@ export class UsersComponent implements OnInit {
   all_tags:string[]=[];
   link_image:string=environment.link_image;
   user_selected_image:any;
-  logged_in_username:string='نسیم'
+  logged_in_username:string='nasim';
+  logged_in_firstName="نسیم";
 
   
  
@@ -63,6 +65,8 @@ export class UsersComponent implements OnInit {
         }
       }
 
+
+
     for (let i=0; i<indexes.length; i++){
       if(i > -1){
         this.votes=this.posts[indexes[i]].vote +this.votes;
@@ -70,7 +74,14 @@ export class UsersComponent implements OnInit {
         
       }
     }
-    console.log(this.votes)
+    
+
+    for (let i=0; i<indexes.length; i++){
+      if(i > -1){
+        this.user_all_posts.push(this.posts[indexes[i]]);
+      }
+    }
+    console.log(this.user_all_posts)
 
       
     })
@@ -78,7 +89,7 @@ export class UsersComponent implements OnInit {
 
     this.formGroup = new FormGroup({
       'username': new FormControl( `${this.username}`, [ Validators.required ]),
-      'userImages': new FormControl( `${this.user_posts.userImages}`, [ Validators.required ]),
+      'userProfile': new FormControl( `${this.user_posts.userProfile}`, [ Validators.required ]),
       'link': new FormControl('', [ Validators.required ]),
       'title': new FormControl('', [ ]),
       'caption': new FormControl('', [  ]),
@@ -88,6 +99,10 @@ export class UsersComponent implements OnInit {
       
   
     });
+
+
+
+    
   
     // for (let i=0; i<indexes.length; i++){
     //   if(i > -1){
@@ -131,7 +146,7 @@ export class UsersComponent implements OnInit {
       sharedDate:new Date(),
       comments:0,
       shared:0,
-      userImages:`${this.user_posts.userImages}`
+      userProfile:`${this.user_posts.userProfile}`
       
     }
 
@@ -145,7 +160,7 @@ export class UsersComponent implements OnInit {
   //     "tags":["انگولار","ساختار", "فولدربندی", "طراحی", "سایت", "UI", "UX"],
   //     "vote":10,
   //     "sharedDate":"2015-02-01T09:28:56.321-10:00",
-  //     "userImages":"http://localhost:4200/assets/images/user_images/user4.jpg",
+  //     "userProfile":"http://localhost:4200/assets/images/user_images/user4.jpg",
   //     "comments":70,
   //     "shared":5,
 

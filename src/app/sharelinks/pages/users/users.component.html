@@ -1,4 +1,4 @@
-<app-header (searchTextChanged)="search($event)"></app-header>
+<app-header (searchTextChanged)="search($event)" [logged_in_firstName]="logged_in_firstName"></app-header>
 <!-- {{user_posts.userName}} -->
 <div class="container-fluid">
   <div class="col-lg-12 " style="padding: 25px 25px;" *ngIf="showSuccessMessage">
@@ -16,7 +16,7 @@
         
                     <div class="card card-blog">
                         <div class="card-image">
-                            <a href="#"> <img class="img" src={{user_posts.userImages}} style="height: 300px;">
+                            <a href="#"> <img class="img" src={{user_posts.userProfile}} style="height: 300px;">
                                 <div class="card-caption"> {{user_posts.userName}} </div>
                             </a>
                             <div class="ripple-cont"></div>
@@ -49,9 +49,9 @@
             <div id="addpost" *ngIf="showPostAddDiv" class="mt-3 postadd-container">
                 <div class="row mb-3 border-bottom">
                   <div class="col-1" >
-                    <img class="userimage rounded-circle postadd-image" style="width: 50px; height:50px;" src={{user_posts.userImages}} alt="">
+                    <img class="userimage rounded-circle postadd-image" style="width: 50px; height:50px;" src={{user_posts.userProfile}} alt="">
 
-                    <!-- <a href="#"> <img class="img " src={{user_posts.userImages}} style="height: 300px;"></a> -->
+                    <!-- <a href="#"> <img class="img " src={{user_posts.userProfile}} style="height: 300px;"></a> -->
 
                   </div>
                   <div class="col-11" style="padding: 20px;">{{user_posts.userName}}</div>
@@ -159,7 +159,7 @@
               </div> -->
         </div>
 
-            <app-posts [username]="username" [typeOfEvent]="typeOfEvent" [searchValue]="searchValue" [posts]="posts" [logged_in_username]="logged_in_username" ></app-posts>
+            <app-posts [username]="username" [typeOfEvent]="typeOfEvent" [searchValue]="searchValue" [posts]="user_all_posts" [logged_in_username]="logged_in_username" ></app-posts>
         </div>
     </div>
     <!-- <div class="col-lg-2"></div> -->

@@ -15,7 +15,9 @@ export class HomeComponent implements OnInit {
   posts:any|(string | number)[];
   typeOfEvent:string='';
   searchValue:string;
-  logged_in_username:string='نسیم'
+  logged_in_username:string='nasim'
+  logged_in_firstName="نسیم";
+
   
   
 

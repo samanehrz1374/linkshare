@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
@@ -10,7 +10,11 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  userName:string='نسیم';
+
+  userName:string='nasim';
+  @Input() logged_in_username:string;
+  @Input() logged_in_firstName:string;
+  
   searchValue:string;
   @Output() searchTextChanged: EventEmitter<string> = new EventEmitter();
 

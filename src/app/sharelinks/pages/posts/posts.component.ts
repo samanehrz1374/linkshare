@@ -183,7 +183,7 @@ export class PostsComponent implements OnInit,OnChanges {
 
     this.editFormGroup = new FormGroup({
       // 'username': new FormControl( `${this.posts[post_id].userName}`, [ Validators.required ]),
-      // 'userImages': new FormControl( `${this.user_posts.userImages}`, [ Validators.required ]),
+      // 'userProfile': new FormControl( `${this.user_posts.userProfile}`, [ Validators.required ]),
       'link': new FormControl(`${this.posts[post_id].link}`, [ Validators.required ]),
       // 'title': new FormControl('', [ ]),
       'caption': new FormControl(`${this.posts[post_id].caption}`, [  ]),
