@@ -88,47 +88,53 @@
    width: 50px;
    height: 50px;
    border-radius:50%;
-   border:solid #fca311 2px ;
+   border:solid var(--primary-color) 2px ;
 }
 
 .nav-color{
-    background: rgb(242, 239, 239);
+    background: rgb(255, 255, 255);
 
 }
 
 .logsignbtn{
-    border: 1px solid #fca311;
+    border: 1px solid var(--primary-color);
+   
 }
 .logsignbtn:hover{
-    background-color:#fca311 ;
+    background-color: var(--primary-color) ;
     opacity: 0.8;
 }
 
 .custom-search {
     display: inline-block;
     position: relative;
-    width: 200px;
+    width: 168px;
+    line-height: 20px;
   }
   .custom-search-input {
     width: 100%;
-    border: 1px solid #fca311;
+    border: transparent;
     border-radius: 100px;
-    padding: 5px 45px 5px 20px; 
+    padding: 0px 20px 0px 45px; 
     /* line-height: 1; */
     box-sizing: border-box;
     outline: none;
+    line-height: 2.2rem;
+    background-color: rgba(27, 197, 189, 0.2);
+    /* transition-duration: 0.4s; */
+
   }
   .custom-search-botton {
     position: absolute;
-    right: 3px; 
-    top: 3px;
-    bottom: 3px;
+    left: 0px;   
+    /* top: 3px; */
+    bottom: 2px;
     border: 0;
-    background: #fca311;
+    background: var(--primary-color);
     color: #fff;
     outline: none;
     margin: 0;
-    padding: 0 10px;
+    padding: 5px   10px;
     border-radius: 100px;
     z-index: 2;
   }
@@ -136,3 +142,53 @@
 .container-fluid{
   width: 80%;
 }
+
+
+.search-input{
+  outline: 0;
+  border-width: 0 0 0;
+  height: 36px;
+  /* margin-bottom: 5px; */
+  text-align: right;
+  width: 100%;
+  font-size: 3.5rem;
+  font-family: inherit;
+  transition-duration: 0.4s;
+  /* margin-bottom: 10px; */
+  /* margin-top: 1px;  */
+  border: transparent;
+ 
+  background-color: transparent;
+  font-size: 25px;
+  border-radius: 100px;
+  /* background-color: var(--primary-color);   */
+
+}
+.search-input:focus  {
+  
+  position:relative;
+  /* top:58px; */
+  right: -155px;
+  /* right: 0; */
+  /* height: 70px; */
+  /* width:200%; */
+  font-size: 20px;
+  text-align: center;
+  background-color: rgba(27, 197, 189, 0.2);
+}
+
+.search-box{
+  /* margin: 0 140px; */
+  /* padding: 0 25px; */
+  position:absolute;
+  right: 193px;
+  top: 0px;
+}
+
+
+
+/* @media only screen and (max-width: 1380px) {
+  logsignbtn-media {
+    padding-left: 0px !important;
+  }
+} */

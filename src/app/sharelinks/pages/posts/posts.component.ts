@@ -6,7 +6,7 @@ import { Posts } from '../../models/posts.model';
 import { environment } from 'src/environments/environment';
 // import {data} from '../../../../assets/data/posts.json';
 import { DateAsAgoPipe } from 'src/app/shared/pipes/date-as-ago.pipe';
-import { post } from 'jquery';
+
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 
@@ -33,7 +33,6 @@ export class PostsComponent implements OnInit,OnChanges {
   selected_post_image:string;
   isCommentShow:boolean=false;
   post_comments:any[]
-
 
   
   constructor(private postsApi:PostApiService,private http:HttpClient) { }
@@ -172,7 +171,7 @@ export class PostsComponent implements OnInit,OnChanges {
 
   onEditPostClicked(post_id:number){
     this.editing[post_id+1]=!this.editing[post_id+1]
-    console.log(post)
+    // console.log(post)
 
    
     this.all_tags=this.posts[post_id].tags
@@ -287,6 +286,9 @@ export class PostsComponent implements OnInit,OnChanges {
     console.log(this.commentliked)
 
   }
+
+
+  
 
 
  

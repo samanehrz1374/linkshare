@@ -2,14 +2,14 @@
     {
         "id":1,
         "userName":"maryam",
-        "title":"Angular",
+        "title":"Angular Folder Structure Best Practices",
         "link":"https://www.tektutorialshub.com/angular/angular-folder-structure-best-practices/",
-        "caption":"برای ساختار فایلبندی انگولار از این لینک استفاده  کنید",
-        "discription":"پس از نصب انگولار یک پوشه که نام آن را خودتان مشخص کرده‌ اید در مسیر مورد نظرتان ایجاد می‌گردد. توضیح هر یک از این فایل‌ها به صورت زیر است:        پوشه e2e: به عنوان یک پوشه برای تست کردن پروژه مورد استفاده قرار می‌گیرد که مخفف عبارت End 2 End است.پوشه src: به عنوان پوشه اصلی نرم‌افزار شما محسوب شده که درون آن فایل‌هایی با فرمت‌های html و ts و ... وجود دارند و اصلی‌ ترین فایل آن به نام index.html است که بدنه‌ی اصلی نرم‌ افزار می‌باشد.سایر فایل‌ها: به عنوان فایل‌های برای تنظیمات نرم‌افزار بوده که اغلب به صورت پیش فرض توسط خط فرمان Angular CLI ایجاد شده است.",
-        "image":"http://localhost:4200/assets/images/post_images/post1.jpg",
+        "caption":"برای فایلبندی انگولار از این لینک استفاده  کنید",
+        "discription":"پس از نصب انگولار یک پوشه که نام آن را خودتان مشخص کرده‌ اید در مسیر مورد نظرتان ایجاد می‌گردد. توضیح هر یک از این فایل‌ها به صورت زیر است: پوشه e2e: به عنوان یک پوشه برای تست کردن پروژه مورد استفاده قرار می‌گیرد که مخفف عبارت End 2 End است.پوشه src: به عنوان پوشه اصلی نرم‌افزار شما محسوب شده که درون آن فایل‌هایی با فرمت‌های html و ts و ... وجود دارند و اصلی‌ ترین فایل آن به نام index.html است که بدنه‌ی اصلی نرم‌ افزار می‌باشد.سایر فایل‌ها: به عنوان فایل‌های برای تنظیمات نرم‌افزار بوده که اغلب به صورت پیش فرض توسط خط فرمان Angular CLI ایجاد شده است.",
+        "image":"http://localhost:4200/assets/images/post_images/angular.png",
         "tags":["ساختار", "فولدربندی", "طراحی", "سایت", "UI", "UX"],
         "vote":2500,
-        "sharedDate":"2014-02-01T09:28:56.321-10:00",
+        "sharedDate":"2022-10-01T09:28:56.321-10:00",
         "userProfile":"http://localhost:4200/assets/images/user_images/user1.jpg",
         "comments":[
             {
@@ -41,22 +41,19 @@
     {
         "id":2,
         "userName":"nasim",
-        "title":"json",
+        "title":"{JSON} Placeholder",
         "link":"https://jsonplaceholder.typicode.com/",
         "caption":"برای ساخت فایل json از لینک زیر میتونی کمک بگیری",
         "discription":"ساختار دستورات JSON زیر مجموعه ای از ساختار ایجاد شیء در جاوا اسکریپت (JavaScript) است، در این مقاله چگونگی ایجاد یک فایل JSON را با استفاده از کلاس JavaScriptSerializer توضیح می دهیم.",
         "image":"http://localhost:4200/assets/images/post_images/json_placeholder.png",
         "tags":["انگولار","ساختار", "فولدربندی", "طراحی", "سایت", "UI", "UX"],
         "vote":10,
-        "sharedDate":"2015-02-01T09:28:56.321-10:00",
+        "sharedDate":"2022-10-01T07:28:56.321-10:00",
         "userProfile":"http://localhost:4200/assets/images/user_images/user4.jpg",
         "comments":[],
         "likedBy":[],
         "firstName":"نسیم",
         "lastName":"گلستانی"
-
-      
-
 
     },
 
@@ -64,13 +61,13 @@
         "id":3,
         "userName":"mohsen",
         "title":"Music",
-        "link":"https://jsonplaceholder.typicode.com/",
+        "link":"https://soundcloud.com/relaxdaily/relaxing-music-meditation",
         "caption":"این موزیکو گوش کن و لذت ببر",
         "discription":"",
         "image":"http://localhost:4200/assets/images/post_images/sound_cloud.png",
         "tags":["ساختار", "فولدربندی", "طراحی", "سایت", "UI", "UX"],
         "vote":300,
-        "sharedDate":"2015-02-01T09:28:56.321-10:00",
+        "sharedDate":"2022-09-28T09:28:56.321-10:00",
         "userProfile":"http://localhost:4200/assets/images/user_images/user3.jpg",
         "comments":[],
         "likedBy":[],
@@ -82,20 +79,177 @@
     {
         "id":4,
         "userName":"mohsen",
-        "title":"Music",
-        "link":"https://jsonplaceholder.typicode.com/",
-        "caption":"این موزیکو گوش کن و لذت ببر",
-        "discription":"Using art to inspire people to create a world free of war, hunger, poverty, and pollution. A new generation ruled by love, global unity, and respect for the planet. Be a part of the change! Find meaning to life! Join the Movement!",
-        "image":"http://localhost:4200/assets/images/post_images/sound_cloud.png",
-        "tags":["انگولار","ساختار", "فولدربندی", "طراحی", "سایت", "UI", "UX"],
-        "vote":300,
-        "sharedDate":"2013-02-01T09:28:56.321-10:00",
+        "title":"دانلود مقاله",
+        "link":"https://freepaper.me/",
+        "caption":"از این سایت میتونید هر مقاله ای که نیاز دارید دانلود کنید",
+        "discription":" روال کاری و شرایط استفاده استفاده از این وب سایت تنها از طریق IP های ایران میسر است. استفاده از آدرس ایمیل موقت برای ثبت نام مجاز نیست. محدودیت های دانلود روزانه برای کاربران اعمال نمیشود و کاربر...",
+        "image":"http://localhost:4200/assets/images/post_images/freepaper.png",
+        "tags":["مقاله","فری پیپیر","دانلود_مقاله"],
+        "vote":150,
+        "sharedDate":"2022-09-21T07:09:36+02:00",
         "userProfile":"http://localhost:4200/assets/images/user_images/user3.jpg",
-        "comments":[],
+        "comments":[
+            {
+                "commentId":1,
+                "firstName":"نسیم",
+                "lastName":"گلستانی",
+                "comment":"هر مقاله ای که بخاهیم میتونیم دانلود کنیم؟",
+                "userProfile":"http://localhost:4200/assets/images/user_images/user4.jpg",
+                "commentDate":"2014-02-01T09:28:56.321-10:00",
+                "likes":5
+                
+            },
+            {
+                "commentId":2,
+                "firstName":"مریم",
+                "lastName":"سلمانیون",
+                "comment":"ممنون",
+                "userProfile":"http://localhost:4200/assets/images/user_images/user1.jpg",
+                "commentDate":"2014-02-01T09:28:56.321-10:00",
+                "likes":8
+            }
+        ],
         "likedBy":[],
         "firstName":"محسن",
         "lastName":"آقاخانی"
 
 
+    },
+
+    {
+        "id":5,
+        "userName":"nsaim",
+        "title":"l لینگوانا l – دانلود رایگان ویرایش چهارم مجموعه کتاب های English File – LINGOANA",
+        "link":"https://www.lingoana.com/library/general-english/english-file-4th/",
+        "caption":"از اینجا کتاب های انگلیش فایل رو دانلود کن",
+        "discription":"درباره ی کتاب درسهای منحصر به فرد ، پرنشاط و لذت بخش English File برای جلب توجه دانشجویان بسیار مشهور است. در حقیقت ، 90٪ از معلمان English File که در مطالعه آکسفورد ایمپکت مورد بررسی قرار گرفتند، در...",
+        "image":"http://localhost:4200/assets/images/post_images/lingoana.jpg",
+        "tags":["زبان","انگلیش فایل", "انگلیسی", "زبان_انگلیسی", "لینگوانا"],
+        "vote":40,
+        "sharedDate":"2022-09-15T07:09:36+02:00",
+        "userProfile":"http://localhost:4200/assets/images/user_images/user4.jpg",
+        "comments":[],
+        "likedBy":[],
+        "firstName":"نسیم",
+        "lastName":"گلستانی"
+
+
+    },
+
+    {
+        "id":6,
+        "userName":"maryam",
+        "title":"خوابگاه دخترانه ماندگار تهران",
+        "link":"https://www.tehranpansion.com/",
+        "caption":"اجاره پانسیون در تهران",
+        "discription":"خوابگاه دخترانه ماندگار تهران - دسترسی آسان به مترو شریعتی و قلهک تهران - دارای مجوز رسمی از سازمان گردشگری - امکانات رفاهی کامل در محیطی آرام به شکل سوئیتهای مختلف با امکانات مجزا - اتاق های 1 تا...",
+        "image":"http://localhost:4200/assets/images/post_images/mandegar.png",
+        "tags":["پانسیون","اجاره_خانه", "ماندگار", "اجاره_پانسیون", "پانسیون_دخترانه"],
+        "vote":167,
+        "sharedDate":"2022-09-10T07:09:36+02:00",
+        "userProfile":"http://localhost:4200/assets/images/user_images/user1.jpg",
+        "comments":[],
+        "likedBy":[],
+        "firstName":"مریم",
+        "lastName":"سلمانیون"
+
+
+    },
+    {
+        "id":7,
+        "userName":"nasim",
+        "title":"Angular 11 Tutorial - Code a Project from Scratch",
+        "link":"https://jsonplaceholder.typicode.com/",
+        "caption":"آموزش انگولار 11",
+        "discription":"",
+        "image":"http://localhost:4200/assets/images/post_images/angular.jpg",
+        "tags":["امورپزش_انگولار","انگولار", "انگولار11", "فواد_شریعتی"],
+        "vote":2005,
+        "sharedDate":"2022-09-01T07:09:36+02:00",
+        "userProfile":"http://localhost:4200/assets/images/user_images/user1.jpg",
+        "comments":[],
+        "likedBy":[],
+        "firstName":"نسیم",
+        "lastName":"گلستانی"
+
+
+    },
+    {
+        "id":8,
+        "userName":"samaneh",
+        "title":"رزرو آپارتمان ساحلی در رامسر - یکخوابه",
+        "link":"https://www.jajiga.com/room/3150744/%D8%B1%D8%B2%D8%B1%D9%88-%D8%A2%D9%BE%D8%A7%D8%B1%D8%AA%D9%85%D8%A7%D9%86-%D8%B3%D8%A7%D8%AD%D9%84%DB%8C-%D8%AF%D8%B1-%D8%B1%D8%A7%D9%85%D8%B3%D8%B1",
+        "caption":"رزرو اپارتمان و هتل در جاجیگا",
+        "discription":"درباره اقامتگاه رزرو آپارتمان ساحلی در رامسر این واحد یکخوابه در طبقه همکف(با 5 پله) با امکانات مناسب و یک حیاط بزرگ در دل شهر توریستی رامسر واقع شده است. فاصله این ساختمان تا نانوایی ، هایپرمارکت ...",
+        "image":"http://localhost:4200/assets/images/post_images/sound_cloud.png",
+        "tags":["جاجیگا","اپارتمان", "هتل", "رزرو_هتل"],
+        "vote":154,
+        "sharedDate":"2022-06-01T09:28:56.321-10:00",
+        "userProfile":"http://localhost:4200/assets/images/user_images/user5.jpg",
+        "comments":[
+            {
+                "commentId":1,
+                "firstName":"نسیم",
+                "lastName":"گلستانی",
+                "comment":"برای این سایت کد تخفیف هم دارید؟",
+                "userProfile":"http://localhost:4200/assets/images/user_images/user4.jpg",
+                "commentDate":"2014-02-01T09:28:56.321-10:00",
+                "likes":5
+                
+            },
+            {
+                "commentId":2,
+                "firstName":"مریم",
+                "lastName":"سلمانیون",
+                "comment":"من قبلا از اینجا اپارتمان رزرو کردم خیلی خوب بوده.",
+                "userProfile":"http://localhost:4200/assets/images/user_images/user1.jpg",
+                "commentDate":"2014-02-01T09:28:56.321-10:00",
+                "likes":8
+            }
+        ],
+        "likedBy":[],
+        "firstName":"سمانه",
+        "lastName":"رضائی"
+
+
+    },
+    {
+        "id":9,
+        "userName":"samaneh",
+        "title":"Music",
+        "link":"http://noyantech.ir/%d9%81%d8%b1%d8%b5%d8%aa-%d9%87%d8%a7%db%8c-%d9%87%d9%85%da%a9%d8%a7%d8%b1%db%8c/",
+        "caption":"فرصت همکاری در شرکت همراه نویان",
+        "discription":"",
+        "image":"http://localhost:4200/assets/images/post_images/Logo_Noyan.png",
+        "tags":["انگولار","ساختار", "فولدربندی", "طراحی", "سایت", "UI", "UX"],
+        "vote":756,
+        "sharedDate":"2022-05-01T09:28:56.321-10:00",
+        "userProfile":"http://localhost:4200/assets/images/user_images/user5.jpg",
+        "comments":[],
+        "likedBy":[],
+        "firstName":"سمانه",
+        "lastName":"رضائی"
+
+
+    },
+    {
+        "id":10,
+        "userName":"samaneh",
+        "title":"What is Git-Ignore and How to Use it?",
+        "link":"https://www.geeksforgeeks.org/what-is-git-ignore-and-how-to-use-it/",
+        "caption":"git ignore چیست",
+        "discription":"What is Git-Ignore and How to Use it? There are various types of files we might want the git to ignore before committing, for example, the files that are to do with our user settings or any utility s...",
+        "image":"http://localhost:4200/assets/images/post_images/gitignore.png",
+        "tags":["گیت","گیتایگنور", "گیت_ایگنور"],
+        "vote":684,
+        "sharedDate":"2022-04-01T09:28:56.321-10:00",
+        "userProfile":"http://localhost:4200/assets/images/user_images/user5.jpg",
+        "comments":[],
+        "likedBy":[],
+        "firstName":"سمانه",
+        "lastName":"رضائی"
+
+
     }
+
 ]

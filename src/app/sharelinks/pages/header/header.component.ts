@@ -16,7 +16,9 @@ export class HeaderComponent implements OnInit {
   @Input() logged_in_firstName:string;
   
   searchValue:string;
+
   @Output() searchTextChanged: EventEmitter<string> = new EventEmitter();
+  isSearch:boolean=false;
 
 
   
@@ -29,6 +31,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onSearchTextCahnged(){
+    this.isSearch=!this.isSearch;
     this.searchTextChanged.emit(this.searchValue);
 
 

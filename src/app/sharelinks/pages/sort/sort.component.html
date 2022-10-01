@@ -1,9 +1,29 @@
 
 
-<div class="profile-content">
+
+
+  <div class="row profile-content" *ngIf="mode==='home';else other">
+    <div class="col-2 text-center filter" >
+      <!-- <p >فیلتر:</p> -->
+
+    </div>
+    <div class="col-10 ">
+      
+
+
+      
+      <button class="btn btn-custom" (click)="newest('newest')">جدیدترین</button>
+      <button class="btn btn-custom" (click)="newest('oldest')">قدیمی ترین</button>
+      <button class="btn btn-custom" (click)="newest('mostliked')">بیشترین امتیاز</button>
+      <button class="btn btn-custom"(click)="newest('leastliked')">کمترین امتیاز</button>
+
+
+    </div>
     
 
-        <div class="sorts-box dropdown " >
+    
+
+        <!-- <div class="sorts-box dropdown " >
             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="width: 100%;">
               مرتب سازی بر اساس
             </button>
@@ -13,7 +33,85 @@
               <a class="dropdown-item border-bottom" (click)="newest('mostliked')">بیشترین امتیاز</a>
               <a class="dropdown-item"(click)="newest('leastliked')">کمترین امتیاز</a>
             </div>
-          </div>
+          </div> -->
     
 
-</div>
+  </div>
+
+<ng-template #other>
+  <div class="left-filter-container">
+
+    <div class="filter-content ">
+      <div class="text-center">
+        <p class="border-bottom p-2">
+          مرتب سازی بر اساس
+        </p>
+  
+      </div>
+      <div class="row ">
+        <div class="col-sm-7 text-center">
+          <p>جدیدترین</p>
+  
+        </div>
+        <div class="col-sm-5 text-left mt-1">
+  
+          <label class="switch">
+            <input type="checkbox" (change)="newest('newest')">
+            <span class="slider round"></span>
+          </label>
+        </div>
+  
+      </div>
+  
+      <div class="row ">
+        <div class="col-sm-7 text-center">
+          <p>قدیمی ترین</p>
+  
+        </div>
+        <div class="col-sm-5 text-left mt-1">
+  
+          <label class="switch">
+            <input type="checkbox" (change)="newest('oldest')">
+            <span class="slider round"></span>
+          </label>
+        </div>
+  
+      </div>
+  
+      <div class="row ">
+        <div class="col-sm-7 text-center">
+          <p>بیشترین امتیاز</p>
+  
+        </div>
+        <div class="col-sm-5 text-left mt-1">
+  
+          <label class="switch">
+            <input type="checkbox" (change)="newest('mostliked')" >
+            <span class="slider round"></span>
+          </label>
+        </div>
+  
+      </div>
+  
+      <div class="row ">
+        <div class="col-sm-7 text-center">
+          <p>کمترین امتیاز</p>
+  
+        </div>
+        <div class="col-sm-5 text-left mt-1">
+  
+          <label class="switch">
+            <input type="checkbox" (change)="newest('leastliked')" >
+            <span class="slider round"></span>
+          </label>
+        </div>
+  
+      </div>
+      
+    </div>
+  </div>
+
+  
+  
+
+</ng-template>

@@ -35,11 +35,11 @@
                 
               </li>
               <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['/personalpage',userName]">{{logged_in_firstName}}</a>
+                <a class="nav-link" [routerLink]="['',userName]">{{logged_in_firstName}}</a>
               </li>
               
               <li class="nav-item active">
-                <a [routerLink]="['']" class="nav-link"><i class="fa fa-fw fa-home"></i> خانه</a>
+                <a [routerLink]="['']" class="nav-link"><i class="fa fa-fw fa-home" style="font-size: 25px; color:var(--primary-color)"></i> خانه</a>
                 <!-- <a class="nav-link" [routerLink]="['']">خانه</a> -->
               </li>
             
@@ -49,18 +49,36 @@
           </div>
 
           <div class="col-lg-4 " style="text-align: center;">
-            <div ><strong ><a class="navbar-brand " href="#">لینک</a></strong></div>
+            <div ><strong ><a class="navbar-brand " [routerLink]="['']">لینک</a></strong></div>
 
 
           </div>
 
           <div class="col-lg-4" style="text-align: left;">
-            <div class="custom-search">
-              <input type="text" class="custom-search-input"  [(ngModel)]="searchValue" placeholder="جستجو">
-              <button class="custom-search-botton" type="submit" (click)="onSearchTextCahnged()"><i class="fa fa-search" aria-hidden="true"></i></button>  
+            <div class="row">
+              <div class="col-xl-7 text-right" style="padding: 0;">
+
+                
+                <div class="custom-search">
+                  <!-- <input type="text" class="custom-search-input"  [(ngModel)]="searchValue" placeholder="جستجو"> -->
+                  <input *ngIf="isSearch" class="custom-search-input" type="text" [(ngModel)]="searchValue" style="font-family:Arial, FontAwesome">
+                
+                </div>
+                <button class="custom-search-botton" type="submit" (click)="onSearchTextCahnged()"><i class="fa fa-search" aria-hidden="true"></i></button>  
+                  
+              </div>
+              <!-- <div class="search-box " dir="rtl" >
+                <input class="search-input " id="e1" type="text" placeholder="&#xF002;" [(ngModel)]="searchValue" style="font-family:Arial, FontAwesome">
+              </div> -->
+              <div class="col-xl-2 " style="padding:0; padding-right: 15px;" >
+
+                <button class="btn  rounded-pill logsignbtn " type="submit">ورود</button>
+              </div>
+              <div class="col-xl-3 " style="padding-left: 0; padding-right: 0px;">
+
+                <button class="btn  rounded-pill logsignbtn logsignbtn-sm" type="submit">ثبت نام</button>
+              </div>
             </div>
-            <button class="btn  mx-2 my-sm-0 rounded-pill logsignbtn" type="submit">ورود</button>
-            <button class="btn  my-sm-0 rounded-pill logsignbtn" type="submit">ثبت نام</button>
 
           </div>
           <!-- <form class="form-search form-inline">

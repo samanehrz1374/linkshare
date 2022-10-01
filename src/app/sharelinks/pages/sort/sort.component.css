@@ -1,8 +1,8 @@
 
 .profile-content {
-    padding: 25px 25px;
+    padding: 25px 25px 0 25px;
     border-radius: 4px;
-    margin-right: 10%;
+    /* margin-right: 10%; */
 }
 
 .profile-content:after,
@@ -13,10 +13,10 @@
 }
 
 .sorts-box{
-    background-color: rgba(242, 239, 239, 0.5);
+    background-color: var(--body-color);
     margin-top: 20px;
     border-radius: 10px;
-    border: 1px solid  #fca311;
+    border: 1px solid  var(--primary-color);
     
 }
 
@@ -24,3 +24,98 @@
     text-align: center;
 }
 
+
+.btn-custom{
+    padding: 5px 8px;
+    border-radius: 100px;
+    margin: 5px 8px;
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--body-color);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+
+}
+
+
+.btn-custom:hover{
+    background: var(--hover-color);
+
+}
+.filter{
+    margin: 5px 0px;
+    padding: 5px 5px;
+}
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+  }
+  
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 17px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--primary-color);
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--primary-color);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+.filter-content{
+    padding: 10px 0px;
+    margin-top: 35px;
+    border:1px solid var(--primary-color);
+    border-radius: 20px;
+    background-color: var(--body-color);
+}
+
+.left-filter-container{
+
+padding: 0 20px 0 10px; 
+
+}

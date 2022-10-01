@@ -14,9 +14,21 @@
 }
 body{
   overflow-x: hidden;
-  background:white;
+  background:var(--background-color);
   font-family: Yekan,IranianSans,Bnazanin;
 
+
+}
+
+
+
+:root{
+  --primary-color: #1bc5bd;
+  --transparent-color: rgba(27, 197, 189, 0.5);
+  --secondary-color: rgb(242, 239, 239);
+  --background-color:#f3f6f9;
+  --body-color:white;
+  --hover-color:#0f6763;
 
 }
 

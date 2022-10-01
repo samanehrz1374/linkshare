@@ -3,7 +3,7 @@
 }
 .profile-content{
     padding: 25px 25px;
-    margin-top: 45px;
+    margin-top: -25px;
 }
 /*---------------------------------------------------------------------- /
 CARDS
@@ -13,9 +13,9 @@ CARDS
     display: inline-block;
     position: relative;
     width: 100%;
-    margin-bottom: 30px;
-    border-radius: 6px;
-    border: 1px solid #fca311;
+    /* margin-bottom: 30px; */
+    border-radius: 25px;
+    border: 1px solid var(--primary-color);
     color: rgba(0, 0, 0, 0.87);
     background: #fff;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
@@ -27,8 +27,8 @@ CARDS
     overflow: hidden;
     margin-left: 15px;
     margin-right: 15px;
-    margin-top: -30px;
-    border-radius: 6px;
+    margin-top: 18px;
+    border-radius: 25px;
     box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
@@ -43,9 +43,10 @@ CARDS
     position: absolute;
     bottom: 15px;
     right: 15px;
-    color: #fff;
+    color: rgb(255, 255, 255);
+ 
     font-size: 1.3em;
-    text-shadow: 0 2px 5px rgba(33, 33, 33, 0.5);
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
 }
 
 .card img {
@@ -329,14 +330,33 @@ h6, .h6 {
 }
 
 .post-add-container{
-    padding: 0px 25px;
+    padding: 0px 25px 25px 25px;
+    text-align: center;
+    
+}
+
+.post-add-bottom{
+    padding: 0px 50px;
+    /* background-color: var(--primary-color); */
+    border-radius: 25px;
+    font-size: 30px;
+    font-weight: 1000;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    width: 90%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+
+}
+
+.post-add-bottom:hover{
+    background-color: var(--hover-color);
 }
 
 .postadd-container{
     background-color: transparent;
-    background-color: rgba(242, 239, 239, 0.5);
+    background-color: var(--body-color);
     padding: 25px 25px;
-    border-radius: 6px;
+    border-radius: 25px;
 }
 
 .postadd-image{
@@ -358,6 +378,7 @@ h6, .h6 {
     position: relative;
     animation-name: example;
     animation-duration: 1s;
+   
 }
 
 .tags:hover{
@@ -372,13 +393,71 @@ h6, .h6 {
     0%   { left:0px; top:50px;}
     100%  { left:0px; top:0px;}
     
-  }
+}
+
+.tag-add{
+    color: var(--primary-color);
+    font-size: 15px;
+    font-weight: 1000;
+}
 
 
 .sorts-box{
-    background-color: rgba(242, 239, 239, 0.5);
+    background-color: var(--body-color);
 
     border-radius: 10px;
-    border: 1px solid  #fca311;
+    border: 1px solid  var(--primary-color);
     
 }
+
+.post-btn{
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    margin-top: 28px;
+    
+    /* background-color: rgb(204, 203, 203); */
+}
+.post-btn i{
+    font-size: 30px;
+    color: var(--primary-color);
+    
+    
+}
+
+.post-btn-container{
+    
+    background-color: #cccccc;
+    position: relative;
+    width: inherit;
+    height: 112px;
+    border-radius: 0 0 25px 25px ;
+    margin-top: -20px;
+    animation-name: post;
+    animation-duration: 1s;
+    z-index: -2;
+
+}
+
+@keyframes post {
+    0%   { left:0px; top:-50px;}
+    100%  { left:0px; top:0px;}
+    
+  }
+
+.custom-border{
+    margin-top: 25px;
+    border-left:1px solid var(--primary-color) ;
+}
+
+.custom-border-right{
+    margin-top: 25px;
+    margin-right: -1px;
+
+    border-right:1px solid var(--primary-color) ;
+}
+
+
+
+

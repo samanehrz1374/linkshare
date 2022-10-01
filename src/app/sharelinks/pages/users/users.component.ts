@@ -4,7 +4,7 @@ import { PostApiService } from '../../http/post-api.service';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ModalDirective } from 'ngx-bootstrap/modal';
+
 import { disableDebugTools } from '@angular/platform-browser';
 
 
@@ -34,6 +34,7 @@ export class UsersComponent implements OnInit {
   user_selected_image:any;
   logged_in_username:string='nasim';
   logged_in_firstName="نسیم";
+  isProfileHover:boolean=false;
 
   
  
@@ -220,7 +221,16 @@ export class UsersComponent implements OnInit {
         reader.readAsDataURL(file);
         this.link_image=""
     }
-}
+  }
+
+  onProfileHover(){
+    this.isProfileHover=true
+  }
+  onprifileonHover(){
+    this.isProfileHover=false
+  }
+
+
 
 
 }

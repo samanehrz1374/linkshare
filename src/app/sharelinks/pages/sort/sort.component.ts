@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sort',
@@ -7,6 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class SortComponent implements OnInit {
   @Output() newestpost: EventEmitter<string> = new EventEmitter();
+  @Input() mode:string;
 
   Isnewst:boolean=true;
 
