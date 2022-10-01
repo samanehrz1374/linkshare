@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   logged_in_firstName="نسیم";
   active_profiles:any[];
   users:[];
+  most_pupular_links:any[];
 
   
   
@@ -31,6 +32,13 @@ export class HomeComponent implements OnInit {
     this.http.get(environment.url).subscribe((result:any=[])=>{
       this.posts=result;
       console.log(this.posts)
+
+      let number_of_links=5;
+      let pupular_links=[];
+      pupular_links=this.posts.sort((a:any, b:any) => {return  parseInt(b.vote) -parseInt(a.vote);});
+      this.most_pupular_links=pupular_links.splice(0,5);
+      
+    
 
       
     })
@@ -53,7 +61,7 @@ export class HomeComponent implements OnInit {
       }
 
       this.active_profiles=random_users;
-      console.log(this.active_profiles);
+      
       // let user_number=2
       // let random_users=[]
       // for(let i=0;i<=user_number;i++){

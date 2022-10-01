@@ -16,20 +16,20 @@
     
                     <div class="container" >
     
-                        <div class="row link-container" *ngFor="let post of posts" >
+                        <div class="row link-container" *ngFor="let most_pupular_link of most_pupular_links" >
                             
                             <div class="col-lg-3" style="padding: 10px;">
                                 <div class="img-text-container"  >
-                                    <a href={{post.link}}  class=" post-image"><img class="rounded" src={{post.image}} height="50px" width="50px">
+                                    <a href={{most_pupular_link.link}}  class=" post-image"><img class="rounded" src={{most_pupular_link.image}} height="50px" width="50px">
                                     </a>
                                     <div class="text-center bg-text inner">
-                                        <a href={{post.link}} style="font-size: 25px;" class="material-icons link-style" >link</a>    
+                                        <a href={{most_pupular_link.link}} style="font-size: 25px;" class="material-icons link-style" >link</a>    
                                     </div> 
                                 </div>
                             </div>
                             <div class="col-lg-9 ">
-                                <h1 style="font-size: 0.75rem;"> {{post.title}} </h1>
-                              <p class="link-style2 text-right" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; direction: ltr;"><a >{{post.link}}</a></p>
+                                <h1 style="font-size: 1rem; margin-top: 15px; margin-bottom: 0;white-space: nowrap;overflow: hidden;text-overflow: ellipsis; direction: ltr;"> {{most_pupular_link.title}} </h1>
+                              <p class="link-style2 text-right" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; direction: ltr;"><a >{{most_pupular_link.link}}</a></p>
                             </div>
                           
                             

@@ -60,6 +60,7 @@ export class PostsComponent implements OnInit,OnChanges {
   
     }else if(changes.typeOfEvent.currentValue==='mostliked'){
       this.posts=this.posts.sort((a:any, b:any) => {return  parseInt(b.vote) -parseInt(a.vote);});
+  
 
   
   
