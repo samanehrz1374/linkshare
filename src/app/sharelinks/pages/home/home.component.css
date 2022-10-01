@@ -9,6 +9,8 @@
     border-radius: 20px;
     /* background-color: var(--transparent-color); */
     background-color: rgba(219, 212, 212, 0.5);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+
 }
 
 .left-filter-container{
@@ -56,6 +58,7 @@ padding: 0 20px 0 10px;
     margin: 0px 10px 0 10px;
     /* background-color: rgba(219, 212, 212, 0.5);   */
     border-bottom:2px solid rgb(210, 205, 205);
+
     
 
 }
