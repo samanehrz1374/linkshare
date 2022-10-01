@@ -1,7 +1,7 @@
 
 
 <app-header (searchTextChanged)="search($event)" [logged_in_username]="logged_in_username" [logged_in_firstName]="logged_in_firstName"></app-header>
-<div class="container-fluid d-flex">
+<div class="container-fluid">
     <div class="row">
 
         <div class="col-lg-3" style="padding: 0;">
@@ -23,12 +23,12 @@
                                     <a href={{post.link}}  class=" post-image"><img class="rounded" src={{post.image}} height="50px" width="50px">
                                     </a>
                                     <div class="text-center bg-text inner">
-                                    <h1 style="font-size: 0.75rem;"> {{post.title}} </h1>
-                                      <a href={{post.link}} style="font-size: 25px;" class="material-icons link-style" >link</a>    
-                                </div> 
-                              </div>
+                                        <a href={{post.link}} style="font-size: 25px;" class="material-icons link-style" >link</a>    
+                                    </div> 
+                                </div>
                             </div>
                             <div class="col-lg-9 ">
+                                <h1 style="font-size: 0.75rem;"> {{post.title}} </h1>
                               <p class="link-style2 text-right" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; direction: ltr;"><a >{{post.link}}</a></p>
                             </div>
                           
@@ -55,14 +55,14 @@
                       </div>
                     <div class="container">
     
-                        <div class="row mt-2 member-container" *ngFor="let post of posts">
+                        <div class="row mt-2 member-container" *ngFor="let active_profile of active_profiles">
                             <div class="col-lg-2"></div>
                             <div class="col-lg-6 text-center">
-                              <span class="username" ><a [routerLink]="['personalpage',post.userName]">{{post.firstName}}&nbsp;{{post.lastName}}</a> <small></small></span>
+                              <span class="username" ><a [routerLink]="['personalpage',active_profile.userName]">{{active_profile.firstName}}&nbsp;{{active_profile.lastName}}</a> <small></small></span>
                             </div>
                             <div class="col-lg-4 timeline-header">
         
-                                <div class="userimage"  ><img src={{post.userProfile}} alt=""></div>
+                                <div class="userimage"  ><img src={{active_profile.userProfile}} alt=""></div>
                             </div>
                         </div>
                     </div>

@@ -9,18 +9,27 @@
     {
 
         "userName":"nasim",
-        "image":"http://localhost:4200/assets/images/post_images/json_placeholder.png",
+        "userProfile":"http://localhost:4200/assets/images/user_images/user4.png",
         "firstName":"نسیم",
         "lastName":"گلستانی"
 
     },
     {
         "userName":"maryam",
-        "image":"http://localhost:4200/assets/images/post_images/post1.jpg",
+        "userProfile":"http://localhost:4200/assets/images/user_images/user1.jpg",
         "firstName":"مریم",
         "lastName":"سلمانیون"
 
 
+    },
+    {
+        "userName":"samaneh",
+        "userProfile":"http://localhost:4200/assets/images/user_images/user5.jpg",
+        "firstName":"سمانه",
+        "lastName":"رضائی"
+
+
     }
+   
 
 ]

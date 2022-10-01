@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit {
   searchValue:string;
   logged_in_username:string='nasim'
   logged_in_firstName="نسیم";
+  active_profiles:any[];
+  users:[];
 
   
   
@@ -27,9 +29,40 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     this.http.get(environment.url).subscribe((result:any=[])=>{
-          this.posts=result;
-          console.log(this.posts)
+      this.posts=result;
+      console.log(this.posts)
+
+      
     })
+
+
+    this.http.get(environment.userUrl).subscribe((result:any=[])=>{
+      this.users=result;
+      
+      let tempGroceries:any[] = this.users;
+
+      let random_users:any[] = [];
+      let randomGroceriesIndex = [];
+
+      for(let i=0; i<3; i++) {
+        let randomIndex = Math.floor(Math.random() * tempGroceries.length);
+        let index = this.users.findIndex(o => o === tempGroceries[randomIndex]);
+        randomGroceriesIndex.push(index);
+        random_users.push(tempGroceries[randomIndex]); 
+        tempGroceries = tempGroceries.filter(o => o !==  tempGroceries[randomIndex]);
+      }
+
+      this.active_profiles=random_users;
+      console.log(this.active_profiles);
+      // let user_number=2
+      // let random_users=[]
+      // for(let i=0;i<=user_number;i++){
+      //   var item = this.users[Math.floor(Math.random()*this.users.length)];
+        
+      //   console.log(item)
+      // }
+    })
+
   //   this.http.get(environment.url).subscribe((result:any=[])=>{
   //     this.posts=result;
 

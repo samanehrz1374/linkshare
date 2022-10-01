@@ -757,13 +757,13 @@ select.form-control:not([size]):not([multiple]) {
 .custom-search {
     display: inline-block;
     position: relative;
-    width: 540px;
+    width: inherit;
   }
 
 .custom-search-personal {
   display: inline-block;
   position: relative;
-  width: 745px;
+  width: inherit;
 }
 .custom-search-input {
   width: 100%;
@@ -874,7 +874,7 @@ select.form-control:not([size]):not([multiple]) {
 
 .post-image{
     
-   filter: brightness(50%);
+   filter: brightness(40%);
 }
 
 /* .post-image:hover{
