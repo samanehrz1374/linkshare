@@ -27,7 +27,7 @@
                   <div class="timeline-body "><!---->
                     <!-- <button class="btn delete-item" (click)="onDeletePost(i)" *ngIf="post.userName===logged_in_username && isHover"><i class="fa fa-close fa-fw fa-lg m-r-3" ></i></button> 
                     <button class="btn edit-item" (click)="onEditPostClicked(i)" *ngIf="post.userName===logged_in_username && isHover" ><i class="fa fa-edit fa-fw fa-lg m-r-3" ></i></button> -->
-                    <div class="timeline-header" *ngIf="post.userName===logged_in_username" >
+                    <div class="timeline-header" *ngIf="post.userName===logged_in_username && editmode" >
                       <div class="row " >
                          <!-- <div class="col-6 ">
                            <span class="userimage"><img src={{post.userProfile}} alt=""></span>
@@ -202,7 +202,7 @@
 
                             
                             <div class="col-lg-3" style="text-align: center; padding-left: 0;" >
-                              <img [src]="selected_post_image" height="85px" width="65" style="display: inline;">
+                              <img [src]="selected_post_image" height="85px" width="100px" style="display: inline;">
                             </div>
                             <div class="col-lg-9">
                               <input class="form-control mb-2 text-left" required type="text" placeholder="عنوان" formControlName="title" >

@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { PostApiService } from '../../http/post-api.service';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { disableDebugTools } from '@angular/platform-browser';
 
@@ -26,7 +26,7 @@ export class UsersComponent implements OnInit {
   searchValue:string;
   all_voted:number;
   posts_count:number=0;
-  formGroup:any;
+  postaddForm:FormGroup;
   showPostAddDiv:boolean=false;
   showSuccessMessage:boolean=false;
   all_tags:string[]=[];
@@ -39,7 +39,22 @@ export class UsersComponent implements OnInit {
   
  
 
-  constructor(private postsApi:PostApiService,private http:HttpClient,private route:ActivatedRoute,private router:Router) { }
+  constructor(private postsApi:PostApiService,private http:HttpClient,private route:ActivatedRoute,private router:Router,private fb: FormBuilder) {
+    this.myForm();
+   }
+
+  myForm() {
+    this.postaddForm = this.fb.group({
+      'username': new FormControl( `${this.username}`, [ Validators.required ]),
+      'userProfile': new FormControl( `${this.user_posts.userProfile}`, [ Validators.required ]),
+      'link': new FormControl('', [Validators.required]),
+      'title': new FormControl('', [ Validators.required]),
+      'caption': new FormControl('', [  ]),
+      'discription': new FormControl('', [  ]),
+      'tags': new FormControl([], [ ]),
+      'image':new FormControl([''], [  ]),
+    });
+  }
 
   ngOnInit(): void {
 
@@ -88,22 +103,22 @@ export class UsersComponent implements OnInit {
     })
 
 
-    this.formGroup = new FormGroup({
-      'username': new FormControl( `${this.username}`, [ Validators.required ]),
-      'userProfile': new FormControl( `${this.user_posts.userProfile}`, [ Validators.required ]),
-      'link': new FormControl('', [ Validators.required ]),
-      'title': new FormControl('', [ ]),
-      'caption': new FormControl('', [  ]),
-      'discription': new FormControl('', [  ]),
-      'tags': new FormControl([], [ ]),
-      'image':new FormControl([''], [  ]),
+    // this.postaddForm = new FormGroup({
+    //   'username': new FormControl( `${this.username}`, [ Validators.required ]),
+    //   'userProfile': new FormControl( `${this.user_posts.userProfile}`, [ Validators.required ]),
+    //   'link': new FormControl('', [Validators.required]),
+    //   'title': new FormControl('', [ Validators.required]),
+    //   'caption': new FormControl('', [  ]),
+    //   'discription': new FormControl('', [  ]),
+    //   'tags': new FormControl([], [ ]),
+    //   'image':new FormControl([''], [  ]),
       
   
-    });
+    // });
 
-    this.formGroup.controls['image'].disable();
-    this.formGroup.controls['title'].disable();
-    this.formGroup.controls['discription'].disable();
+    this.postaddForm.controls['image'].disable();
+    this.postaddForm.controls['title'].disable();
+    this.postaddForm.controls['discription'].disable();
 
     
 
@@ -201,7 +216,7 @@ export class UsersComponent implements OnInit {
 
       this.all_tags.push(tag)
       
-      this.formGroup.get('tags').reset();
+      this.postaddForm.controls['tags'].reset();
     
     }
   }

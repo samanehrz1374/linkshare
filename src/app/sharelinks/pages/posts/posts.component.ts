@@ -32,7 +32,8 @@ export class PostsComponent implements OnInit,OnChanges {
   editFormGroup:any;
   selected_post_image:string;
   isCommentShow:boolean=false;
-  post_comments:any[]
+  post_comments:any[];
+  editmode:boolean=true;
 
   
   constructor(private postsApi:PostApiService,private http:HttpClient) { }
@@ -171,6 +172,7 @@ export class PostsComponent implements OnInit,OnChanges {
 
 
   onEditPostClicked(post_id:number){
+    this.editmode=false;
     this.editing[post_id+1]=!this.editing[post_id+1]
     // console.log(post)
 

@@ -67,7 +67,7 @@
           </div>
 
           <div class="">
-            <form [formGroup]="formGroup"  (ngSubmit)="onClickSubmit(formGroup.value)"> 
+            <form [formGroup]="postaddForm"  (ngSubmit)="onClickSubmit(postaddForm.value)" novalidate> 
               <input class="form-control mb-2" required type="text"  formControlName="username" hidden/>
               <div class="row">
 
@@ -87,7 +87,14 @@
                 <!-- <input class="filestyle mb-2"  type="file" id="formFile" formControlName="image"/> -->
               <div class="row">
                 <div class="col">
-                  <textarea class="form-control mb-2" required type="text" placeholder="لینک" formControlName="link" ></textarea>
+                  <textarea class="form-control mb-2" type="text" placeholder="لینک" id="link" formControlName="link" required="true"></textarea>
+                  <div *ngIf="postaddForm.controls['link'].invalid && postaddForm.controls['link'].touched ||postaddForm.controls['link'].touched" class="alert alert-danger">
+                    <div *ngIf="postaddForm.controls['link'].errors?.['required']">
+                    Name is required.
+                  </div>
+                </div>
+                 
+               
                 </div>
                 <div class="col">
                   <textarea class="form-control mb-2"  type="text" placeholder="متن" formControlName="caption"></textarea>
@@ -119,7 +126,7 @@
                   <button type="button" class="btn btn-block alert-danger" data-dismiss="modal" style="border-radius: 10px;" (click)="showAddPost()">بستن</button>
                 </div>
                 <div class="col">
-                  <button  type="submit" class="btn btn-block alert-success" style="border-radius: 10px;" (click)="addedPostMessage()">پیش نمایش</button>
+                  <button  type="submit" class="btn btn-block alert-success" style="border-radius: 10px;" (click)="addedPostMessage() "  >پیش نمایش</button>
                 </div>
               </div>
             </form>
