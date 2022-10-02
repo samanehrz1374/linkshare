@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   active_profiles:any[];
   users:[];
   most_pupular_links:any[];
+  all_posts:any[];
 
   
   
@@ -32,10 +33,26 @@ export class HomeComponent implements OnInit {
     this.http.get(environment.url).subscribe((result:any=[])=>{
       this.posts=result;
       console.log(this.posts)
+      
+
+      // let number_of_links=5;
+      // let pupular_links=[];
+      // pupular_links=this.posts.sort((a:any, b:any) => {return  parseInt(b.vote) -parseInt(a.vote);});
+      // this.most_pupular_links=pupular_links.splice(0,5);
+      
+    
+
+      
+    })
+
+    this.http.get(environment.url).subscribe((result:any=[])=>{
+      this.all_posts=result;
+      console.log(this.posts)
+      
 
       let number_of_links=5;
       let pupular_links=[];
-      pupular_links=this.posts.sort((a:any, b:any) => {return  parseInt(b.vote) -parseInt(a.vote);});
+      pupular_links=this.all_posts.sort((a:any, b:any) => {return  parseInt(b.vote) -parseInt(a.vote);});
       this.most_pupular_links=pupular_links.splice(0,5);
       
     
@@ -83,6 +100,7 @@ export class HomeComponent implements OnInit {
   //     this.username=indexes;
 
   // })
+  
 
   }
 

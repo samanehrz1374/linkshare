@@ -296,6 +296,10 @@ export class UsersComponent implements OnInit {
     );
   }
 
+  print(){
+    console.log('ss')
+  }
+
  
 
 

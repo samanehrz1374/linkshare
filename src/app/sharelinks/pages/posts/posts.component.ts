@@ -292,6 +292,13 @@ export class PostsComponent implements OnInit,OnChanges {
 
   }
 
+  onDeleteCommentClicked(commentindex:number){
+    this.post_comments.splice(commentindex,1);
+    console.log(this.post_comments)
+
+
+  }
+
 
   
 

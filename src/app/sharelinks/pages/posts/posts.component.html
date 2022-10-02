@@ -21,21 +21,22 @@
 
                  
                   <!-- begin timeline-body -->
-                  
-                    
-                    
                   <div class="timeline-body "><!---->
                     <!-- <button class="btn delete-item" (click)="onDeletePost(i)" *ngIf="post.userName===logged_in_username && isHover"><i class="fa fa-close fa-fw fa-lg m-r-3" ></i></button> 
                     <button class="btn edit-item" (click)="onEditPostClicked(i)" *ngIf="post.userName===logged_in_username && isHover" ><i class="fa fa-edit fa-fw fa-lg m-r-3" ></i></button> -->
-                    <div class="timeline-header" *ngIf="post.userName===logged_in_username && editmode" >
+                    <div class="timeline-header" >
                       <div class="row " >
+                        <div class="col-lg-3">
+                          <span class="date" style="font-size: 12px;">{{post.sharedDate| dateAsAgo }}</span>
+
+                        </div>
                          <!-- <div class="col-6 ">
                            <span class="userimage"><img src={{post.userProfile}} alt=""></span>
                            <span class="username" ><a [routerLink]="['personalpage',post.userName]">{{post.firstName}}&nbsp;{{post.lastName}}</a> <small></small></span>
                          </div> -->
         
                         <!-- <span class="pull-right text-muted">18 Views</span> -->
-                        <div class="col-12 text-right "  >
+                        <div class="col-lg-9 text-right "  *ngIf="post.userName===logged_in_username && editmode" >
                          <a  class="m-r-15 text-inverse-lighter dropdown" style="color: black;"><i class=" fa fa-fw fa-lg material-icons dropdown-toggle" data-toggle="dropdown">more_vert</i>
                            <div class="dropdown-menu">
                              <a class="dropdown-item delete-item-dropdown" (click)="onDeletePost(i)">حذف پست</a>
@@ -66,7 +67,7 @@
                         </div>
                         
                         <div class="row">
-                          <div class="col-lg-12 content-box" style="padding-right: 0;" >
+                          <div class="col-lg-12 content-box" style="padding-right: 0;" *ngIf="post.caption;else notfoundcaption">
                             
                             <p>
                               
@@ -81,6 +82,18 @@
                             </p>
                             
                           </div>
+
+                          <ng-template  #notfoundcaption>
+                            <div class="col-lg-12 content-box" style="padding-right: 0;">
+
+                              <p>
+                                
+                                {{post.discription}}&nbsp;&nbsp;
+                                
+                              </p>
+                            </div>
+
+                          </ng-template>
 
                         </div>
                         
@@ -137,8 +150,20 @@
                                   
                                 </div>
                                 <div class="col-lg-10" style="border-bottom: 1px solid #e2e7ec;">
-                                  <span class="username" ><a [routerLink]="['personalpage',post.userName]">{{comment.firstName}}&nbsp;{{comment.lastName}}</a> <small></small></span>
-                                  <p class="comment-text">{{comment.comment}}</p>
+                                  <div class="row mt-3">
+                                    <div class="col-lg-11 ">
+                                      <span class="username" ><a [routerLink]="['personalpage',post.userName]">{{comment.firstName}}&nbsp;{{comment.lastName}}</a> <small></small></span>
+                                      <p class="comment-text">{{comment.comment}}</p>
+
+                                    </div>
+                                    <div class="col-lg-1" style="padding-right:0 ;" *ngIf="post.userName===logged_in_username">
+                                      <i  class="fa fa-trash fa-fw fa-lg m-r-3 text-secondary" (click)="onDeleteCommentClicked(commentindex)"></i>
+
+
+                                    </div>
+                                    
+
+                                  </div>
                                   <div class="row mb-3">
                                     <div class="col-lg-6">{{comment.commentDate |dateAsAgo}}</div>
                                     <div class="col-lg-6 text-right">
@@ -303,7 +328,37 @@
                 </div> -->
                 <div class="col-12 mt-3">
                   <p class="link-style2 text-right" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; direction: ltr;"><a >{{post.link}}</a></p>
-                  <p>
+
+                 
+                  <p  *ngIf="post.caption;else notfoundcaption">
+                    
+                    {{post.caption}}&nbsp;&nbsp;
+                    <span *ngIf="post.discription">
+                      <span class="more" (click)="onMoreClicked(i)">بیشتر</span>
+                      <div *ngIf="isMore[post.id]">
+                        {{post.discription+'.'}}
+                      </div>
+                      
+                    </span>
+                  </p>
+                    
+                  
+
+                  <ng-template  #notfoundcaption>
+                    
+
+                      <p>
+                        
+                        {{post.discription}}&nbsp;&nbsp;
+                        
+                      </p>
+                 
+
+                  </ng-template>
+
+                
+                  
+                  <!-- <p>
                     {{post.caption}}&nbsp;&nbsp;
                     <span *ngIf="post.discription">
     
@@ -315,7 +370,7 @@
                       </p>
                       <p *ngIf="!isMore[post.id]"></p>
                     </span>
-                  </p>
+                  </p> -->
                 </div>    
               </div>
     

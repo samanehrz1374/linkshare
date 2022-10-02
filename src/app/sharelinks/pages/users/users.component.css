@@ -5,6 +5,8 @@
     padding: 25px 25px;
     margin-top: -25px;
 }
+
+
 /*---------------------------------------------------------------------- /
 CARDS
 ----------------------------------------------------------------------- */
@@ -19,6 +21,9 @@ CARDS
     color: rgba(0, 0, 0, 0.87);
     background: #fff;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.card:hover{
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.14), 0 6px 5px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
 .card .card-image {
@@ -436,12 +441,12 @@ h6, .h6 {
     margin-top: -20px;
     animation-name: post;
     animation-duration: 1s;
-    z-index: -2;
+    /* z-index: -2; */
 
 }
 
 @keyframes post {
-    0%   { left:0px; top:-50px;}
+    0%   { left:0px; top:-30px;}
     100%  { left:0px; top:0px;}
     
   }

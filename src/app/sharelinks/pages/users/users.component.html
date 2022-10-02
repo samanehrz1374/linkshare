@@ -19,23 +19,23 @@
                 <div class="ripple-cont"></div>
             </div>
             <div class="table mt-3">
-                <h6 class="category text-info">تعداد لایک ها: {{votes}}</h6>
+                <h6 class="category text-info" >تعداد لایک ها: {{votes}}</h6>
                 <p class="card-description"> تعداد پست ها: {{posts_count}} </p>
             </div>
         </div>
 
         <div class="post-btn-container d-flex" *ngIf="isProfileHover">
-          <div class="col-lg-6 text-center">
-            <button class="btn post-btn " >
-              <a  class="m-r-15 text-inverse-lighter" style="text-decoration: none;">
-                <i class="fa fa-plus fa-fw fa-lg m-r-3" >
+          <div class="col-lg-6 text-center" >
+            <button type="button" class="btn post-btn " (click)="showAddPost()">
+              <a  class="m-r-15 text-inverse-lighter" style="text-decoration: none;" >
+                <i class="fa fa-plus fa-fw fa-lg m-r-3"   >
     
                 </i>
               </a> 
             </button>
           </div>
           <div class="col-lg-6 text-center">
-            <button class="btn post-btn " >
+            <button type="button" class="btn post-btn" >
               <a  class="m-r-15 text-inverse-lighter" style="text-decoration: none;">
                 <i class="fa fa-cog fa-fw fa-lg m-r-3" >
     
@@ -112,7 +112,7 @@
                 </div>
               </div>
               
-              <textarea class="form-control mb-2"  type="text" placeholder="توضیحات" formControlName="discription"></textarea>
+              <textarea class="form-control mb-2"  type="text" placeholder="توضیحات" formControlName="discription" [(ngModel)]="preview.description" [readonly]="dis"></textarea>
               <div class="row" style="padding: 0 15px">
                 
                   <div class="tags btn" *ngFor="let tag of all_tags;let i=index">
