@@ -73,26 +73,37 @@
 
                 
                 <div class="col-lg-9">
-                  <input class="form-control mb-2" required type="text" placeholder="عنوان" formControlName="title"  onkeydown="return (event.keyCode!=13);" >
+                  <input class="form-control mb-2" required type="text" placeholder="عنوان" formControlName="title"  onkeydown="return (event.keyCode!=13);"  [(ngModel)]="preview.title" [readonly]="dis">
+                  
                   <div class="custom-file mb-2">
-                    <input type="file" class="custom-file-input" id="exampleInputFile" formControlName="image" (change)="onFileChanged($event)">
-                    <label class="custom-file-label text-left" for="exampleInputFile" data-browse="تصویر"></label>
+                    <!-- <input type="text" class="custom-file-input" id="exampleInputFile" formControlName="image"  [(ngModel)]="preview" > -->
+
+                  <input class="form-control mb-2" required type="text" placeholder="تصویر" formControlName="image"  onkeydown="return (event.keyCode!=13);"  [(ngModel)]="preview.image" [readonly]="dis" >
+
+                    <!-- (change)="onFileChanged($event)" -->
+                    <!-- <label class="custom-file-label text-left" for="exampleInputFile" data-browse="تصویر"></label> -->
                   </div>
                 </div>
                 
                 <div class="col-lg-3" style="text-align: center; padding-right: 0;" >
-                  <img [src]="link_image || user_selected_image" height="85px" width="100">
+                  <img  height="85px" width="100" [src]="preview.image">
                 </div>
               </div>
                 <!-- <input class="filestyle mb-2"  type="file" id="formFile" formControlName="image"/> -->
               <div class="row">
                 <div class="col">
-                  <textarea class="form-control mb-2" type="text" placeholder="لینک" id="link" formControlName="link" required="true"></textarea>
-                  <div *ngIf="postaddForm.controls['link'].invalid && postaddForm.controls['link'].touched ||postaddForm.controls['link'].touched" class="alert alert-danger">
-                    <div *ngIf="postaddForm.controls['link'].errors?.['required']">
-                    Name is required.
+                  <textarea class="form-control mb-2" type="url" placeholder="لینک" id="link" #link formControlName="link" (change)="onPreview(link.value)" ></textarea>
+                  <div *ngIf="postaddForm.controls['link'].invalid && postaddForm.controls['link'].touched" class="alert alert-danger ">
+                    <div  *ngIf="postaddForm.controls['link'].errors?.['required']">
+                    وارد کردن لینک الزامی است.
                   </div>
-                </div>
+                  
+                  </div>
+                 
+                  <div *ngIf="postaddForm.controls['link'].errors?.['pattern']" class="alert alert-danger">
+                  در این فیلد فقط میتوانید لینک وارد کنید.
+                  </div>
+                
                  
                
                 </div>
@@ -123,10 +134,10 @@
   
               <div class="row mt-3">
                 <div class="col">
-                  <button type="button" class="btn btn-block alert-danger" data-dismiss="modal" style="border-radius: 10px;" (click)="showAddPost()">بستن</button>
+                  <button type="button" class="btn btn-block btn-danger" data-dismiss="modal" style="border-radius: 10px;" (click)="showAddPost()">بستن</button>
                 </div>
                 <div class="col">
-                  <button  type="submit" class="btn btn-block alert-success" style="border-radius: 10px;" (click)="addedPostMessage() "  >پیش نمایش</button>
+                  <button  type="submit" class="btn btn-block btn-success post-add" style="border-radius: 10px;" (click)="addedPostMessage() " [disabled]="!postaddForm.valid" disabled >پیش نمایش</button>
                 </div>
               </div>
             </form>

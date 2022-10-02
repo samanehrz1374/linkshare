@@ -208,6 +208,8 @@ export class PostsComponent implements OnInit,OnChanges {
     console.log(data.tags)
 
     this.editing[post_id+1]=!this.editing[post_id+1]
+    this.editmode=true;
+
 
 
   }

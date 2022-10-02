@@ -459,5 +459,11 @@ h6, .h6 {
 }
 
 
+.post-add{
+    border-radius: 10px;
 
+}
+.post-add:disabled{
+    background-color: #888;
+}
 

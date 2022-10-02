@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { disableDebugTools } from '@angular/platform-browser';
+import { Observable } from 'rxjs';
 
 
 
@@ -30,33 +31,51 @@ export class UsersComponent implements OnInit {
   showPostAddDiv:boolean=false;
   showSuccessMessage:boolean=false;
   all_tags:string[]=[];
-  link_image:string=environment.link_image;
-  user_selected_image:any;
   logged_in_username:string='nasim';
   logged_in_firstName="نسیم";
   isProfileHover:boolean=false;
+  preview:{
+    url:string,
+    title:string,
+    description:string,
+    image:string
+  }={
+    url:"",
+    title:"",
+    description:"",
+    image:environment.link_image
+
+  }
+
+  dis:boolean=true;
+  diss:boolean=true;
+
+  
+  
+
 
   
  
 
   constructor(private postsApi:PostApiService,private http:HttpClient,private route:ActivatedRoute,private router:Router,private fb: FormBuilder) {
-    this.myForm();
+    // this.myForm();
    }
 
-  myForm() {
-    this.postaddForm = this.fb.group({
-      'username': new FormControl( `${this.username}`, [ Validators.required ]),
-      'userProfile': new FormControl( `${this.user_posts.userProfile}`, [ Validators.required ]),
-      'link': new FormControl('', [Validators.required]),
-      'title': new FormControl('', [ Validators.required]),
-      'caption': new FormControl('', [  ]),
-      'discription': new FormControl('', [  ]),
-      'tags': new FormControl([], [ ]),
-      'image':new FormControl([''], [  ]),
-    });
-  }
+  // myForm() {
+  //   this.postaddForm = this.fb.group({
+  //     'username': new FormControl( `${this.username}`, [ Validators.required ]),
+  //     'userProfile': new FormControl( `${this.user_posts.userProfile}`, [ Validators.required ]),
+  //     'link': new FormControl('', [Validators.required]),
+  //     'title': new FormControl('', [ Validators.required]),
+  //     'caption': new FormControl('', [  ]),
+  //     'discription': new FormControl('', [  ]),
+  //     'tags': new FormControl([], [ ]),
+  //     'image':new FormControl([''], [  Validators.required ]),
+  //   });
+  // }
 
   ngOnInit(): void {
+    
 
     this.id = this.route.snapshot.params['userName'];
     this.username=[this.id];
@@ -102,23 +121,23 @@ export class UsersComponent implements OnInit {
       
     })
 
-
-    // this.postaddForm = new FormGroup({
-    //   'username': new FormControl( `${this.username}`, [ Validators.required ]),
-    //   'userProfile': new FormControl( `${this.user_posts.userProfile}`, [ Validators.required ]),
-    //   'link': new FormControl('', [Validators.required]),
-    //   'title': new FormControl('', [ Validators.required]),
-    //   'caption': new FormControl('', [  ]),
-    //   'discription': new FormControl('', [  ]),
-    //   'tags': new FormControl([], [ ]),
-    //   'image':new FormControl([''], [  ]),
+    const urlRegex = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
+    this.postaddForm = new FormGroup({
+      'username': new FormControl( `${this.username}`, [ Validators.required]),
+      'userProfile': new FormControl( `${this.user_posts.userProfile}`, [ Validators.required ]),
+      'link': new FormControl('', [Validators.required,Validators.pattern(urlRegex)]),
+      'title': new FormControl('', [ Validators.required]),
+      'caption': new FormControl('', [  ]),
+      'discription': new FormControl('', [  ]),
+      'tags': new FormControl([], [ ]),
+      'image':new FormControl([''], [ Validators.required ]),
       
   
-    // });
+    });
 
-    this.postaddForm.controls['image'].disable();
-    this.postaddForm.controls['title'].disable();
-    this.postaddForm.controls['discription'].disable();
+    // this.postaddForm.controls['image'].disable();
+    // this.postaddForm.controls['title'].disable();
+    // this.postaddForm.controls['discription'].disable();
 
     
 
@@ -155,14 +174,15 @@ export class UsersComponent implements OnInit {
   }
 
   onClickSubmit(data:any){
+    console.log(data)
 
     const newpost={
       id:this.posts.length+1,
       userName:data.username,
       link:`${data.link}`,
-      caption:`${data.caption}`,
-      discription:`${data.discription}`,
-      image:`${data.image}`,
+      caption:`${data.caption || ""}`,
+      discription:`${data.discription || ""}`,
+      image:`${data.image||this.preview.image}`,
       title:`${data.title}`,
       tags:this.all_tags,
       vote:0,
@@ -200,6 +220,7 @@ export class UsersComponent implements OnInit {
   }
 
   addedPostMessage(){
+    
     this.showSuccessMessage=!this.showSuccessMessage;
     setTimeout(()=>{                       
       this.showSuccessMessage = false;
@@ -225,18 +246,21 @@ export class UsersComponent implements OnInit {
     this.all_tags.splice(i,1);
   }
 
-  onFileChanged(event: any): void {
+  // onFileChanged(event: any): void {
     
-    if (event.target.files && event.target.files[0]) {
-        const file = event.target.files[0];
+  //   this.user_selected_image=event.target.value
+  //   this.link_image=""
+    
+  //   // if (event.target.value && event.target.value[0]) {
+  //   //     const file = event.target.value[0];
 
-        const reader = new FileReader();
-        reader.onload = e => this.user_selected_image = reader.result;
+  //   //     const reader = new FileReader();
+  //   //     reader.onload = e => this.link_image = reader.result;
 
-        reader.readAsDataURL(file);
-        this.link_image=""
-    }
-  }
+  //   //     reader.readAsDataURL(file);
+  //   //     // this.link_image=""
+  //   // }
+  // }
 
   onProfileHover(){
     this.isProfileHover=true
@@ -245,6 +269,34 @@ export class UsersComponent implements OnInit {
     this.isProfileHover=false
   }
 
+
+  getLinkPreview(link: string): Observable<any> {
+    const api = 'https://api.linkpreview.net/?key=8ddda351b2296f4a59306f76c3c671c3&q=' + link;
+    return this.http.get(api);
+  }
+  
+  onPreview(link:string) {
+    this.getLinkPreview(link)
+    .subscribe(coming_preview => {
+      this.preview = coming_preview;
+      console.log(this.preview)
+      // console.log(this.preview)
+
+      if (!this.preview.title) {
+        this.preview.title = this.preview.url;
+      }
+
+    },
+    
+
+     error => {
+      this.preview.url = link;
+      this.preview.title = this.preview.url;
+    }
+    );
+  }
+
+ 
 
 
 
