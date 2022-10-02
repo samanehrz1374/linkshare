@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { PostApiService } from '../../http/post-api.service';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,7 +16,7 @@ import { Observable } from 'rxjs';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit,OnChanges {
   username:any[];
   user_posts:any='';
   user_all_posts:any[]=[];
@@ -76,20 +76,27 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     
+    
 
-    this.id = this.route.snapshot.params['userName'];
+    this.route.params.subscribe((params)=>{this.id=params['userName']
+    console.log(this.id)
+    this.votes=0;
+  
     this.username=[this.id];
+  
+    // this.id = this.route.snapshot.params['userName'];
     console.log(this.id)
   
-
+  
     this.http.get(environment.url).subscribe((result:any=[])=>{
       this.posts=result;
          
     const indexes = [];
-
+  
     for (let index = 0; index < this.posts.length; index++) {
       if (this.posts[index].userName === this.id) {
         indexes.push(index);
+        
       }
     }
     for (let i=0; i<indexes.length; i++){
@@ -99,27 +106,30 @@ export class UsersComponent implements OnInit {
           break
         }
       }
-
-
-
+  
+      console.log(this.user_posts)
+  
     for (let i=0; i<indexes.length; i++){
       if(i > -1){
         this.votes=this.posts[indexes[i]].vote +this.votes;
-        this.posts_count++;
+        // this.posts_count++;
         
       }
     }
     
-
+  
     for (let i=0; i<indexes.length; i++){
       if(i > -1){
         this.user_all_posts.push(this.posts[indexes[i]]);
       }
     }
     console.log(this.user_all_posts)
-
+  
       
+  })
+    
     })
+
 
     const urlRegex = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
     this.postaddForm = new FormGroup({
@@ -298,6 +308,13 @@ export class UsersComponent implements OnInit {
 
   print(){
     console.log('ss')
+  }
+
+  ngOnChanges(changes:any){
+    this.route.params.subscribe((params)=>this.id=params['userName'])
+    console.log(this.id)
+
+
   }
 
  
