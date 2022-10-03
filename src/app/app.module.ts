@@ -7,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 
 // import { DateAsAgoPipe } from './shared/pipes/date-as-ago.pipe';
 
@@ -25,12 +26,13 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    ModalModule
     // BrowserAnimationsModule
   
 
       
   ],
-  providers: [],
+  providers: [BsModalService],
   bootstrap: [AppComponent],
   exports: [
     

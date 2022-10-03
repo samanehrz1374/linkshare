@@ -624,6 +624,7 @@ select.form-control:not([size]):not([multiple]) {
     border-radius: 40px;
     overflow: hidden;
     margin: -2px 10px -2px 10px
+    
 }
 
 
@@ -1159,4 +1160,13 @@ select.form-control:not([size]):not([multiple]) {
 
 .post-user-header{
     border-bottom:2px solid rgb(210, 205, 205);
+}
+
+.modal-content{
+    width: 800px;
+}
+
+.comment-profile{
+    width: inherit;
+
 }

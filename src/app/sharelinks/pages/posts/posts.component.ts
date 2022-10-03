@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
 import { observable, Observable } from 'rxjs';
 import { PostApiService } from '../../http/post-api.service';
 import { Posts } from '../../models/posts.model';
@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 import { DateAsAgoPipe } from 'src/app/shared/pipes/date-as-ago.pipe';
 
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 
 
@@ -34,9 +35,9 @@ export class PostsComponent implements OnInit,OnChanges {
   isCommentShow:boolean=false;
   post_comments:any[];
   editmode:boolean=true;
-
+  modalRef: BsModalRef;
   
-  constructor(private postsApi:PostApiService,private http:HttpClient) { }
+  constructor(private postsApi:PostApiService,private http:HttpClient,private modalService: BsModalService) { }
 
   ngOnInit(): void {
     
@@ -238,10 +239,12 @@ export class PostsComponent implements OnInit,OnChanges {
 
   }
 
-  showComments(post_comments:any[]){
+  showComments(post_comments:any[],template: TemplateRef<any>){
     this.isCommentShow=!this.isCommentShow
-
+    
     this.post_comments=post_comments;
+    console.log(post_comments)
+    this.modalRef = this.modalService.show(template);
   }
 
 

@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnChanges, OnInit, ViewChild } from '@angular/core';
+import { Component, OnChanges, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { PostApiService } from '../../http/post-api.service';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 import { disableDebugTools } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 
 
@@ -48,7 +49,7 @@ export class UsersComponent implements OnInit,OnChanges {
   }
 
   dis:boolean=true;
-  diss:boolean=true;
+  modalRef: BsModalRef;
 
   
   
@@ -57,7 +58,7 @@ export class UsersComponent implements OnInit,OnChanges {
   
  
 
-  constructor(private postsApi:PostApiService,private http:HttpClient,private route:ActivatedRoute,private router:Router,private fb: FormBuilder) {
+  constructor(private postsApi:PostApiService,private http:HttpClient,private route:ActivatedRoute,private router:Router,private fb: FormBuilder,private modalService: BsModalService) {
     // this.myForm();
    }
 
@@ -73,6 +74,11 @@ export class UsersComponent implements OnInit,OnChanges {
   //     'image':new FormControl([''], [  Validators.required ]),
   //   });
   // }
+
+  openModal(user_posts:{},template: TemplateRef<any>) {
+    console.log(user_posts)
+    this.modalRef = this.modalService.show(template);
+ }
 
   ngOnInit(): void {
     
@@ -220,6 +226,7 @@ export class UsersComponent implements OnInit,OnChanges {
   // }
 
     this.posts.push(newpost)
+    this.postaddForm.reset();
 
     console.log(this.posts)
  
@@ -314,6 +321,75 @@ export class UsersComponent implements OnInit,OnChanges {
     this.route.params.subscribe((params)=>this.id=params['userName'])
     console.log(this.id)
 
+
+  }
+  onSubmit(formdata:any,userName:string){
+
+    this.votes=0;
+    this.user_all_posts=[]
+    // console.log(formdata)
+    console.log(this.posts)
+    for(let i=0;i<this.posts.length;i++){
+      if (this.posts[i].userName===userName){
+        this.posts[i].userName=formdata.userName;
+        this.posts[i].firstName=formdata.firstName;
+        this.posts[i].LastName=formdata.lastName;
+
+      }  
+
+    }
+    console.log(this.posts)
+
+
+      
+    this.http.get(environment.url).subscribe((result:any=[])=>{
+      this.posts=result;
+         
+    const indexes = [];
+  
+    for (let index = 0; index < this.posts.length; index++) {
+      if (this.posts[index].userName === this.id) {
+        indexes.push(index);
+        
+      }
+    }
+    for (let i=0; i<indexes.length; i++){
+        if(i > -1){
+          this.user_posts=this.posts[indexes[i]];
+          // console.log(this.user_posts)
+          break
+        }
+      }
+  
+      console.log(this.user_posts)
+  
+    for (let i=0; i<indexes.length; i++){
+      if(i > -1){
+        this.votes=this.posts[indexes[i]].vote +this.votes;
+        // this.posts_count++;
+        
+      }
+    }
+    
+  
+    for (let i=0; i<indexes.length; i++){
+      if(i > -1){
+        this.user_all_posts.push(this.posts[indexes[i]]);
+      }
+    }
+    console.log(this.user_all_posts)
+  
+      
+  })
+
+
+   
+
+
+    // formdata.lastName
+    // formdata.userName
+
+    
 
   }
 

@@ -19,12 +19,12 @@
                 <div class="ripple-cont"></div>
             </div>
             <div class="table mt-3">
-                <h6 class="category text-info" >تعداد لایک ها: {{votes}}</h6>
-                <p class="card-description"> تعداد پست ها: {{user_all_posts.length}} </p>
+                <h6 class="category text-info" > لایک ها:{{votes}} </h6>
+                <p class="card-description">  پست ها: {{user_all_posts.length}} </p>
             </div>
         </div>
 
-        <div class="post-btn-container d-flex" *ngIf="isProfileHover">
+        <div class="post-btn-container d-flex" *ngIf="isProfileHover && user_posts.userName===logged_in_username">
           <div class="col-lg-6 text-center" >
             <button type="button" class="btn post-btn " (click)="showAddPost()">
               <a  class="m-r-15 text-inverse-lighter" style="text-decoration: none;" >
@@ -35,14 +35,62 @@
             </button>
           </div>
           <div class="col-lg-6 text-center">
-            <button type="button" class="btn post-btn" >
+            <button type="button" class="btn post-btn"  (click)="openModal(user_posts,template)">
               <a  class="m-r-15 text-inverse-lighter" style="text-decoration: none;">
-                <i class="fa fa-cog fa-fw fa-lg m-r-3" >
+                <i class="fa fa-edit fa-fw fa-lg m-r-3" >
     
                 </i>
               </a> 
             </button>
           </div>
+          <ng-template #template >
+            <!-- Modal Header -->
+           
+            <div class="modal-header">
+              <h4 class="modal-title">تغییرات کاربر</h4>
+              <button type="button" class="close" (click)="modalRef.hide()">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="row " >
+                <div class="col-lg-3 comment " style=" width: inherit;">
+                  <span class="userimage" ><img  src={{user_posts.userProfile}} class="rounded comment-profile"  alt="" height="200px"></span>
+                </div>
+                <div class="col-lg-9" >
+                  <form (ngSubmit)="onSubmit(f.value,user_posts.userName)"  #f="ngForm">
+
+                    <div class="row mt-3" >
+                      <div class="col-lg-11 bg-light" style="border-radius: 20px; padding:10px 10px" >
+                        <div class="row">
+
+                          <div class="col-lg-6">
+                            <label class="text-secondary">نام:</label>
+                            <input  type="text" id="firstName" class="form-control"  [ngModel]="user_posts.firstName"  name="firstName">
+  
+                          </div>
+                          <div class="col-lg-6">
+  
+                            <label class="text-secondary">نام خانوادگی:</label>
+                            <input  type="text" id="lastName" class="form-control"  [ngModel]="user_posts.lastName"  name="lastName">
+                          </div>
+                        </div>
+
+
+                        <label class="mt-2 text-secondary">نام کاربری</label>
+                        <input  type="text" id="userName" class="form-control"  [ngModel]="user_posts.userName"  name="userName">
+                        
+                        <button type="submit" class="btn btn-success btn-block mt-3" >ثبت</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            
+            </div>
+
+            
+          </ng-template>
 
         </div>
         

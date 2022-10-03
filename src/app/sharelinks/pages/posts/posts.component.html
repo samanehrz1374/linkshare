@@ -112,7 +112,12 @@
                     <div class="d-flex timeline-footer justify-content-between">
                       <!-- <span class="date">{{post.sharedDate | date:'h:mm' }}</span> -->
                       <!-- <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-share fa-fw fa-lg m-r-3"></i>{{post.shared}}</a> -->
-                      <a  class="m-r-15 text-inverse-lighter" style="text-decoration: none;"><i class="fa fa-comments fa-fw fa-lg m-r-3" (click)="showComments(post.comments)" data-toggle="modal" data-target="#myModal"></i>{{post.comments.length}}</a> 
+                      <a  class="m-r-15 text-inverse-lighter" style="text-decoration: none;"><i class="fa fa-comments fa-fw fa-lg m-r-3" (click)="showComments(post.comments,template)"></i>{{post.comments.length}}</a> 
+                      
+                      
+                      
+                      
+                      
                       <a  class="m-r-15 text-inverse-lighter"  style="text-decoration: none;">{{post.vote}}<i *ngIf="liked[post.id]" class="fa fa-heart fa-fw fa-lg m-r-3" (click)="onDissLiked(post.id)"></i><i  *ngIf="!liked[post.id]" class=" fa fa-fw fa-lg material-icons" (click)="onLiked(post.id)">favorite_border</i></a>
                     </div>
 
@@ -130,56 +135,51 @@
                         </form>
                       </div>
                     </div>
-                    <div *ngIf="isCommentShow">
-                      <div class="modal fade" id="myModal">
-                        <div class="modal-dialog modal-xl">
-                          <div class="modal-content" style="border-radius: 20px;">
-                        
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                              <h4 class="modal-title">نظرات</h4>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                          
-                            <!-- Modal body -->
-                            <div class="modal-body">
-                              <div class="row " *ngFor="let comment of post_comments;let commentindex=index" >
-                                <div class="col-lg-1 comment" >
-                  
-                                  <span class="userimage"><img src={{comment.userProfile}} class="rounded-circle"  alt=""></span>
-                                  
-                                </div>
-                                <div class="col-lg-10" style="border-bottom: 1px solid #e2e7ec;">
-                                  <div class="row mt-3">
-                                    <div class="col-lg-11 ">
-                                      <span class="username" ><a [routerLink]="['/personalpage',post.userName]">{{comment.firstName}}&nbsp;{{comment.lastName}}</a> <small></small></span>
-                                      <p class="comment-text">{{comment.comment}}</p>
-
-                                    </div>
-                                    <div class="col-lg-1" style="padding-right:0 ;" *ngIf="post.userName===logged_in_username">
-                                      <i  class="fa fa-trash fa-fw fa-lg m-r-3 text-secondary" (click)="onDeleteCommentClicked(commentindex)"></i>
-
-
-                                    </div>
-                                    
-
-                                  </div>
-                                  <div class="row mb-3">
-                                    <div class="col-lg-6">{{comment.commentDate |dateAsAgo}}</div>
-                                    <div class="col-lg-6 text-right">
-                                      <a  class="m-r-15 text-inverse-lighter"  style="text-decoration: none;">{{comment.likes}}<i *ngIf="commentliked[commentindex]" class="fa fa-heart fa-fw fa-lg m-r-3" (click)="onCommentDissLiked(commentindex,post.comments,comment.commentId)"></i><i  *ngIf="!commentliked[commentindex]" class=" fa fa-fw fa-lg material-icons" (click)="onCommentLiked(commentindex,post.comments,comment.commentId)">favorite_border</i></a>
-                                    </div>
-                                  </div>
-                                </div>
+                    <ng-template #template >
+                      <!-- Modal Header -->
+                     
+                      <div class="modal-header">
+                        <h4 class="modal-title">نظرات</h4>
+                        <button type="button" class="close" (click)="modalRef.hide()">&times;</button>
+                      </div>
+                      
+                      <!-- Modal body -->
+                      <div class="modal-body">
+                        <div class="row " *ngFor="let comment of post_comments;let commentindex=index" >
+                          <div class="col-lg-1 comment" style="margin-top: 10px;">
+                      
+                            
+                            <span class="userimage" ><img src={{comment.userProfile}} class="rounded-circle comment-profile"  alt=""></span>
+                          </div>
+                          <div class="col-lg-10" style="border-bottom: 1px solid #e2e7ec;">
+                            <div class="row mt-3">
+                              <div class="col-lg-11 ">
+                                <span class="username" ><a [routerLink]="['/personalpage',comment.userName]" (click)="modalRef.hide()">{{comment.firstName}}&nbsp;{{comment.lastName}}</a> <small></small></span>
+                                <p class="comment-text">{{comment.comment}}</p>
+        
                               </div>
-                          
+                              <div class="col-lg-1" style="padding-right:0 ;" *ngIf="post.userName===logged_in_username">
+                                <i  class="fa fa-trash fa-fw fa-lg m-r-3 text-secondary" (click)="onDeleteCommentClicked(commentindex)"></i>
+        
+        
+                              </div>
+                              
+        
+                            </div>
+                            <div class="row mb-3">
+                              <div class="col-lg-6">{{comment.commentDate |dateAsAgo}}</div>
+                              <div class="col-lg-6 text-right">
+                                <a  class="m-r-15 text-inverse-lighter"  style="text-decoration: none;">{{comment.likes}}<i *ngIf="commentliked[commentindex]" class="fa fa-heart fa-fw fa-lg m-r-3" (click)="onCommentDissLiked(commentindex,post.comments,comment.commentId)"></i><i  *ngIf="!commentliked[commentindex]" class=" fa fa-fw fa-lg material-icons" (click)="onCommentLiked(commentindex,post.comments,comment.commentId)">favorite_border</i></a>
+                              </div>
                             </div>
                           </div>
-                      
                         </div>
+                      
                       </div>
-                    </div>
-                    
+
+                      
+                    </ng-template>
+                   
                     
                   </div>
                   
@@ -383,7 +383,52 @@
               <div class="d-flex timeline-footer justify-content-between">
                 <!-- <span class="date">{{post.sharedDate | date:'h:mm' }}</span> -->
                 <!-- <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-share fa-fw fa-lg m-r-3"></i>{{post.shared}}</a> -->
-                <a  class="m-r-15 text-inverse-lighter" style="text-decoration: none;"><i class="fa fa-comments fa-fw fa-lg m-r-3" (click)="showComments(post.comments)" data-toggle="modal" data-target="#myModal"></i>{{post.comments.length}}</a> 
+                <a  class="m-r-15 text-inverse-lighter" style="text-decoration: none;"><i class="fa fa-comments fa-fw fa-lg m-r-3" (click)="showComments(post.comments,template)" ></i>{{post.comments.length}}</a> 
+                <ng-template #template>
+
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">نظرات</h4>
+                    <button type="button" class="close" (click)="modalRef.hide()">&times;</button>
+                  </div>
+                  
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <div class="row " *ngFor="let comment of post_comments;let commentindex=index" >
+                      <div class="col-lg-1 comment"  style="margin-top: 10px;" >
+              
+                        <span class="userimage"><img src={{comment.userProfile}} class="rounded-circle comment-profile"  alt=""></span>
+                        
+                      </div>
+                      <div class="col-lg-10" style="border-bottom: 1px solid #e2e7ec;">
+                        <div class="row mt-3">
+                          <div class="col-lg-11 ">
+                            <span class="username" ><a [routerLink]="['/personalpage',comment.userName]" (click)="modalRef.hide()">{{comment.firstName}}&nbsp;{{comment.lastName}}</a> <small></small></span>
+                            <p class="comment-text">{{comment.comment}}</p>
+
+                          </div>
+                          <div class="col-lg-1" style="padding-right:0 ;" *ngIf="post.userName===logged_in_username">
+                            <i  class="fa fa-trash fa-fw fa-lg m-r-3 text-secondary" (click)="onDeleteCommentClicked(commentindex)"></i>
+
+
+                          </div>
+                          
+
+                        </div>
+                        <div class="row mb-3">
+                          <div class="col-lg-6">{{comment.commentDate |dateAsAgo}}</div>
+                          <div class="col-lg-6 text-right">
+                            <a  class="m-r-15 text-inverse-lighter"  style="text-decoration: none;">{{comment.likes}}<i *ngIf="commentliked[commentindex]" class="fa fa-heart fa-fw fa-lg m-r-3" (click)="onCommentDissLiked(commentindex,post.comments,comment.commentId)"></i><i  *ngIf="!commentliked[commentindex]" class=" fa fa-fw fa-lg material-icons" (click)="onCommentLiked(commentindex,post.comments,comment.commentId)">favorite_border</i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  
+                  </div>
+                </ng-template>
+                
+                
+                
                 <a  class="m-r-15 text-inverse-lighter"  style="text-decoration: none;">{{post.vote}}<i *ngIf="liked[post.id]" class="fa fa-heart fa-fw fa-lg m-r-3" (click)="onDissLiked(post.id)"></i><i  *ngIf="!liked[post.id]" class=" fa fa-fw fa-lg material-icons" (click)="onLiked(post.id)">favorite_border</i></a>
               </div>
 
@@ -400,41 +445,7 @@
                     </div>
                   </form>
                 </div>
-                <div *ngIf="isCommentShow">
-                  <div class="modal fade" id="myModal">
-                    <div class="modal-dialog modal-xl">
-                      <div class="modal-content" style="border-radius: 20px;">
-                     
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                          <h4 class="modal-title">نظرات</h4>
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                       
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                          <div class="row " *ngFor="let comment of post_comments;let commentindex=index" >
-                            <div class="col-lg-1 comment" >
-            
-                              <span class="userimage"><img src={{comment.userProfile}} class="rounded-circle"  alt=""></span>
-                              
-                            </div>
-                            <div class="col-lg-10" style="border-bottom: 1px solid #e2e7ec;">
-                              <span class="username" ><a [routerLink]="['personalpage',post.userName]">{{comment.firstName}}&nbsp;{{comment.lastName}}</a> <small></small></span>
-                              <p class="comment-text">{{comment.comment}}</p>
-                              <div class="row mb-3">
-                                <div class="col-lg-6">{{comment.commentDate |dateAsAgo}}</div>
-                                <div class="col-lg-6 text-right">
-                                  <a  class="m-r-15 text-inverse-lighter"  style="text-decoration: none;">{{comment.likes}}<i *ngIf="commentliked[commentindex]" class="fa fa-heart fa-fw fa-lg m-r-3" (click)="onCommentDissLiked(commentindex,post.comments,comment.commentId)"></i><i  *ngIf="!commentliked[commentindex]" class=" fa fa-fw fa-lg material-icons" (click)="onCommentLiked(commentindex,post.comments,comment.commentId)">favorite_border</i></a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                  
-                    </div>
-                  </div>
-                </div>
+                
                  
                    <!-- <div class="row " *ngFor="let comment of post_comments" >
                      <div class="comment" >
@@ -443,7 +454,7 @@
                        <span class="username" ><a [routerLink]="['personalpage',post.userName]">{{comment.firstName}}&nbsp;{{comment.lastName}}</a> <small></small></span>
                      </div>
                    </div> --> 
-              </div>
+              
             
             </div>
           </div>
