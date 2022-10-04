@@ -3,22 +3,19 @@
 
 
   <div class="row profile-content" *ngIf="mode==='home';else other">
-    <div class="col-2 text-center filter" >
+    <div class="col-md-2 text-center filter" >
       <!-- <p >فیلتر:</p> -->
 
     </div>
-    <div class="col-10 ">
-      
-
-
-      
+    <div class="col-md-10 " style="display: flex; justify-content:space-between">
+        
       <button class="btn btn-custom" (click)="newest('newest')">جدیدترین</button>
       <button class="btn btn-custom" (click)="newest('oldest')">قدیمی ترین</button>
       <button class="btn btn-custom" (click)="newest('mostliked')">بیشترین امتیاز</button>
       <button class="btn btn-custom"(click)="newest('leastliked')">کمترین امتیاز</button>
 
-
     </div>
+    
     
 
     

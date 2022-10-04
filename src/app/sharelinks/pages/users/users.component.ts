@@ -12,12 +12,13 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 
 
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent implements OnInit,OnChanges {
+export class UsersComponent implements OnInit {
   username:any[];
   user_posts:any='';
   user_all_posts:any[]=[];
@@ -32,8 +33,9 @@ export class UsersComponent implements OnInit,OnChanges {
   showPostAddDiv:boolean=false;
   showSuccessMessage:boolean=false;
   all_tags:string[]=[];
-  logged_in_username:string='nasim';
-  logged_in_firstName="نسیم";
+  logged_in_username:any;
+  logged_in_username_user:any;
+
   isProfileHover:boolean=false;
   preview:{
     url:string,
@@ -76,26 +78,34 @@ export class UsersComponent implements OnInit,OnChanges {
   // }
 
   openModal(user_posts:{},template: TemplateRef<any>) {
-    console.log(user_posts)
+   
     this.modalRef = this.modalService.show(template);
  }
 
   ngOnInit(): void {
+
+    
+    this.http.get(environment.userUrl).subscribe((result:any=[])=>{
+      this.logged_in_username=result[1];
+      this.logged_in_username_user=this.logged_in_username.userName
+     
+    })
     
     
 
     this.route.params.subscribe((params)=>{this.id=params['userName']
-    console.log(this.id)
+  
     this.votes=0;
   
     this.username=[this.id];
   
     // this.id = this.route.snapshot.params['userName'];
-    console.log(this.id)
+   
   
   
     this.http.get(environment.url).subscribe((result:any=[])=>{
       this.posts=result;
+      console.log('update')
          
     const indexes = [];
   
@@ -113,7 +123,6 @@ export class UsersComponent implements OnInit,OnChanges {
         }
       }
   
-      console.log(this.user_posts)
   
     for (let i=0; i<indexes.length; i++){
       if(i > -1){
@@ -129,7 +138,7 @@ export class UsersComponent implements OnInit,OnChanges {
         this.user_all_posts.push(this.posts[indexes[i]]);
       }
     }
-    console.log(this.user_all_posts)
+
   
       
   })
@@ -190,7 +199,7 @@ export class UsersComponent implements OnInit,OnChanges {
   }
 
   onClickSubmit(data:any){
-    console.log(data)
+
 
     const newpost={
       id:this.posts.length+1,
@@ -228,7 +237,7 @@ export class UsersComponent implements OnInit,OnChanges {
     this.posts.push(newpost)
     this.postaddForm.reset();
 
-    console.log(this.posts)
+    
  
   }
 
@@ -249,7 +258,7 @@ export class UsersComponent implements OnInit,OnChanges {
   }
 
   addTag(tag:string){
-    console.log('sss')
+   
     if(tag){
 
       this.all_tags.push(tag)
@@ -296,7 +305,7 @@ export class UsersComponent implements OnInit,OnChanges {
     this.getLinkPreview(link)
     .subscribe(coming_preview => {
       this.preview = coming_preview;
-      console.log(this.preview)
+     
       // console.log(this.preview)
 
       if (!this.preview.title) {
@@ -317,83 +326,22 @@ export class UsersComponent implements OnInit,OnChanges {
     console.log('ss')
   }
 
-  ngOnChanges(changes:any){
-    this.route.params.subscribe((params)=>this.id=params['userName'])
-    console.log(this.id)
 
-
-  }
   onSubmit(formdata:any,userName:string){
 
-    this.votes=0;
-    this.user_all_posts=[]
-    // console.log(formdata)
-    console.log(this.posts)
     for(let i=0;i<this.posts.length;i++){
       if (this.posts[i].userName===userName){
-        this.posts[i].userName=formdata.userName;
+        // this.posts[i].userName=formdata.userName;
         this.posts[i].firstName=formdata.firstName;
         this.posts[i].LastName=formdata.lastName;
 
       }  
-
     }
-    console.log(this.posts)
-
-
-      
-    this.http.get(environment.url).subscribe((result:any=[])=>{
-      this.posts=result;
-         
-    const indexes = [];
-  
-    for (let index = 0; index < this.posts.length; index++) {
-      if (this.posts[index].userName === this.id) {
-        indexes.push(index);
-        
-      }
-    }
-    for (let i=0; i<indexes.length; i++){
-        if(i > -1){
-          this.user_posts=this.posts[indexes[i]];
-          // console.log(this.user_posts)
-          break
-        }
-      }
-  
-      console.log(this.user_posts)
-  
-    for (let i=0; i<indexes.length; i++){
-      if(i > -1){
-        this.votes=this.posts[indexes[i]].vote +this.votes;
-        // this.posts_count++;
-        
-      }
-    }
-    
-  
-    for (let i=0; i<indexes.length; i++){
-      if(i > -1){
-        this.user_all_posts.push(this.posts[indexes[i]]);
-      }
-    }
-    console.log(this.user_all_posts)
-  
-      
-  })
-
-
-   
-
-
-    // formdata.lastName
-    // formdata.userName
-
-    
-
   }
 
- 
+
+
+
 
 
 

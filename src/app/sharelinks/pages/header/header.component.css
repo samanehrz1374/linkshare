@@ -98,6 +98,7 @@
 
 .logsignbtn{
     border: 1px solid var(--primary-color);
+    padding: 5  px 65px;
    
 }
 .logsignbtn:hover{
@@ -128,7 +129,7 @@
     position: absolute;
     left: 0px;   
     /* top: 3px; */
-    bottom: 2px;
+    bottom: 3px;
     border: 0;
     background: var(--primary-color);
     color: #fff;

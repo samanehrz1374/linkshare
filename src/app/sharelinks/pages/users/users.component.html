@@ -1,4 +1,4 @@
-<app-header (searchTextChanged)="search($event)" [logged_in_firstName]="logged_in_firstName"></app-header>
+<app-header (searchTextChanged)="search($event)" [logged_in_username]="logged_in_username"></app-header>
 <!-- {{user_posts.userName}} -->
 <div class="container-fluid">
   <div class="col-lg-12 " style="padding: 25px 25px;" *ngIf="showSuccessMessage">
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <div class="post-btn-container d-flex" *ngIf="isProfileHover && user_posts.userName===logged_in_username">
+        <div class="post-btn-container d-flex" *ngIf="isProfileHover && user_posts.userName===logged_in_username_user">
           <div class="col-lg-6 text-center" >
             <button type="button" class="btn post-btn " (click)="showAddPost()">
               <a  class="m-r-15 text-inverse-lighter" style="text-decoration: none;" >
@@ -77,10 +77,10 @@
                         </div>
 
 
-                        <label class="mt-2 text-secondary">نام کاربری</label>
+                        <!-- <label class="mt-2 text-secondary">نام کاربری</label>
                         <input  type="text" id="userName" class="form-control"  [ngModel]="user_posts.userName"  name="userName">
-                        
-                        <button type="submit" class="btn btn-success btn-block mt-3" >ثبت</button>
+                         -->
+                        <button type="submit" class="btn btn-success btn-block mt-3"  >ثبت</button>
                       </div>
                     </div>
                   </form>
@@ -99,7 +99,7 @@
     </div>
     <div class="col-lg-6 custom-border-right">   
       <div class=" post-add-container mt-3">
-        <div  *ngIf="username[0]===logged_in_username">
+        <div  *ngIf="username[0]===logged_in_username_user">
           <button type="button" class="btn post-add-bottom" (click)="showAddPost()" >+</button>
         </div>
         <div id="addpost" *ngIf="showPostAddDiv" class="mt-3 postadd-container">

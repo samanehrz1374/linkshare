@@ -80,14 +80,19 @@ padding: 0 20px 0 10px;
 
 .inner {
     position: absolute;
-    top: 70%;
-    left: 30%;
+    top: 60%;
+    /* left: 55%; */
     transform: translate(-50%, -50%);
     /* background-color: rgba(0, 0, 0, 0.3); */
     color: rgb(255, 255, 255);
     /* padding: 30px; */
   
-  }
+}
+
+.inner a{
+    color: white;
+}
+
 .link-style2{
   text-decoration:underline; 
   color:#007bff; 

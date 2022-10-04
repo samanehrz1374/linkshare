@@ -36,7 +36,7 @@
                          </div> -->
         
                         <!-- <span class="pull-right text-muted">18 Views</span> -->
-                        <div class="col-lg-9 text-right "  *ngIf="post.userName===logged_in_username && editmode" >
+                        <div class="col-lg-9 text-right "  *ngIf="post.userName===logged_in_username.userName && editmode" >
                          <a  class="m-r-15 text-inverse-lighter dropdown" style="color: black;"><i class=" fa fa-fw fa-lg material-icons dropdown-toggle" data-toggle="dropdown">more_vert</i>
                            <div class="dropdown-menu">
                              <a class="dropdown-item delete-item-dropdown" (click)="onDeletePost(i)">حذف پست</a>
@@ -121,12 +121,12 @@
                       <a  class="m-r-15 text-inverse-lighter"  style="text-decoration: none;">{{post.vote}}<i *ngIf="liked[post.id]" class="fa fa-heart fa-fw fa-lg m-r-3" (click)="onDissLiked(post.id)"></i><i  *ngIf="!liked[post.id]" class=" fa fa-fw fa-lg material-icons" (click)="onLiked(post.id)">favorite_border</i></a>
                     </div>
 
-                    <div class="timeline-comment-box" style="border-radius: 20px" *ngIf="post.userName!==logged_in_username">
+                    <div class="timeline-comment-box" style="border-radius: 20px" *ngIf="post.userName!==logged_in_username.userName">
                       <div class="input">
                         <form action="" >
                           <div class="input-group">
                             <div class="custom-search-user">
-                              <form (ngSubmit)="onSubmit(post.id,f)" #f="ngForm">
+                              <form (ngSubmit)="onSubmit(post.id,f,logged_in_username)" #f="ngForm">
                                 <input type="text" ngModel name="comment" class="custom-search-input" placeholder="">
                                 <button class="custom-search-botton" type="submit">ارسال نظر</button>  
                               </form>
@@ -158,7 +158,7 @@
                                 <p class="comment-text">{{comment.comment}}</p>
         
                               </div>
-                              <div class="col-lg-1" style="padding-right:0 ;" *ngIf="post.userName===logged_in_username">
+                              <div class="col-lg-1" style="padding-right:0 ;" *ngIf="post.userName===logged_in_username.userName">
                                 <i  class="fa fa-trash fa-fw fa-lg m-r-3 text-secondary" (click)="onDeleteCommentClicked(commentindex)"></i>
         
         
@@ -297,7 +297,7 @@
                    </div>
   
                   <!-- <span class="pull-right text-muted">18 Views</span> -->
-                  <div class="col-6 text-right " *ngIf="post.userName===logged_in_username" >
+                  <div class="col-6 text-right " *ngIf="post.userName===logged_in_username.userName" >
                     
                    <a  class="m-r-15 text-inverse-lighter dropdown" style="color: black;"><i class=" fa fa-fw fa-lg material-icons dropdown-toggle" data-toggle="dropdown">more_vert</i>
                      <div class="dropdown-menu">
@@ -407,7 +407,7 @@
                             <p class="comment-text">{{comment.comment}}</p>
 
                           </div>
-                          <div class="col-lg-1" style="padding-right:0 ;" *ngIf="post.userName===logged_in_username">
+                          <div class="col-lg-1" style="padding-right:0 ;" *ngIf="post.userName===logged_in_username.userName">
                             <i  class="fa fa-trash fa-fw fa-lg m-r-3 text-secondary" (click)="onDeleteCommentClicked(commentindex)"></i>
 
 
@@ -437,7 +437,7 @@
                   <form action="">
                     <div class="input-group">
                       <div class="custom-search">
-                        <form (ngSubmit)="onSubmit(post.id,f)" #f="ngForm">
+                        <form (ngSubmit)="onSubmit(post.id,f,logged_in_username)" #f="ngForm">
                           <input type="text" ngModel name="comment" class="custom-search-input" placeholder="">
                           <button class="custom-search-botton" type="submit">ارسال نظر</button>  
                         </form>

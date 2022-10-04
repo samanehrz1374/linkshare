@@ -23,7 +23,7 @@ export class PostsComponent implements OnInit,OnChanges {
   @Input() typeOfEvent:string='';
   @Input() searchValue:string;
   @Input() posts:any;
-  @Input() logged_in_username:string;
+  @Input() logged_in_username:any;
   liked:boolean[]=[];
   commentliked:boolean[]=[];
   isMore:boolean[]=[];
@@ -47,6 +47,8 @@ export class PostsComponent implements OnInit,OnChanges {
 
 
  ngOnChanges(changes:any) {
+ 
+
   if (this.typeOfEvent && changes.typeOfEvent){
 
     if(changes.typeOfEvent.currentValue==='newest'){
@@ -220,11 +222,20 @@ export class PostsComponent implements OnInit,OnChanges {
   
   }
 
-  onSubmit(post_id:number,form:NgForm){
+  onSubmit(post_id:number,form:NgForm,logged_in_username:any){
+    console.log(form.value)
+
+    
 
     const comment={
-      "username":String,
-      "comment":String
+      "commentId":1,
+      "firstName":logged_in_username.firstName,
+      "lastName":logged_in_username.lastName,
+      "userName":logged_in_username.userName,
+      "comment":form.value.comment,
+      "userProfile":logged_in_username.userProfile,
+      "commentDate":new Date(),
+      "likes":0
       
     }
     for (let index = 0; index < this.posts.length; index++) {

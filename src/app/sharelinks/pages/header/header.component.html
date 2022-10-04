@@ -35,7 +35,7 @@
                 
               </li>
               <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['/personalpage',userName]">{{logged_in_firstName}}</a>
+                <a class="nav-link" [routerLink]="['/personalpage',userName]">{{logged_in_username.firstName}}</a>
               </li>
               
               <li class="nav-item active">
@@ -61,7 +61,7 @@
                 
                 <div class="custom-search">
                   <!-- <input type="text" class="custom-search-input"  [(ngModel)]="searchValue" placeholder="جستجو"> -->
-                  <input *ngIf="isSearch" class="custom-search-input" type="text" [(ngModel)]="searchValue" style="font-family:Arial, FontAwesome">
+                  <input *ngIf="isSearch" class="custom-search-input" type="text" [(ngModel)]="searchValue" style="font-family:Arial, FontAwesome" placeholder="جستجو">
                 
                 </div>
                 <button class="custom-search-botton" type="submit" (click)="onSearchTextCahnged()"><i class="fa fa-search" aria-hidden="true"></i></button>  
@@ -70,14 +70,11 @@
               <!-- <div class="search-box " dir="rtl" >
                 <input class="search-input " id="e1" type="text" placeholder="&#xF002;" [(ngModel)]="searchValue" style="font-family:Arial, FontAwesome">
               </div> -->
-              <div class="col-xl-2 " style="padding:0; padding-right: 15px;" >
+              <div class="col-xl-5 " style="padding:0; padding-right: 15px;" >
 
                 <button class="btn  rounded-pill logsignbtn " type="submit">ورود</button>
               </div>
-              <div class="col-xl-3 " style="padding-left: 0; padding-right: 0px;">
-
-                <button class="btn  rounded-pill logsignbtn logsignbtn-sm" type="submit">ثبت نام</button>
-              </div>
+              
             </div>
 
           </div>

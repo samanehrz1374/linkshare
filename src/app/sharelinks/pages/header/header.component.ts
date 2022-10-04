@@ -12,8 +12,8 @@ import { environment } from 'src/environments/environment';
 export class HeaderComponent implements OnInit {
 
   userName:string='nasim';
-  @Input() logged_in_username:string;
-  @Input() logged_in_firstName:string;
+  @Input() logged_in_username:any;
+ 
   
   searchValue:string;
 

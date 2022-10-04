@@ -52,7 +52,29 @@
         "vote":10,
         "sharedDate":"2022-10-01T07:28:56.321-10:00",
         "userProfile":"http://localhost:4200/assets/images/user_images/user4.jpg",
-        "comments":[],
+        "comments":[
+            {
+                "commentId":1,
+                "firstName":"محسن",
+                "lastName":"آقاخانی",
+                "userName":"mohsen",
+                "comment":"ممنون از اشتراک گذاری این لینک.",
+                "userProfile":"http://localhost:4200/assets/images/user_images/user3.jpg",
+                "commentDate":"2022-09-22T07:09:36+02:00",
+                "likes":8
+                
+            },
+            {
+                "commentId":2,
+                "firstName":"مریم",
+                "lastName":"سلمانیون",
+                "userName":"maryam",
+                "comment":"ممنون",
+                "userProfile":"http://localhost:4200/assets/images/user_images/user1.jpg",
+                "commentDate":"2022-09-23T07:09:36+02:00",
+                "likes":8
+            }
+        ],
         "likedBy":[],
         "firstName":"نسیم",
         "lastName":"گلستانی"
