@@ -36,6 +36,8 @@ export class PostsComponent implements OnInit,OnChanges {
   post_comments:any[];
   editmode:boolean=true;
   modalRef: BsModalRef;
+  profileImage:"../../../assets/images/profile.jpg"
+  
   
   constructor(private postsApi:PostApiService,private http:HttpClient,private modalService: BsModalService) { }
 

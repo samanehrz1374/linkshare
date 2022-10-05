@@ -149,7 +149,7 @@
                           <div class="col-lg-1 comment" style="margin-top: 10px;">
                       
                             
-                            <span class="userimage" ><img src={{comment.userProfile}} class="rounded-circle comment-profile"  alt=""></span>
+                            <span class="userimage" ><img [src]="comment.userProfile!=null ? comment.userProfile:'../../../assets/images/profile.jpg'" class="rounded-circle comment-profile"  alt=""></span>
                           </div>
                           <div class="col-lg-10" style="border-bottom: 1px solid #e2e7ec;">
                             <div class="row mt-3">
@@ -292,7 +292,7 @@
               <div class="timeline-header" >
                 <div class="row " >
                    <div class="col-6 ">
-                     <span class="userimage"><img src={{post.userProfile}} alt=""></span>
+                     <span class="userimage"><img [src]="post.userProfile!=null ? post.userProfile:'../../../assets/images/profile.jpg'" alt=""></span>
                      <span class="username" ><a [routerLink]="['personalpage',post.userName]">{{post.firstName}}&nbsp;{{post.lastName}}</a> <small></small></span>
                    </div>
   
@@ -397,7 +397,7 @@
                     <div class="row " *ngFor="let comment of post_comments;let commentindex=index" >
                       <div class="col-lg-1 comment"  style="margin-top: 10px;" >
               
-                        <span class="userimage"><img src={{comment.userProfile}} class="rounded-circle comment-profile"  alt=""></span>
+                        <span class="userimage"><img [src]="comment.userProfile!=null ? comment.userProfile:'../../../assets/images/profile.jpg'" class="rounded-circle comment-profile"  alt=""></span>
                         
                       </div>
                       <div class="col-lg-10" style="border-bottom: 1px solid #e2e7ec;">

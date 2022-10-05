@@ -62,7 +62,7 @@
                             </div>
                             <div class="col-lg-2 timeline-header">
         
-                                <div class="userimage"  ><img src={{active_profile.userProfile}} alt=""></div>
+                                <div class="userimage"  ><img [src]="active_profile.userProfile!=null ? active_profile.userProfile:'../../../assets/images/profile.jpg'" alt=""></div>
                             </div>
                         </div>
                     </div>

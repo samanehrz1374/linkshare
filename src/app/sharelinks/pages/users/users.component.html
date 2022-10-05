@@ -12,7 +12,7 @@
       <div class="profile-content " (mouseenter)="onProfileHover()" (mouseleave)="onprifileonHover()">
         <div class="card card-blog">
             <div class="card-image">
-                <a href="#"> <img class="img" src={{user_posts.userProfile}} style="height: 200px;">
+                <a href="#"> <img class="img" [src]="user_posts.userProfile!=null ? user_posts.userProfile:'../../../assets/images/profile.jpg'" style="height: 200px;">
                     <div class="card-caption"> <p style="margin-bottom: 0;">{{user_posts.firstName}}&nbsp; {{user_posts.lastName}}</p></div>
                    
                 </a>
@@ -55,7 +55,7 @@
             <div class="modal-body">
               <div class="row " >
                 <div class="col-lg-3 comment " style=" width: inherit;">
-                  <span class="userimage" ><img  src={{user_posts.userProfile}} class="rounded comment-profile"  alt="" height="200px"></span>
+                  <span class="userimage" ><img [src]="user_posts.userProfile!=null ? user_posts.userProfile:'../../../assets/images/profile.jpg'"   class="rounded comment-profile"  alt="" height="200px"></span>
                 </div>
                 <div class="col-lg-9" >
                   <form (ngSubmit)="onSubmit(f.value,user_posts.userName)"  #f="ngForm">
@@ -107,7 +107,7 @@
           <div class="row mb-3 border-bottom">
 
             <div class="col-1" >
-              <img class="userimage rounded-circle postadd-image" style="width: 50px; height:50px;" src={{user_posts.userProfile}} alt="">
+              <img class="userimage rounded-circle postadd-image" style="width: 50px; height:50px;" [src]="user_posts.userProfile!=null ? user_posts.userProfile:'../../../assets/images/profile.jpg'" alt="">
               <!-- <a href="#"> <img class="img " src={{user_posts.userProfile}} style="height: 300px;"></a> -->
             </div>
 

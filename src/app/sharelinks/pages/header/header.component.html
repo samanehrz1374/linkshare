@@ -31,7 +31,7 @@
 
             <ul class="navbar-nav mr-auto">
               <li>
-                <img class="userimage rounded-circle" src="../../../../assets/images/user_images/user4.jpg" alt="">
+                <img class="userimage rounded-circle" [src]="logged_in_username.userProfile!=null ? logged_in_username.userProfile:'../../../assets/images/profile.jpg'" alt="">
                 
               </li>
               <li class="nav-item active">
