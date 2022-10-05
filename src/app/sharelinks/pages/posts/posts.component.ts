@@ -223,12 +223,9 @@ export class PostsComponent implements OnInit,OnChanges {
   }
 
   onSubmit(post_id:number,form:NgForm,logged_in_username:any){
-    console.log(form.value)
-
-    
 
     const comment={
-      "commentId":1,
+      "commentId":this.posts[post_id-1].comments.length+1,
       "firstName":logged_in_username.firstName,
       "lastName":logged_in_username.lastName,
       "userName":logged_in_username.userName,
@@ -238,15 +235,10 @@ export class PostsComponent implements OnInit,OnChanges {
       "likes":0
       
     }
-    for (let index = 0; index < this.posts.length; index++) {
-      
-      //   indexes.push(this.posts[index].userName);
-        // console.log(this.posts[index].tags);
-        if(this.posts[index].id===post_id){
-          this.posts[index].comments.push(comment)
 
-        }
-    }
+    this.posts[post_id-1].comments.push(comment)
+    form.reset();
+   
 
   }
 
