@@ -1,1 +1,31 @@
 <p>login works!</p>
+<div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit(loginForm.value)">
+        <div *ngIf="error">
+            <div class="alert alert-danger">
+                {{error}}
+
+            </div>
+
+        </div>
+        <input class="form-control mt-3" type="text" formControlName="userName" >
+        <div *ngIf="loginForm.controls['userName'].invalid && loginForm.controls['userName'].touched" class="alert alert-danger mt-3">
+            <div  *ngIf="loginForm.controls['userName'].errors?.['required']">
+            وارد کردن نام کاربری الزامی است.
+            </div>
+          
+        </div>
+         
+       
+        <input class="form-control mt-3" type="password" formControlName="password" >
+        <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched" class="alert alert-danger mt-3">
+            <div  *ngIf="loginForm.controls['password'].errors?.['required']">
+            وارد کردن رمز عبور الزامی است.
+            </div>
+          
+        </div>
+        <button class="btn btn-secondary btn-block mt-3" type="submit" [disabled]="!loginForm.valid">login</button>
+
+    </form>
+
+</div>

@@ -3,7 +3,8 @@
         "userName":"mohsen",
         "userProfile":"http://localhost:4200/assets/images/user_images/user3.jpg",
         "firstName":"محسن",
-        "lastName":"آقاخانی"
+        "lastName":"آقاخانی",
+        "password":"123456"
         
     },
     {
@@ -11,14 +12,18 @@
         "userName":"nasim",
         "userProfile":"http://localhost:4200/assets/images/user_images/user4.jpg",
         "firstName":"نسیم",
-        "lastName":"گلستانی"
+        "lastName":"گلستانی",
+        "password":"123456"
+
 
     },
     {
         "userName":"maryam",
         "userProfile":"http://localhost:4200/assets/images/user_images/user1.jpg",
         "firstName":"مریم",
-        "lastName":"سلمانیون"
+        "lastName":"سلمانیون",
+        "password":"123456"
+
 
 
     },
@@ -26,7 +31,9 @@
         "userName":"samaneh",
         "userProfile":"http://localhost:4200/assets/images/user_images/user5.jpg",
         "firstName":"سمانه",
-        "lastName":"رضائی"
+        "lastName":"رضائی",
+        "password":"123456"
+
 
 
     }
