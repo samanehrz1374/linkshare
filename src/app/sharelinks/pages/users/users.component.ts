@@ -33,7 +33,15 @@ export class UsersComponent implements OnInit {
   showPostAddDiv:boolean=false;
   showSuccessMessage:boolean=false;
   all_tags:string[]=[];
-  logged_in_username:any;
+  logged_in_username={
+    userName:"",
+    userProfile:"",
+    firstName:"",
+    lastName:"",
+    password:"",
+    email:""
+    
+  };;
   logged_in_username_user:any;
 
   isProfileHover:boolean=false;
@@ -105,7 +113,7 @@ export class UsersComponent implements OnInit {
   
     this.http.get(environment.url).subscribe((result:any=[])=>{
       this.posts=result;
-      console.log('update')
+      // console.log('update')
          
     const indexes = [];
   

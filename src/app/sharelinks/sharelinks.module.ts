@@ -10,6 +10,8 @@ import { FooterComponent } from './pages/footer/footer.component';
 import { SortComponent } from './pages/sort/sort.component';
 import { PipesModule } from '../shared/pipes/pipes.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from '../auth/pages/register/register.component';
+import { AuthModule } from '../auth/auth.module';
 
 
 
@@ -30,10 +32,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SharelinksRoutingModule,
     PipesModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AuthModule
+    
 
     
 
+  ],
+  exports:[
+    HeaderComponent
+
   ]
+
+  
 })
 export class SharelinksModule { }

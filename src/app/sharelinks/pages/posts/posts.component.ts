@@ -56,7 +56,7 @@ export class PostsComponent implements OnInit,OnChanges {
     if(changes.typeOfEvent.currentValue==='newest'){
       this.posts=this.posts.sort((a:any, b:any) => {return  (new Date(b.sharedDate)).getTime() -(new Date(a.sharedDate)).getTime();});
       // console.log(this.posts.sort((a:any, b:any) => parseInt(a.id) - parseInt(b.id))) 
-      console.log(this.posts)
+    
    
     }else if(changes.typeOfEvent.currentValue==='oldest'){
       this.posts=this.posts.sort((a:any, b:any) => {return (new Date(a.sharedDate)).getTime() - (new Date(b.sharedDate)).getTime();});
@@ -143,7 +143,7 @@ export class PostsComponent implements OnInit,OnChanges {
   onDissLiked(post_id:number){
 
 
-    console.log(this.posts)
+    // console.log(this.posts)
 
       for (let index = 0; index < this.posts.length; index++) {
       
@@ -163,7 +163,7 @@ export class PostsComponent implements OnInit,OnChanges {
   onDeletePost(post_id:number){
 
     this.posts.splice(post_id,1);
-    console.log(this.posts)
+    // console.log(this.posts)
 
   }
 
@@ -171,7 +171,7 @@ export class PostsComponent implements OnInit,OnChanges {
   onMoreClicked(post_id:number){
 
     this.isMore[post_id+1]=!this.isMore[post_id+1]
-    console.log(this.isMore)
+    // console.log(this.isMore)
           
   }
 
@@ -183,7 +183,7 @@ export class PostsComponent implements OnInit,OnChanges {
 
    
     this.all_tags=this.posts[post_id].tags
-    console.log(this.all_tags)
+    // console.log(this.all_tags)
 
     this.editFormGroup = new FormGroup({
       // 'username': new FormControl( `${this.posts[post_id].userName}`, [ Validators.required ]),
@@ -210,7 +210,7 @@ export class PostsComponent implements OnInit,OnChanges {
     this.posts[post_id].discription=data.discription
     this.posts[post_id].link=data.link
     this.posts[post_id].tags=this.all_tags
-    console.log(data.tags)
+    // console.log(data.tags)
 
     this.editing[post_id+1]=!this.editing[post_id+1]
     this.editmode=true;
@@ -248,7 +248,7 @@ export class PostsComponent implements OnInit,OnChanges {
     this.isCommentShow=!this.isCommentShow
     
     this.post_comments=post_comments;
-    console.log(post_comments)
+    // console.log(post_comments)
     this.modalRef = this.modalService.show(template);
   }
 
@@ -296,13 +296,13 @@ export class PostsComponent implements OnInit,OnChanges {
       }
     }
     this.commentliked[commentindex]=!this.commentliked[commentindex];
-    console.log(this.commentliked)
+    // console.log(this.commentliked)
 
   }
 
   onDeleteCommentClicked(commentindex:number){
     this.post_comments.splice(commentindex,1);
-    console.log(this.post_comments)
+    // console.log(this.post_comments)
 
 
   }

@@ -11,15 +11,24 @@ import { Posts } from '../../models/posts.model';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  username:any[];
-  posts:any|(string | number)[];
+  username:(string|number)[];
+  posts:(string | number)[];
   typeOfEvent:string='';
   searchValue:string;
-  logged_in_username:any;
+  logged_in_username={
+    userName:"",
+    userProfile:"",
+    firstName:"",
+    lastName:"",
+    password:"",
+    email:""
+    
+  };;
   active_profiles:any[];
   users:[];
   most_pupular_links:any[];
   all_posts:any[];
+  
 
   
   
@@ -32,13 +41,13 @@ export class HomeComponent implements OnInit {
    
     this.http.get(environment.userUrl).subscribe((result:any=[])=>{
       this.logged_in_username=result[1];
-      console.log(this.logged_in_username)
+      
     })
 
 
     this.http.get(environment.url).subscribe((result:any=[])=>{
       this.posts=result;
-      console.log(this.posts)
+     
       
 
       // let number_of_links=5;
@@ -53,7 +62,7 @@ export class HomeComponent implements OnInit {
 
     this.http.get(environment.url).subscribe((result:any=[])=>{
       this.all_posts=result;
-      console.log(this.posts)
+      
       
 
       let number_of_links=5;

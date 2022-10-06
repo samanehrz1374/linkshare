@@ -12,7 +12,15 @@ import { environment } from 'src/environments/environment';
 export class HeaderComponent implements OnInit {
 
   userName:string='nasim';
-  @Input() logged_in_username:any;
+  @Input() logged_in_username={
+    userName:"",
+    userProfile:"",
+    firstName:"",
+    lastName:"",
+    password:"",
+    email:""
+    
+  };
  
   
   searchValue:string;
@@ -28,7 +36,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     
+
+    
   }
+
+
 
   onSearchTextCahnged(){
     this.isSearch=!this.isSearch;
@@ -38,7 +50,7 @@ export class HeaderComponent implements OnInit {
   }
 
   profile(){
-    console.log(this.router.url)
+  
     this.router.navigate(['personalpage',this.userName])
 
   }
