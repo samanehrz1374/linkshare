@@ -1,6 +1,16 @@
 
 
-<app-header (searchTextChanged)="search($event)" [logged_in_username]="logged_in_username"></app-header>
+<app-header (searchTextChanged)="search($event)" [logged_in_username]="logged_in_username" (login)="onclickedLogin(template)"></app-header>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title">ایجاد حساب کاربری</h4>
+        <button type="button" class="close" (click)="modalRef.hide()">&times;</button>
+    </div>
+
+    <app-register (logged_in_username)="onchangelogint($event)"></app-register>
+</ng-template>
+
 <div class="container-fluid">
     <div class="row">
 

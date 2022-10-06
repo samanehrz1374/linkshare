@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -22,9 +23,10 @@ export class RegisterComponent implements OnInit {
     "email":``,
 
   }
+  modalRef: BsModalRef;
 
 
-  constructor(private http:HttpClient,private route:Router) { }
+  constructor(private http:HttpClient,private route:Router,private modalService: BsModalService) { }
 
   ngOnInit(): void {
 
@@ -63,7 +65,8 @@ export class RegisterComponent implements OnInit {
 
     this.users.push(this.newUser)
     this.logged_in_username.emit(this.newUser)
-    this.route.navigate([''])
+    
+    // this.route.navigate([''])  
 
     
 

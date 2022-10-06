@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { PostApiService } from '../../http/post-api.service';
@@ -15,7 +16,7 @@ export class HomeComponent implements OnInit {
   posts:(string | number)[];
   typeOfEvent:string='';
   searchValue:string;
-  logged_in_username={
+  @Input() logged_in_username={
     userName:"",
     userProfile:"",
     firstName:"",
@@ -23,26 +24,36 @@ export class HomeComponent implements OnInit {
     password:"",
     email:""
     
-  };;
+  };
   active_profiles:any[];
   users:[];
   most_pupular_links:any[];
   all_posts:any[];
+  @Input() login_clicked:boolean;
+  modalRef: BsModalRef;
   
 
   
+
+  
   
 
 
-  constructor(private postsApi:PostApiService,private http:HttpClient) { }
+  constructor(private postsApi:PostApiService,private http:HttpClient,private modalService: BsModalService) { }
 
+  
+  onchangelogint(logininformation:any){
+    this.logged_in_username=logininformation;
+    console.log('sssss')
+
+  }
   ngOnInit(): void {
 
    
-    this.http.get(environment.userUrl).subscribe((result:any=[])=>{
-      this.logged_in_username=result[1];
+    // this.http.get(environment.userUrl).subscribe((result:any=[])=>{
+    //   this.logged_in_username=result[1];
       
-    })
+    // })
 
 
     this.http.get(environment.url).subscribe((result:any=[])=>{
@@ -128,6 +139,14 @@ export class HomeComponent implements OnInit {
     this.searchValue=searchValue;
 
 
+  }
+
+ 
+  onclickedLogin(template: TemplateRef<any>){
+   
+    
+    
+    this.modalRef = this.modalService.show(template);
   }
 
 }

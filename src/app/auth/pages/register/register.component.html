@@ -1,22 +1,37 @@
 
+
+
 <div class="container">
-
-    <form [formGroup]="registerForm" (ngSubmit)="onRejisterSubmit(registerForm.value)">
-        <input type="text" placeholder="نام" formControlName="firstName" class="form-control mt-3">
-        <input type="text" placeholder="نام خانوادگی" formControlName="lastName" class="form-control mt-3">
-        <input type="text" placeholder="نام کاربری" formControlName="userName" class="form-control mt-3">
-        <input type="password" placeholder="رمز عبور" formControlName="password" class="form-control mt-3">
-        <input type="password" placeholder="تکرار رمز عبور" formControlName="confirm_password" class="form-control mt-3">
-        <input type="email" placeholder="ایمیل" formControlName="email" class="form-control mt-3">
-        <input type="text" placeholder="تصویر پروفابل" formControlName="userProfile" class="form-control mt-3">
-        <button type="submit" class="btn btn-success btn-block mt-3" [disabled]="!registerForm.valid">ثبت</button>
-      
     
-    </form>
-
+        
     
-
+        
+           
+         
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form [formGroup]="registerForm" (ngSubmit)="onRejisterSubmit(registerForm.value)">
+                    <input type="text" placeholder="نام" formControlName="firstName" class="form-control mt-3">
+                    <input type="text" placeholder="نام خانوادگی" formControlName="lastName" class="form-control mt-3">
+                    <input type="text" placeholder="نام کاربری" formControlName="userName" class="form-control mt-3">
+                    <input type="password" placeholder="رمز عبور" formControlName="password" class="form-control mt-3">
+                    <input type="password" placeholder="تکرار رمز عبور" formControlName="confirm_password" class="form-control mt-3">
+                    <input type="email" placeholder="ایمیل" formControlName="email" class="form-control mt-3">
+                    <input type="text" placeholder="تصویر پروفابل" formControlName="userProfile" class="form-control mt-3">
+                    <button type="submit" class="btn btn-success btn-block mt-3" [disabled]="!registerForm.valid">ثبت</button>
+                  
+                
+                </form>
+            
+            </div>
     
+       
+    
+        
+    
+        
 </div>
+
 
 

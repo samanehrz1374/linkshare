@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { environment } from 'src/environments/environment';
 
 
@@ -21,6 +22,10 @@ export class HeaderComponent implements OnInit {
     email:""
     
   };
+  @Output() login:EventEmitter<any>=new EventEmitter()
+  login_clicked:boolean=true
+  
+  
  
   
   searchValue:string;
@@ -52,6 +57,13 @@ export class HeaderComponent implements OnInit {
   profile(){
   
     this.router.navigate(['personalpage',this.userName])
+
+  }
+
+
+  onClickLogin(){
+    this.login.emit(this.login_clicked)
+  
 
   }
  
