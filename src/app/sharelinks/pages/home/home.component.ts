@@ -16,7 +16,17 @@ export class HomeComponent implements OnInit {
   posts:(string | number)[];
   typeOfEvent:string='';
   searchValue:string;
-  @Input() logged_in_username={
+  // @Input() logged_in_username={
+  //   userName:"",
+  //   userProfile:"",
+  //   firstName:"",
+  //   lastName:"",
+  //   password:"",
+  //   email:""
+    
+  // };
+
+  logged_in_username={
     userName:"",
     userProfile:"",
     firstName:"",
@@ -50,10 +60,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
    
-    // this.http.get(environment.userUrl).subscribe((result:any=[])=>{
-    //   this.logged_in_username=result[1];
+    this.http.get(environment.userUrl).subscribe((result:any=[])=>{
+      this.logged_in_username=result[1];
       
-    // })
+    })
 
 
     this.http.get(environment.url).subscribe((result:any=[])=>{

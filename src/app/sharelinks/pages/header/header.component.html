@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <div class="col-lg-4" >
 
-            <ul class="navbar-nav mr-auto" *ngIf="logged_in_username.userName">
+            <ul class="navbar-nav mr-auto" ><!--*ngIf="logged_in_username.userName"-->
               <li>
                 <img class="userimage rounded-circle" [src]="logged_in_username.userProfile!=null ? logged_in_username.userProfile:'../../../assets/images/profile.jpg'" alt="">
                 
@@ -72,7 +72,7 @@
               </div> -->
               <div class="col-xl-5 " style="padding:0; padding-right: 15px;" >
 
-                <button class="btn  rounded-pill logsignbtn " (click)="onClickLogin()" type="submit">ورود</button>
+                <button class="btn  rounded-pill logsignbtn "  type="submit">ورود</button><!--(click)="onClickLogin()"-->
                 <!-- <button class="btn  rounded-pill logsignbtn " [routerLink]="['auth/login']" type="submit">ورود</button> -->
               </div>
               

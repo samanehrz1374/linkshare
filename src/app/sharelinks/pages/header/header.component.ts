@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
     email:""
     
   };
+ 
   @Output() login:EventEmitter<any>=new EventEmitter()
   login_clicked:boolean=true
   
