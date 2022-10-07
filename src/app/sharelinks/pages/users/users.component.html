@@ -35,7 +35,7 @@
             </button>
           </div>
           <div class="col-lg-6 text-center">
-            <button type="button" class="btn post-btn"  (click)="openModal(user_posts,template)">
+            <button type="button" class="btn post-btn"  ><!--(click)="openModal(user_posts,template)"-->
               <a  class="m-r-15 text-inverse-lighter" style="text-decoration: none;">
                 <i class="fa fa-edit fa-fw fa-lg m-r-3" >
     
@@ -141,15 +141,21 @@
               <div class="row">
                 <div class="col">
                   <textarea class="form-control mb-2" type="url" placeholder="لینک" id="link" #link formControlName="link" (change)="onPreview(link.value)" ></textarea>
-                  <div *ngIf="postaddForm.controls['link'].invalid && postaddForm.controls['link'].touched" class="alert alert-danger ">
-                    <div  *ngIf="postaddForm.controls['link'].errors?.['required']">
-                    وارد کردن لینک الزامی است.
+                  <div *ngIf="postaddForm.controls['link'].invalid && postaddForm.controls['link'].touched" class="text-danger ">
+                    <div  *ngIf="postaddForm.controls['link'].errors?.['required']" class="text-left mb-2 ">
+                      <small >
+                        وارد کردن لینک الزامی است.
+
+                      </small>
                   </div>
                   
                   </div>
                  
-                  <div *ngIf="postaddForm.controls['link'].errors?.['pattern']" class="alert alert-danger">
-                  در این فیلد فقط میتوانید لینک وارد کنید.
+                  <div *ngIf="postaddForm.controls['link'].errors?.['pattern']" class="text-danger text-left mb-2">
+                    <small class="mb-2">
+
+                      در این فیلد فقط میتوانید لینک وارد کنید.
+                    </small>
                   </div>
                 
                  
