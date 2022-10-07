@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
 
   }
   modalRef: BsModalRef;
+  is_password_notEqual:boolean=false;
 
 
   constructor(private http:HttpClient,private route:Router,private modalService: BsModalService) { }
@@ -42,31 +43,37 @@ export class RegisterComponent implements OnInit {
     this.registerForm=new FormGroup({
       "firstName":new FormControl('سمانه'),
       "lastName":new FormControl('رضایی'),
-      "userName":new FormControl('saman',Validators.required),
-      "password":new FormControl('123456',Validators.required),
-      "confirm_password":new FormControl('123456',Validators.required),
+      "userName":new FormControl('saman',[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
+      "password":new FormControl('123456',[Validators.required,Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]),
+      "confirm_password":new FormControl('123456',[Validators.required,Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]),
       "userProfile":new FormControl('http://localhost:4200/assets/images/user_images/user5.jpg'),
       "email":new FormControl('s@gmail.com',[Validators.required,Validators.email])
     })
   }
 
   onRejisterSubmit(formdata:any){
+
+    if(formdata.password === formdata.confirm_password){
+
+      this.newUser={
+        "userName":`${formdata.userName}`,
+        "userProfile":`${formdata.userProfile}`,
+        "firstName":`${formdata.firstName}`,
+        "lastName":`${formdata.lastName}`,
+        "password":`${formdata.password}`,
+        "email":`${formdata.email}`,
+  
+      }
+  
+      this.users.push(this.newUser)
+      this.logged_in_username.emit(this.newUser)
+      
+      // this.route.navigate([''])  
+    }else{
+      this.is_password_notEqual=true;
+    }
   
 
-    this.newUser={
-      "userName":`${formdata.userName}`,
-      "userProfile":`${formdata.userProfile}`,
-      "firstName":`${formdata.firstName}`,
-      "lastName":`${formdata.lastName}`,
-      "password":`${formdata.password}`,
-      "email":`${formdata.email}`,
-
-    }
-
-    this.users.push(this.newUser)
-    this.logged_in_username.emit(this.newUser)
-    
-    // this.route.navigate([''])  
 
     
 
