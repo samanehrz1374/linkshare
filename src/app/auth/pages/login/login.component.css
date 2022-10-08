@@ -1,0 +1,69 @@
+.b{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 1000px;
+    
+    background-image: url(../../../../assets/images/tp244-bg1-08.jpg);
+    
+}
+
+.login-container{
+    margin: 200px auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    height: 500px;
+    background-color: transparent;
+    
+
+}
+
+.pt-6{
+    padding-top: 100px;
+
+}
+.pt-7{
+    padding-top: 25px;
+}
+.pt-8{
+    padding-top: 75px;
+}
+
+.mt-6{
+    margin-top: 34px;
+
+}
+
+.left-side{
+    
+    border-radius: 0 20px 20px 0;
+    background: linear-gradient(to right, var(--apple-color), var(--login-color));
+}
+
+
+.right-side{
+
+    border-radius: 20px 0 0 20px;
+
+
+    background-color: var(--apple-color);
+    
+
+}
+
+.btn-custom{
+    background-color: var(--login-color);
+    padding: 10px 65px;
+    border: 1px solid var(--primary-color);
+}
+.btn-custom1{
+    /* background-color: var(--transparent-color); */
+    padding: 10px 65px;
+    border: 1px solid white;
+    color: white;
+}
+
+
+.primary{
+    color: white;
+}
