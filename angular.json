@@ -73,7 +73,11 @@
               "browserTarget": "linkshare:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "browserTarget": "linkshare:build",
+            "proxyConfig": "proxy-config.json"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

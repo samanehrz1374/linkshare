@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   url:"http://localhost:4200/assets/data/posts.json",
   userUrl:"http://localhost:4200/assets/data/users.json",
-  link_image:"http://localhost:4200/assets/images/post_images/link.png"
+  link_image:"http://localhost:4200/assets/images/post_images/link.png",
+  api:"https://localhost:7095/WeatherForecast/GetWeatherForecast",
 };
 
 /*

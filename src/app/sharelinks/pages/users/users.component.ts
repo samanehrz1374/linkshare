@@ -8,6 +8,8 @@ import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angula
 import { disableDebugTools } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { WheatherService } from '../../services/wheather.service';
+import { IWeather } from '../../models/weather.model';
 
 
 
@@ -61,6 +63,8 @@ export class UsersComponent implements OnInit {
   dis:boolean=true;
   modalRef: BsModalRef;
 
+  result:IWeather[];
+
   
   
 
@@ -68,7 +72,7 @@ export class UsersComponent implements OnInit {
   
  
 
-  constructor(private postsApi:PostApiService,private http:HttpClient,private route:ActivatedRoute,private router:Router,private fb: FormBuilder,private modalService: BsModalService) {
+  constructor(private postsApi:PostApiService,private http:HttpClient,private route:ActivatedRoute,private router:Router,private fb: FormBuilder,private modalService: BsModalService,private wheatherService:WheatherService) {
     // this.myForm();
    }
 
@@ -92,11 +96,20 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
 
+
+    this.wheatherService.get_Weather().subscribe((result:IWeather[]) => {
+      this.result=result
+      console.log(this.result)
+    }
+    )
+    
+
+
+
     
     this.http.get(environment.userUrl).subscribe((result:any=[])=>{
       this.logged_in_username=result[1];
       this.logged_in_username_user=this.logged_in_username.userName
-     
     })
     
     
