@@ -4,7 +4,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { PostApiService } from '../../http/post-api.service';
-import { Posts } from '../../models/posts.model';
+// import { Posts } from '../../models/posts.model';
 
 @Component({
   selector: 'app-home',
