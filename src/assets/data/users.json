@@ -9,6 +9,12 @@
         
     },
     {
+        "userName":"nasim",
+        "userProfile":"http://localhost:4200/assets/images/user_images/user4.jpg",
+        "firstName":"نسیم",
+        "lastName":"گلستانی",
+        "password":"123456",
+        "email":"s@gmail.com"
  
 
 

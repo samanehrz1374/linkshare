@@ -1,12 +1,18 @@
-export interface Posts {
-    id:number;
+export interface IPosts {
+    postId:number;
     userName:string;
+    firstName:string;
+    lastName:string;
+    userProfile:string;
+    title:string;
     link:string;
-    caption:string;
     discription:string;
     image:string;
+    likes:number;
     tags:[];
-    vote:number;
-    sharedDate:string;
+    date:number;
+    time:number;
+    comments:[];
+    isActive:true;
 
 }
