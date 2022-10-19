@@ -53,13 +53,13 @@
 
                           <div class="col-lg-8 ">
                             <h1 style="font-size: 1rem; margin-top: 10px;"> {{post.title}} </h1>
-                            <p class="link-style2 text-right" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; direction: ltr;"><a >{{post.link}}</a></p>
+                            <p class="link-style2 text-right linkandlike" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; direction: ltr;"><a >{{post.link}}</a></p>
                           </div>
                           <div class="col-lg-4" style="padding: 0;">
                             <div class="img-text-container"  >
                               <a href={{post.link}}  class=" post-image"><img class="rounded" src={{post.image}} height="100px" width="650px">
                               </a>
-                              <div class="text-center bg-text inner">
+                              <div class="text-center bg-text inner ">
                                 <a href={{post.link}} style="font-size: 30px;" class="material-icons link-style" >link</a>    
                               </div> 
                             </div>
@@ -68,7 +68,7 @@
                         
                         <div class="row">
                           <div class="col-lg-12 content-box" style="padding-right: 0;" >
-                            <p>
+                            <p style="text-align: justify;">
                               {{post.discription+'.'}}
                             </p>
                             
@@ -109,19 +109,11 @@
                       </div>
                     </div>
 
-
-          
-
                     <div class="d-flex timeline-footer justify-content-between">
                       <!-- <span class="date">{{post.sharedDate | date:'h:mm' }}</span> -->
                       <!-- <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-share fa-fw fa-lg m-r-3"></i>{{post.shared}}</a> -->
-                      <a  class="m-r-15 text-inverse-lighter" style="text-decoration: none;"><i class="fa fa-comments fa-fw fa-lg m-r-3" (click)="showComments(post.comments,template)"></i>{{post.comments.length}}</a> 
-                      
-                      
-                      
-                      
-                      
-                      <a  class="m-r-15 text-inverse-lighter"  style="text-decoration: none;">{{post.likes}}<i *ngIf="liked[post.id]" class="fa fa-heart fa-fw fa-lg m-r-3" (click)="onDissLiked(post.id)"></i><i  *ngIf="!liked[post.id]" class=" fa fa-fw fa-lg material-icons" (click)="onLiked(post.id)">favorite_border</i></a>
+                      <a  class="m-r-15 text-inverse-lighter linkandlike" style="text-decoration: none;"><i class="fa fa-comments fa-fw fa-lg m-r-3" (click)="showComments(post.comments,template)"></i>{{post.comments.length}}</a> 
+                      <a  class="m-r-15 text-inverse-lighter linkandlike"  style="text-decoration: none;">{{post.likes}}<i *ngIf="liked[post.id]" class="fa fa-heart fa-fw fa-lg m-r-3" (click)="onDissLiked(post.id)"></i><i  *ngIf="!liked[post.id]" class=" fa fa-fw fa-lg material-icons" (click)="onLiked(post.id)">favorite_border</i></a>
                     </div>
 
                     <div class="timeline-comment-box" style="border-radius: 20px" *ngIf="post.userName!==logged_in_username.userName">

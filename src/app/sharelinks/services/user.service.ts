@@ -11,7 +11,7 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
-  getUser(userName:string):Observable<IUser[]>{
-    return this.http.get<IUser[]>(environment.api+"/User/User"+`/${userName}`)
+  getUser(userName:string):Observable<IUser>{
+    return this.http.get<IUser>(environment.api+"/User/User"+`/${userName}`)
   }
 }

@@ -10,6 +10,10 @@ import { Observable } from 'rxjs';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { WheatherService } from '../../services/wheather.service';
 import { IWeather } from '../../models/weather.model';
+import { PostService } from '../../services/post.service';
+import { UserService } from '../../services/user.service';
+import { IUser } from '../../models/users.model';
+import { IPosts } from '../../models/posts.model';
 
 
 
@@ -23,9 +27,10 @@ import { IWeather } from '../../models/weather.model';
 export class UsersComponent implements OnInit {
   username:any[];
   user_posts:any='';
+  User:IUser;
   user_all_posts:any[]=[];
-  votes:number=0;
-  posts:any|(string | number)[];
+  likes:number=0;
+  posts:IPosts[];
   id = '';
   typeOfEvent:string='';
   searchValue:string;
@@ -72,7 +77,7 @@ export class UsersComponent implements OnInit {
   
  
 
-  constructor(private postsApi:PostApiService,private http:HttpClient,private route:ActivatedRoute,private router:Router,private fb: FormBuilder,private modalService: BsModalService,private wheatherService:WheatherService) {
+  constructor(private postsApi:PostApiService,private http:HttpClient,private route:ActivatedRoute,private router:Router,private fb: FormBuilder,private modalService: BsModalService,private wheatherService:WheatherService,private postservice:PostService,private userservice:UserService) {
     // this.myForm();
    }
 
@@ -114,55 +119,74 @@ export class UsersComponent implements OnInit {
     
     
 
-    this.route.params.subscribe((params)=>{this.id=params['userName']
+    this.route.params.subscribe((params)=>{
+      this.id=params['userName']
   
-    this.votes=0;
+     
   
-    this.username=[this.id];
+      this.username=[this.id];
   
-    // this.id = this.route.snapshot.params['userName'];
-   
-  
-  
-    this.http.get(environment.url).subscribe((result:any=[])=>{
-      this.posts=result;
-      // console.log('update')
-         
-    const indexes = [];
-  
-    for (let index = 0; index < this.posts.length; index++) {
-      if (this.posts[index].userName === this.id) {
-        indexes.push(index);
-        
-      }
-    }
-    for (let i=0; i<indexes.length; i++){
-        if(i > -1){
-          this.user_posts=this.posts[indexes[i]];
-          // console.log(this.user_posts)
-          break
-        }
-      }
-  
-  
-    for (let i=0; i<indexes.length; i++){
-      if(i > -1){
-        this.votes=this.posts[indexes[i]].vote +this.votes;
-        // this.posts_count++;
-        
-      }
-    }
+      // this.id = this.route.snapshot.params['userName'];
     
-  
-    for (let i=0; i<indexes.length; i++){
-      if(i > -1){
-        this.user_all_posts.push(this.posts[indexes[i]]);
-      }
-    }
-
-  
       
-  })
+      this.postservice.getUserAllPost(this.id).subscribe((result:IPosts[])=>{
+        this.posts = result
+        console.log(this.posts)
+
+        for(let i=0;i<this.posts.length; i++){
+          this.likes +=this.posts[i].likes
+        }
+
+      })
+
+
+
+      this.userservice.getUser(this.id).subscribe((result:IUser)=>{
+        this.User = result;
+        console.log(this.User)
+      })
+
+      
+    
+      // this.http.get(environment.url).subscribe((result:any=[])=>{
+      //   this.posts=result;
+      //   // console.log('update')
+          
+      //   // const indexes = [];
+    
+      //   // for (let index = 0; index < this.posts.length; index++) {
+      //   //   if (this.posts[index].userName === this.id) {
+      //   //     indexes.push(index);
+            
+      //   //   }
+      //   // }
+      //   // for (let i=0; i<indexes.length; i++){
+      //   //     if(i > -1){
+      //   //       this.user_posts=this.posts[indexes[i]];
+      //   //       // console.log(this.user_posts)
+      //   //       break
+      //   //     }
+      //   // }
+    
+    
+      //   // for (let i=0; i<indexes.length; i++){
+      //   //   if(i > -1){
+      //   //     this.votes=this.posts[indexes[i]].vote +this.votes;
+      //   //     // this.posts_count++;
+            
+      //   //   }
+      //   // }
+      
+    
+      //   // for (let i=0; i<indexes.length; i++){
+      //   //   if(i > -1){
+      //   //     this.user_all_posts.push(this.posts[indexes[i]]);
+      //   //   }
+      //   // }
+
+    
+        
+      // })
     
     })
 
@@ -255,8 +279,8 @@ export class UsersComponent implements OnInit {
 
   // }
 
-    this.posts.push(newpost)
-    this.postaddForm.reset();
+    ////////////////// this.posts.push(newpost)
+    ////////////////// this.postaddForm.reset();
 
     
  
@@ -354,7 +378,7 @@ export class UsersComponent implements OnInit {
       if (this.posts[i].userName===userName){
         // this.posts[i].userName=formdata.userName;
         this.posts[i].firstName=formdata.firstName;
-        this.posts[i].LastName=formdata.lastName;
+        this.posts[i].lastName=formdata.lastName;
 
       }  
     }

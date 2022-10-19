@@ -12,15 +12,15 @@
       <div class="profile-content " (mouseenter)="onProfileHover()" (mouseleave)="onprifileonHover()">
         <div class="card card-blog">
             <div class="card-image">
-                <a href="#"> <img class="img" [src]="user_posts.userProfile!=null ? user_posts.userProfile:'../../../assets/images/profile.jpg'" style="height: 200px;">
-                    <div class="card-caption"> <p style="margin-bottom: 0;">{{user_posts.firstName}}&nbsp; {{user_posts.lastName}}</p></div>
+                <a href="#"> <img class="img" [src]="User.userProfile!=null ? User.userProfile:'../../../assets/images/profile.jpg'" style="height: 200px;">
+                    <div class="card-caption"> <p style="margin-bottom: 0;">{{User.firstName}}&nbsp; {{User.lastName}}</p></div>
                    
                 </a>
                 <div class="ripple-cont"></div>
             </div>
             <div class="table mt-3">
-                <h6 class="category text-info" > لایک ها:{{votes}} </h6>
-                <p class="card-description">  پست ها: {{user_all_posts.length}} </p>
+                <h6 class="category text-info" > لایک ها:{{likes}} </h6>
+                <p class="card-description">  پست ها: {{User.posts}} </p>
             </div>
         </div>
 
