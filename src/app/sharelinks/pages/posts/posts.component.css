@@ -1113,6 +1113,10 @@ select.form-control:not([size]):not([multiple]) {
     margin-top: 20px;
 }
 
+.linkandlike{
+    cursor: pointer;
+
+}
 /* 
 
 .timeline-comment-box-user {

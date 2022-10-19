@@ -4,6 +4,8 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { PostApiService } from '../../http/post-api.service';
+import { IPosts } from '../../models/posts.model';
+import { PostService } from '../../services/post.service';
 // import { Posts } from '../../models/posts.model';
 
 @Component({
@@ -13,7 +15,7 @@ import { PostApiService } from '../../http/post-api.service';
 })
 export class HomeComponent implements OnInit {
   username:(string|number)[];
-  posts:(string | number)[];
+  posts:IPosts[];
   typeOfEvent:string='';
   searchValue:string;
   // @Input() logged_in_username={
@@ -49,12 +51,12 @@ export class HomeComponent implements OnInit {
   
 
 
-  constructor(private postsApi:PostApiService,private http:HttpClient,private modalService: BsModalService) { }
+  constructor(private postsApi:PostApiService,private http:HttpClient,private modalService: BsModalService,private postservice:PostService) { }
 
   
   onchangelogint(logininformation:any){
     this.logged_in_username=logininformation;
-    console.log('sssss')
+    
 
   }
   ngOnInit(): void {
@@ -66,20 +68,30 @@ export class HomeComponent implements OnInit {
     })
 
 
-    this.http.get(environment.url).subscribe((result:any=[])=>{
+    this.postservice.getAllPost().subscribe((result)=>{
       this.posts=result;
-     
+      // console.log(this.posts)
       
 
-      // let number_of_links=5;
-      // let pupular_links=[];
-      // pupular_links=this.posts.sort((a:any, b:any) => {return  parseInt(b.vote) -parseInt(a.vote);});
-      // this.most_pupular_links=pupular_links.splice(0,5);
+    })
+
+    
+
+    // this.http.get(environment.url).subscribe((result:any=[])=>{
+    //   this.posts=result;
+     
+    
+    
+
+    //   // let number_of_links=5;
+    //   // let pupular_links=[];
+    //   // pupular_links=this.posts.sort((a:any, b:any) => {return  parseInt(b.vote) -parseInt(a.vote);});
+    //   // this.most_pupular_links=pupular_links.splice(0,5);
       
     
 
       
-    })
+    // })
 
     this.http.get(environment.url).subscribe((result:any=[])=>{
       this.all_posts=result;

@@ -10,7 +10,7 @@ export interface IPosts {
     image:string;
     likes:number;
     tags:[];
-    date:number;
+    date:string;
     time:number;
     comments:[];
     isActive:true;
