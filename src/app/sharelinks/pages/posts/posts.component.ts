@@ -9,6 +9,7 @@ import { DateAsAgoPipe } from 'src/app/shared/pipes/date-as-ago.pipe';
 
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { LikeService } from '../../services/like.service';
 
 
 
@@ -39,7 +40,7 @@ export class PostsComponent implements OnInit,OnChanges {
   profileImage:"../../../assets/images/profile.jpg"
   
   
-  constructor(private postsApi:PostApiService,private http:HttpClient,private modalService: BsModalService) { }
+  constructor(private postsApi:PostApiService,private http:HttpClient,private modalService: BsModalService,private likeservice:LikeService) { }
 
   ngOnInit(): void {
     
@@ -49,10 +50,14 @@ export class PostsComponent implements OnInit,OnChanges {
 
 
  ngOnChanges(changes:any) {
+
+ 
+
+
  
 
   if (this.typeOfEvent && changes.typeOfEvent){
-
+ 
     if(changes.typeOfEvent.currentValue==='newest'){
       this.posts=this.posts.sort((a:any, b:any) => {return  (new Date(b.sharedDate)).getTime() -(new Date(a.sharedDate)).getTime();});
       // console.log(this.posts.sort((a:any, b:any) => parseInt(a.id) - parseInt(b.id))) 
@@ -127,37 +132,44 @@ export class PostsComponent implements OnInit,OnChanges {
 
 
   onLiked(post_id:number){
-    
-      for (let index = 0; index < this.posts.length; index++) {
+    let date= new Date();
+    console.log(date)
+    let date1=date.getFullYear().toString()+(date.getMonth()+1).toString()+date.getUTCDate().toString();
+    let time1 = date.getHours().toString()+date.getMinutes().toString()+date.getSeconds().toString();
+    var like={
+      date: parseInt(date1),
+      time:parseInt(time1),
+      postId:post_id,
+      userName:"Samaneh",
+      isActive:true,
       
-        if(this.posts[index].id===post_id){
-          this.posts[index].vote=this.posts[index].vote+1
+    }
 
-        }
-       }
-      
+    this.likeservice.registerLike(like).subscribe();
     this.liked[post_id]=!this.liked[post_id]
     
   }
 
-  onDissLiked(post_id:number){
+ 
+
+  // onDissLiked(post_id:number){
 
 
-    // console.log(this.posts)
+  //   // console.log(this.posts)
 
-      for (let index = 0; index < this.posts.length; index++) {
+  //     for (let index = 0; index < this.posts.length; index++) {
       
-      //   indexes.push(this.posts[index].userName);
-        // console.log(this.posts[index].tags);
-        if(this.posts[index].id===post_id){
-          this.posts[index].vote=this.posts[index].vote-1
-        }
-       }
+  //     //   indexes.push(this.posts[index].userName);
+  //       // console.log(this.posts[index].tags);
+  //       if(this.posts[index].id===post_id){
+  //         this.posts[index].vote=this.posts[index].vote-1
+  //       }
+  //     }
       
-      this.liked[post_id]=!this.liked[post_id]
+  //     this.liked[post_id]=!this.liked[post_id]
   
     
-  }
+  // }
 
   
   onDeletePost(post_id:number){
