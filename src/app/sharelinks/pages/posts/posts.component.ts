@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnChanges, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, TemplateRef } from '@angular/core';
 import { observable, Observable } from 'rxjs';
 import { PostApiService } from '../../http/post-api.service';
 // import { Posts } from '../../models/posts.model';
@@ -25,6 +25,9 @@ export class PostsComponent implements OnInit,OnChanges {
   @Input() searchValue:string;
   @Input() posts:any;
   @Input() logged_in_username:any;
+  @Output() like:EventEmitter<any>=new EventEmitter();
+  liked_clicked:boolean=true;
+
   liked:boolean[]=[];
   commentliked:boolean[]=[];
   isMore:boolean[]=[];
@@ -132,6 +135,7 @@ export class PostsComponent implements OnInit,OnChanges {
 
 
   onLiked(post_id:number){
+    // console.log(post_id)
     let date= new Date();
     console.log(date)
     let date1=date.getFullYear().toString()+(date.getMonth()+1).toString()+date.getUTCDate().toString();
@@ -140,12 +144,16 @@ export class PostsComponent implements OnInit,OnChanges {
       date: parseInt(date1),
       time:parseInt(time1),
       postId:post_id,
-      userName:"Samaneh",
+      userName:"Samaneh",//////////////////////////////////////////////////loggedin username
       isActive:true,
       
     }
 
     this.likeservice.registerLike(like).subscribe();
+    this.like.emit(post_id)
+    // console.log(this.posts)
+
+
     this.liked[post_id]=!this.liked[post_id]
     
   }

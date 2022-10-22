@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnChanges, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, TemplateRef, ViewChild } from '@angular/core';
 import { PostApiService } from '../../http/post-api.service';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,6 +25,7 @@ import { IPosts } from '../../models/posts.model';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+ 
   username:any[];
   user_posts:any='';
   User:IUser;
@@ -48,7 +49,7 @@ export class UsersComponent implements OnInit {
     password:"",
     email:""
     
-  };;
+  };
   logged_in_username_user:any;
 
   isProfileHover:boolean=false;
@@ -234,13 +235,28 @@ export class UsersComponent implements OnInit {
   //  });
   // }
 
+ 
+
+  likeAllert(post_id:number){
+
+    this.postservice.getPostById(post_id).subscribe((result)=>{
+      for (let i=0;i<this.posts.length;i++){
+        this.posts[i]=result;
+        console.log(result)
+        
+      }
+
+    })
+
+
+  }
+
   allert(name:any){
     this.typeOfEvent=name;
   }
 
   search(searchValue:string){
     this.searchValue=searchValue;
-
   }
 
   onClickSubmit(data:any){

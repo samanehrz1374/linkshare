@@ -427,7 +427,7 @@
                 
                 
                 
-                <a  class="m-r-15 text-inverse-lighter linkandlike"  style="text-decoration: none;">{{post.likes}}<i *ngIf="liked[post.id]" class="fa fa-heart fa-fw fa-lg m-r-3"></i><i  *ngIf="!liked[post.id]" class=" fa fa-fw fa-lg material-icons" (click)="onLiked(post.id)">favorite_border</i></a>
+                <a  class="m-r-15 text-inverse-lighter linkandlike"  style="text-decoration: none;">{{post.likes}}<i *ngIf="liked[post.id]" class="fa fa-heart fa-fw fa-lg m-r-3"></i><i  *ngIf="!liked[post.id]" class=" fa fa-fw fa-lg material-icons" (click)="onLiked(post.postId)">favorite_border</i></a>
               </div>
 
               <div class="timeline-comment-box">

@@ -19,5 +19,9 @@ export class PostService {
   getUserAllPost(username:string):Observable<IPosts[]>{
     return this.http.get<IPosts[]>(environment.api+"/Post/userAllpost"+`/${username}`)
   }
+
+  getPostById(postId:number):Observable<IPosts>{
+    return this.http.get<IPosts>(environment.api+"/Post"+`/${postId}`)
+  }
   
 }
