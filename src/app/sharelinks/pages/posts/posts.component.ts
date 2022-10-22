@@ -247,21 +247,47 @@ export class PostsComponent implements OnInit,OnChanges {
   
   }
 
-  onSubmit(post_id:number,form:NgForm,logged_in_username:any){
+  onSubmit(postId:number,form:NgForm,logged_in_username:any){
+
+    console.log(postId)
+
+    let date= new Date();
+  
+    let date1=date.getFullYear().toString()+(date.getMonth()+1).toString()+date.getUTCDate().toString();
+    let time1 = date.getHours().toString()+date.getMinutes().toString()+date.getSeconds().toString();
 
     const comment={
-      "commentId":this.posts[post_id-1].comments.length+1,
-      "firstName":logged_in_username.firstName,
-      "lastName":logged_in_username.lastName,
-      "userName":logged_in_username.userName,
-      "comment":form.value.comment,
-      "userProfile":logged_in_username.userProfile,
-      "commentDate":new Date(),
-      "likes":0
-      
+      userName:'Samaneh',/////////////////////////////////logged_in_userName
+      comment:form.value.comment,
+      date: parseInt(date1),
+      time:parseInt(time1),
+      isActive:true,
+      postId:postId
     }
 
-    this.posts[post_id-1].comments.push(comment)
+    this.commentservice.registerComment(comment).subscribe();
+
+    this.postservice.getPostById(postId).subscribe((result)=>{
+     
+      for (let i=0;i<this.posts.length;i++){
+        this.posts[i]=result;
+      }
+
+    })
+
+    // const comment={
+    //   "commentId":this.posts[post_id-1].comments.length+1,
+    //   "firstName":logged_in_username.firstName,
+    //   "lastName":logged_in_username.lastName,
+    //   "userName":logged_in_username.userName,
+    //   "comment":form.value.comment,
+    //   "userProfile":logged_in_username.userProfile,
+    //   "commentDate":new Date(),
+    //   "likes":0
+      
+    // }
+
+    // this.posts[post_id-1].comments.push(comment)
     form.reset();
    
 

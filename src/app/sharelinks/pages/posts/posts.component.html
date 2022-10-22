@@ -121,7 +121,7 @@
                         <form action="" >
                           <div class="input-group">
                             <div class="custom-search-user">
-                              <form (ngSubmit)="onSubmit(post.id,f,logged_in_username)" #f="ngForm">
+                              <form (ngSubmit)="onSubmit(post.postId,f,logged_in_username)" #f="ngForm">
                                 <input type="text" ngModel name="comment" class="custom-search-input" placeholder="">
                                 <button class="custom-search-botton" type="submit">ارسال نظر</button>  
                               </form>
@@ -435,7 +435,7 @@
                   <form action="">
                     <div class="input-group">
                       <div class="custom-search">
-                        <form (ngSubmit)="onSubmit(post.id,f,logged_in_username)" #f="ngForm">
+                        <form (ngSubmit)="onSubmit(post.postId,f,logged_in_username)" #f="ngForm">
                           <input type="text" ngModel name="comment" class="custom-search-input" placeholder="">
                           <button class="custom-search-botton" type="submit">ارسال نظر</button>  
                         </form>

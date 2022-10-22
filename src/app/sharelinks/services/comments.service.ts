@@ -17,6 +17,11 @@ export class CommentsService {
 
   }
 
+  registerComment(comment:IComment):Observable<IComment>{
+    return this.http.post<IComment>(`${environment.api}/Comment`,comment)
+
+  }
+
 
 
 }
