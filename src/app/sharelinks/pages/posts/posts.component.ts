@@ -10,6 +10,7 @@ import { DateAsAgoPipe } from 'src/app/shared/pipes/date-as-ago.pipe';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { LikeService } from '../../services/like.service';
+import { CommentlikeService } from '../../services/commentlike.service';
 
 
 
@@ -43,7 +44,7 @@ export class PostsComponent implements OnInit,OnChanges {
   profileImage:"../../../assets/images/profile.jpg"
   
   
-  constructor(private postsApi:PostApiService,private http:HttpClient,private modalService: BsModalService,private likeservice:LikeService) { }
+  constructor(private postsApi:PostApiService,private http:HttpClient,private modalService: BsModalService,private likeservice:LikeService,private commentlikeservice:CommentlikeService) { }
 
   ngOnInit(): void {
     
@@ -273,17 +274,17 @@ export class PostsComponent implements OnInit,OnChanges {
   }
 
 
-  onCommentDissLiked(commentindex:number,post_comments:any,commentId:number){
+  // onCommentDissLiked(commentindex:number,post_comments:any,commentId:number){
 
-    for(let i=0; i< this.post_comments.length; i++){
-      if(post_comments[i].commentId === commentId){
-        post_comments[i].likes
-        post_comments[i].likes=this.post_comments[i].likes-1
-        break
+  //   for(let i=0; i< this.post_comments.length; i++){
+  //     if(post_comments[i].commentId === commentId){
+  //       post_comments[i].likes
+  //       post_comments[i].likes=this.post_comments[i].likes-1
+  //       break
 
-      }
-    }
-    this.commentliked[commentindex]=!this.commentliked[commentindex];
+  //     }
+  //   }
+  //   this.commentliked[commentindex]=!this.commentliked[commentindex];
 
 
 
@@ -292,31 +293,43 @@ export class PostsComponent implements OnInit,OnChanges {
  
     
 
-    // for (let index = 0; index < this.posts.length; index++) {
+  //   // for (let index = 0; index < this.posts.length; index++) {
       
-    //   if(this.posts[index].id===post_id){
+  //   //   if(this.posts[index].id===post_id){
 
-  //       this.posts[index].comments[commentId]=this.posts[index].vote+1
+  // //       this.posts[index].comments[commentId]=this.posts[index].vote+1
 
-  //     }
-  //    }
+  // //     }
+  // //    }
     
-  // this.commentliked[post_id]=!this.commentliked[post_id]
+  // // this.commentliked[post_id]=!this.commentliked[post_id]
 
-  }
+  // }
 
   onCommentLiked(commentindex:number,post_comments:any,commentId:number){
-    
-    for(let i=0; i< this.post_comments.length; i++){
-      if(post_comments[i].commentId === commentId){
-        post_comments[i].likes
-        post_comments[i].likes=this.post_comments[i].likes+1
-        break
-        
-      }
+
+    console.log("commentindex",commentindex)
+    console.log("post_comments",post_comments)
+    console.log("commentId",commentId)
+
+    let date= new Date();
+    console.log(date)
+    let date1=date.getFullYear().toString()+(date.getMonth()+1).toString()+date.getUTCDate().toString();
+    let time1 = date.getHours().toString()+date.getMinutes().toString()+date.getSeconds().toString();
+    var commentlike={
+      date: parseInt(date1),
+      time:parseInt(time1),
+      commentId:commentId,
+      userName:"Samaneh",//////////////////////////////////////////////////loggedin username
+      isActive:true,
+      
     }
-    this.commentliked[commentindex]=!this.commentliked[commentindex];
-    // console.log(this.commentliked)
+
+    this.commentlikeservice.registerCommentLike(commentlike).subscribe();
+
+
+    
+   
 
   }
 

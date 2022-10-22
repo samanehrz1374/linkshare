@@ -12,8 +12,6 @@ export class LikeService {
   constructor(private http:HttpClient) { }
 
   registerLike(Like:ILike):Observable<ILike>{
-    console.log('far', Like);
-    
     return this.http.post<ILike>(`${environment.api}/Like`,Like)
   }
 }
