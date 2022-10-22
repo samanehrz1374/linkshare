@@ -39,7 +39,7 @@
                         <div class="col-lg-9 text-right "  *ngIf="post.userName===logged_in_username.userName && editmode" >
                          <a  class="m-r-15 text-inverse-lighter dropdown" style="color: black;"><i class=" fa fa-fw fa-lg material-icons dropdown-toggle" data-toggle="dropdown">more_vert</i>
                            <div class="dropdown-menu">
-                             <a class="dropdown-item delete-item-dropdown" (click)="onDeletePost(i)">حذف پست</a>
+                             <a class="dropdown-item delete-item-dropdown" (click)="onDeletePost(post.postId)">حذف پست</a>
                              <a class="dropdown-item edit-item-dropdown" (click)="onEditPostClicked(i)">ویرایش پست</a>
                            </div>
                          </a>
@@ -296,7 +296,7 @@
                     
                    <a  class="m-r-15 text-inverse-lighter dropdown" style="color: black;"><i class=" fa fa-fw fa-lg material-icons dropdown-toggle" data-toggle="dropdown">more_vert</i>
                      <div class="dropdown-menu">
-                       <a class="dropdown-item delete-item-dropdown" (click)="onDeletePost(i)">حذف پست</a>
+                       <a class="dropdown-item delete-item-dropdown" (click)="onDeletePost(post.postId)">حذف پست</a>
                      </div>
                    </a>
                   </div>

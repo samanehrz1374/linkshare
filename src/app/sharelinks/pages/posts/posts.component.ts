@@ -161,11 +161,13 @@ export class PostsComponent implements OnInit,OnChanges {
 
 
   
-  onDeletePost(post_id:number){
+  onDeletePost(postid:number){
+    this.postservice.deletePost(postid).subscribe();
 
-    this.posts.splice(post_id,1);
-    // console.log(this.posts)
-
+    this.postservice.getAllPost().subscribe((result)=>{
+     this.posts=result;
+    })
+    
   }
 
 
@@ -301,7 +303,7 @@ export class PostsComponent implements OnInit,OnChanges {
   }
 
   onDeleteCommentClicked(postId:number,commentId:number){
-    console.log(postId,commentId)
+    // console.log(postId,commentId)
 
     this.commentservice.deletecomment(commentId).subscribe();
 
