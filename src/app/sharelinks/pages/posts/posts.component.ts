@@ -12,6 +12,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { LikeService } from '../../services/like.service';
 import { CommentlikeService } from '../../services/commentlike.service';
 import { PostService } from '../../services/post.service';
+import { CommentsService } from '../../services/comments.service';
 
 
 
@@ -45,7 +46,7 @@ export class PostsComponent implements OnInit,OnChanges {
   profileImage:"../../../assets/images/profile.jpg"
   
   
-  constructor(private postsApi:PostApiService,private http:HttpClient,private modalService: BsModalService,private likeservice:LikeService,private commentlikeservice:CommentlikeService,private postservice:PostService) { }
+  constructor(private postsApi:PostApiService,private http:HttpClient,private modalService: BsModalService,private likeservice:LikeService,private commentlikeservice:CommentlikeService,private postservice:PostService, private commentservice:CommentsService) { }
 
   ngOnInit(): void {
     
@@ -353,9 +354,26 @@ export class PostsComponent implements OnInit,OnChanges {
 
   }
 
-  onDeleteCommentClicked(commentindex:number){
-    this.post_comments.splice(commentindex,1);
+  onDeleteCommentClicked(postId:number,commentId:number){
+    console.log(postId,commentId)
+
+    this.commentservice.deletecomment(commentId).subscribe();
+
+
+    this.postservice.getPostById(postId).subscribe((result)=>{
+     
+      for (let i=0;i<this.posts.length;i++){
+        this.posts[i]=result;
+    
+        this.post_comments=this.posts[i].comments;
+      }
+
+    })
+
+    // this.post_comments.splice(commentindex,1);
     // console.log(this.post_comments)
+    // this.commentservice.deletecomment()
+
 
 
   }

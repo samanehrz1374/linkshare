@@ -154,7 +154,7 @@
         
                               </div>
                               <div class="col-lg-1" style="padding-right:0 ;" *ngIf="post.userName===logged_in_username.userName">
-                                <i  class="fa fa-trash fa-fw fa-lg m-r-3 text-secondary" (click)="onDeleteCommentClicked(commentindex)"></i>
+                                <i  class="fa fa-trash fa-fw fa-lg m-r-3 text-secondary" (click)="onDeleteCommentClicked(post.postId,comment.commentId)"></i>
         
         
                               </div>
@@ -406,7 +406,7 @@
 
                           </div>
                           <div class="col-lg-1" style="padding-right:0 ;" *ngIf="post.userName===logged_in_username.userName">
-                            <i  class="fa fa-trash fa-fw fa-lg m-r-3 text-secondary" (click)="onDeleteCommentClicked(commentindex)"></i>
+                            <i  class="fa fa-trash fa-fw fa-lg m-r-3 text-secondary" (click)="onDeleteCommentClicked(post.postId,comment.commentId)"></i>
 
 
                           </div>
