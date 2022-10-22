@@ -28,7 +28,7 @@ export class PostsComponent implements OnInit,OnChanges {
   @Input() searchValue:string;
   @Input() posts:any;
   @Input() logged_in_username:any;
-  @Output() like:EventEmitter<any>=new EventEmitter();
+
 
 
   liked:boolean[]=[];
@@ -61,24 +61,24 @@ export class PostsComponent implements OnInit,OnChanges {
   if (this.typeOfEvent && changes.typeOfEvent){
  
     if(changes.typeOfEvent.currentValue==='newest'){
-      this.posts=this.posts.sort((a:any, b:any) => {return  (new Date(b.sharedDate)).getTime() -(new Date(a.sharedDate)).getTime();});
+      this.posts=this.posts.sort((a:any, b:any) => {return  (new Date(b.date)).getTime() -(new Date(a.date)).getTime();});
       // console.log(this.posts.sort((a:any, b:any) => parseInt(a.id) - parseInt(b.id))) 
     
    
     }else if(changes.typeOfEvent.currentValue==='oldest'){
-      this.posts=this.posts.sort((a:any, b:any) => {return (new Date(a.sharedDate)).getTime() - (new Date(b.sharedDate)).getTime();});
+      this.posts=this.posts.sort((a:any, b:any) => {return (new Date(a.date)).getTime() - (new Date(b.date)).getTime();});
 
      
   
   
     }else if(changes.typeOfEvent.currentValue==='mostliked'){
-      this.posts=this.posts.sort((a:any, b:any) => {return  parseInt(b.vote) -parseInt(a.vote);});
+      this.posts=this.posts.sort((a:any, b:any) => {return  parseInt(b.likes) -parseInt(a.likes);});
   
 
   
   
     }else if(changes.typeOfEvent.currentValue==='leastliked'){
-      this.posts=this.posts.sort((a:any, b:any) => {return parseInt(a.vote) - parseInt(b.vote);});
+      this.posts=this.posts.sort((a:any, b:any) => {return parseInt(a.likes) - parseInt(b.likes);});
 
   
     }
@@ -149,8 +149,18 @@ export class PostsComponent implements OnInit,OnChanges {
     }
 
     this.likeservice.registerLike(like).subscribe();
-    this.like.emit(post_id)
-    // console.log(this.posts)
+
+    this.postservice.getPostById(post_id).subscribe((result)=>{
+      for (let i=0;i<this.posts.length;i++){
+        if(this.posts[i].postId==post_id){
+          this.posts[i]=result;
+          console.log(result)
+
+        }
+        
+      }
+    })
+
 
 
     this.liked[post_id]=!this.liked[post_id]
@@ -167,7 +177,7 @@ export class PostsComponent implements OnInit,OnChanges {
     this.postservice.getAllPost().subscribe((result)=>{
      this.posts=result;
     })
-    
+
   }
 
 

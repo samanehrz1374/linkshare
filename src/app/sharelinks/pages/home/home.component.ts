@@ -163,20 +163,6 @@ export class HomeComponent implements OnInit {
 
   }
 
-  likeAllert(post_id:number){
-    
-  
-    this.postservice.getPostById(post_id).subscribe((result)=>{
-      for (let i=0;i<this.posts.length;i++){
-        this.posts[i]=result;
-        console.log(result)
-        
-      }
-
-    })
-
-
-  }
 
 
 
