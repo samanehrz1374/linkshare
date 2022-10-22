@@ -11,6 +11,7 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { LikeService } from '../../services/like.service';
 import { CommentlikeService } from '../../services/commentlike.service';
+import { PostService } from '../../services/post.service';
 
 
 
@@ -27,7 +28,7 @@ export class PostsComponent implements OnInit,OnChanges {
   @Input() posts:any;
   @Input() logged_in_username:any;
   @Output() like:EventEmitter<any>=new EventEmitter();
-  liked_clicked:boolean=true;
+
 
   liked:boolean[]=[];
   commentliked:boolean[]=[];
@@ -44,7 +45,7 @@ export class PostsComponent implements OnInit,OnChanges {
   profileImage:"../../../assets/images/profile.jpg"
   
   
-  constructor(private postsApi:PostApiService,private http:HttpClient,private modalService: BsModalService,private likeservice:LikeService,private commentlikeservice:CommentlikeService) { }
+  constructor(private postsApi:PostApiService,private http:HttpClient,private modalService: BsModalService,private likeservice:LikeService,private commentlikeservice:CommentlikeService,private postservice:PostService) { }
 
   ngOnInit(): void {
     
@@ -306,14 +307,10 @@ export class PostsComponent implements OnInit,OnChanges {
 
   // }
 
-  onCommentLiked(commentindex:number,post_comments:any,commentId:number){
-
-    console.log("commentindex",commentindex)
-    console.log("post_comments",post_comments)
-    console.log("commentId",commentId)
+  onCommentLiked(postId:number,commentId:number){
 
     let date= new Date();
-    console.log(date)
+  
     let date1=date.getFullYear().toString()+(date.getMonth()+1).toString()+date.getUTCDate().toString();
     let time1 = date.getHours().toString()+date.getMinutes().toString()+date.getSeconds().toString();
     var commentlike={
@@ -328,8 +325,31 @@ export class PostsComponent implements OnInit,OnChanges {
     this.commentlikeservice.registerCommentLike(commentlike).subscribe();
 
 
+    this.postservice.getPostById(postId).subscribe((result)=>{
+     
+      for (let i=0;i<this.posts.length;i++){
+        this.posts[i]=result;
     
+        this.post_comments=this.posts[i].comments;
+      }
+
+    })
+
    
+
+
+
+    
+    // for(let i=0; i< this.post_comments.length; i++){
+    //   if(post_comments[i].commentId === commentId){
+    //     post_comments[i].likes
+    //     post_comments[i].likes=this.post_comments[i].likes+1
+    //     break
+        
+    //   }
+    // }
+    // this.commentliked[commentindex]=!this.commentliked[commentindex];
+    // console.log(this.commentliked)
 
   }
 

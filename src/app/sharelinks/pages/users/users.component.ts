@@ -251,6 +251,8 @@ export class UsersComponent implements OnInit {
 
   }
 
+ 
+
   allert(name:any){
     this.typeOfEvent=name;
   }

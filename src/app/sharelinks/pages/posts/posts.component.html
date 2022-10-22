@@ -164,7 +164,7 @@
                             <div class="row mb-3">
                               <div class="col-lg-6">{{comment.date |dateAsAgo}}</div>
                               <div class="col-lg-6 text-right">
-                                <a  class="m-r-15 text-inverse-lighter"  style="text-decoration: none;">{{comment.likes}}<i *ngIf="commentliked[commentindex]" class="fa fa-heart fa-fw fa-lg m-r-3"></i><i  *ngIf="!commentliked[commentindex]" class=" fa fa-fw fa-lg material-icons" (click)="onCommentLiked(commentindex,post.comments,comment.commentId)">favorite_border</i></a>
+                                <a  class="m-r-15 text-inverse-lighter"  style="text-decoration: none;">{{comment.likes}}<i *ngIf="commentliked[commentindex]" class="fa fa-heart fa-fw fa-lg m-r-3"></i><i  *ngIf="!commentliked[commentindex]" class=" fa fa-fw fa-lg material-icons"  (click)="onCommentLiked(post.postId,comment.commentId)">favorite_border</i></a>
                               </div>
                             </div>
                           </div>
@@ -416,7 +416,7 @@
                         <div class="row mb-3">
                           <div class="col-lg-6">{{comment.date |dateAsAgo}}</div>
                           <div class="col-lg-6 text-right">
-                            <a  class="m-r-15 text-inverse-lighter"  style="text-decoration: none;">{{comment.likes}}<i *ngIf="commentliked[commentindex]" class="fa fa-heart fa-fw fa-lg m-r-3"></i><i  *ngIf="!commentliked[commentindex]" class=" fa fa-fw fa-lg material-icons" (click)="onCommentLiked(commentindex,post.comments,comment.commentId)">favorite_border</i></a>
+                            <a  class="m-r-15 text-inverse-lighter"  style="text-decoration: none;">{{comment.likes}}<i *ngIf="commentliked[commentindex]" class="fa fa-heart fa-fw fa-lg m-r-3"></i><i  *ngIf="!commentliked[commentindex]" class=" fa fa-fw fa-lg material-icons"  (click)="onCommentLiked(post.postId,comment.commentId)">favorite_border</i></a>
                           </div>
                         </div>
                       </div>

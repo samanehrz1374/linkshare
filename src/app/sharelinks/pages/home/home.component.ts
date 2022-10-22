@@ -178,6 +178,8 @@ export class HomeComponent implements OnInit {
 
   }
 
+
+
  
   onclickedLogin(template: TemplateRef<any>){
    
