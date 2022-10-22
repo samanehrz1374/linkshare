@@ -57,10 +57,6 @@ export class PostsComponent implements OnInit,OnChanges {
 
  ngOnChanges(changes:any) {
 
- 
-
-
- 
 
   if (this.typeOfEvent && changes.typeOfEvent){
  
@@ -142,7 +138,7 @@ export class PostsComponent implements OnInit,OnChanges {
     let date= new Date();
     console.log(date)
     let date1=date.getFullYear().toString()+(date.getMonth()+1).toString()+date.getUTCDate().toString();
-    let time1 = date.getHours().toString()+date.getMinutes().toString()+date.getSeconds().toString();
+    let time1 = this.customHour(date.getHours()).toString()+this.customHour(date.getMinutes()).toString()+this.customHour(date.getSeconds()).toString();
     var like={
       date: parseInt(date1),
       time:parseInt(time1),
@@ -163,24 +159,6 @@ export class PostsComponent implements OnInit,OnChanges {
 
  
 
-  // onDissLiked(post_id:number){
-
-
-  //   // console.log(this.posts)
-
-  //     for (let index = 0; index < this.posts.length; index++) {
-      
-  //     //   indexes.push(this.posts[index].userName);
-  //       // console.log(this.posts[index].tags);
-  //       if(this.posts[index].id===post_id){
-  //         this.posts[index].vote=this.posts[index].vote-1
-  //       }
-  //     }
-      
-  //     this.liked[post_id]=!this.liked[post_id]
-  
-    
-  // }
 
   
   onDeletePost(post_id:number){
@@ -254,7 +232,8 @@ export class PostsComponent implements OnInit,OnChanges {
     let date= new Date();
   
     let date1=date.getFullYear().toString()+(date.getMonth()+1).toString()+date.getUTCDate().toString();
-    let time1 = date.getHours().toString()+date.getMinutes().toString()+date.getSeconds().toString();
+    let time1 = this.customHour(date.getHours()).toString()+this.customHour(date.getMinutes()).toString()+this.customHour(date.getSeconds()).toString();
+    // console.log(time1)
 
     const comment={
       userName:'Samaneh',/////////////////////////////////logged_in_userName
@@ -275,19 +254,6 @@ export class PostsComponent implements OnInit,OnChanges {
 
     })
 
-    // const comment={
-    //   "commentId":this.posts[post_id-1].comments.length+1,
-    //   "firstName":logged_in_username.firstName,
-    //   "lastName":logged_in_username.lastName,
-    //   "userName":logged_in_username.userName,
-    //   "comment":form.value.comment,
-    //   "userProfile":logged_in_username.userProfile,
-    //   "commentDate":new Date(),
-    //   "likes":0
-      
-    // }
-
-    // this.posts[post_id-1].comments.push(comment)
     form.reset();
    
 
@@ -302,44 +268,14 @@ export class PostsComponent implements OnInit,OnChanges {
   }
 
 
-  // onCommentDissLiked(commentindex:number,post_comments:any,commentId:number){
-
-  //   for(let i=0; i< this.post_comments.length; i++){
-  //     if(post_comments[i].commentId === commentId){
-  //       post_comments[i].likes
-  //       post_comments[i].likes=this.post_comments[i].likes-1
-  //       break
-
-  //     }
-  //   }
-  //   this.commentliked[commentindex]=!this.commentliked[commentindex];
-
-
-
-    
-
- 
-    
-
-  //   // for (let index = 0; index < this.posts.length; index++) {
-      
-  //   //   if(this.posts[index].id===post_id){
-
-  // //       this.posts[index].comments[commentId]=this.posts[index].vote+1
-
-  // //     }
-  // //    }
-    
-  // // this.commentliked[post_id]=!this.commentliked[post_id]
-
-  // }
 
   onCommentLiked(postId:number,commentId:number){
 
     let date= new Date();
   
     let date1=date.getFullYear().toString()+(date.getMonth()+1).toString()+date.getUTCDate().toString();
-    let time1 = date.getHours().toString()+date.getMinutes().toString()+date.getSeconds().toString();
+    let time1 = this.customHour(date.getHours()).toString()+this.customHour(date.getMinutes()).toString()+this.customHour(date.getSeconds()).toString();
+    // console.log(time1)s
     var commentlike={
       date: parseInt(date1),
       time:parseInt(time1),
@@ -361,22 +297,6 @@ export class PostsComponent implements OnInit,OnChanges {
       }
 
     })
-
-   
-
-
-
-    
-    // for(let i=0; i< this.post_comments.length; i++){
-    //   if(post_comments[i].commentId === commentId){
-    //     post_comments[i].likes
-    //     post_comments[i].likes=this.post_comments[i].likes+1
-    //     break
-        
-    //   }
-    // }
-    // this.commentliked[commentindex]=!this.commentliked[commentindex];
-    // console.log(this.commentliked)
 
   }
 
@@ -401,6 +321,15 @@ export class PostsComponent implements OnInit,OnChanges {
     // this.commentservice.deletecomment()
 
 
+
+  }
+
+  customHour(hms:any){
+
+    if (hms   < 10) {hms   = "0"+hms;}
+  
+   
+    return hms;
 
   }
 

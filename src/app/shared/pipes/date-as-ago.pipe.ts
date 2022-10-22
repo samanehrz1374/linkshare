@@ -17,6 +17,7 @@ export class DateAsAgoPipe implements PipeTransform {
     timee= timee.substring(0,2)+":"+timee.substring(2,4)+":"+timee.substring(4,6)
 
     value=date+timee;
+
     // console.log(value)
    
     // console.log(date.toLocaleDateString())
