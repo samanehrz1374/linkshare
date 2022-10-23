@@ -389,6 +389,11 @@ export class UsersComponent implements OnInit {
     }
   }
 
+
+  deleteImage(){
+    this.preview.image=environment.link_image;
+  }
+
   
 
 

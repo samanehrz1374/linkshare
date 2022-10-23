@@ -106,38 +106,18 @@
 
           <div class="row mb-3 border-bottom">
 
+         
             <div class="col-1" >
-              <img class="userimage rounded-circle postadd-image" style="width: 50px; height:50px;" [src]="user_posts.userProfile!=null ? user_posts.userProfile:'../../../assets/images/profile.jpg'" alt="">
+              <img class="userimage rounded-circle postadd-image" style="width: 50px; height:50px;" [src]="User.userProfile!=null ? User.userProfile:'../../../assets/images/profile.jpg'" alt="">
               <!-- <a href="#"> <img class="img " src={{user_posts.userProfile}} style="height: 300px;"></a> -->
             </div>
 
-            <div class="col-11" style="padding: 20px;" >{{user_posts.firstName}}&nbsp;{{user_posts.lastName}}</div>
+            <div class="col-11" style="padding: 20px;" >{{User.firstName}}&nbsp;{{User.lastName}}</div>
           </div>
 
           <div class="">
             <form [formGroup]="postaddForm"  (ngSubmit)="onClickSubmit(postaddForm.value)" novalidate> 
               <input class="form-control mb-2" required type="text"  formControlName="username" hidden/>
-              <div class="row">
-
-                
-                <div class="col-lg-9">
-                  <input class="form-control mb-2" required type="text" placeholder="عنوان" formControlName="title"  onkeydown="return (event.keyCode!=13);"  [(ngModel)]="preview.title" [readonly]="dis">
-                  
-                  <div class="custom-file mb-2">
-                    <!-- <input type="text" class="custom-file-input" id="exampleInputFile" formControlName="image"  [(ngModel)]="preview" > -->
-
-                  <input class="form-control mb-2" required type="text" placeholder="تصویر" formControlName="image"  onkeydown="return (event.keyCode!=13);"  [(ngModel)]="preview.image" [readonly]="dis" >
-
-                    <!-- (change)="onFileChanged($event)" -->
-                    <!-- <label class="custom-file-label text-left" for="exampleInputFile" data-browse="تصویر"></label> -->
-                  </div>
-                </div>
-                
-                <div class="col-lg-3" style="text-align: center; padding-right: 0;" >
-                  <img  height="85px" width="100" [src]="preview.image">
-                </div>
-              </div>
-                <!-- <input class="filestyle mb-2"  type="file" id="formFile" formControlName="image"/> -->
               <div class="row">
                 <div class="col">
                   <textarea class="form-control mb-2" type="url" placeholder="لینک" id="link" #link formControlName="link" (change)="onPreview(link.value)" ></textarea>
@@ -157,16 +137,37 @@
                       در این فیلد فقط میتوانید لینک وارد کنید.
                     </small>
                   </div>
-                
-                 
-               
-                </div>
-                <div class="col">
-                  <textarea class="form-control mb-2"  type="text" placeholder="متن" formControlName="caption"></textarea>
                 </div>
               </div>
+              <div class="row">
+
+                
+                <div class="col-lg-9">
+                  <input class="form-control mb-2" required type="text" placeholder="عنوان" formControlName="title"  onkeydown="return (event.keyCode!=13);"  [(ngModel)]="preview.title" ><!--[readonly]="dis"-->
+                  
+                  <div class="custom-file mb-2">
+                    <!-- <input type="text" class="custom-file-input" id="exampleInputFile" formControlName="image"  [(ngModel)]="preview" > -->
+
+                  <input class="form-control mb-2" required type="text" placeholder="تصویر" formControlName="image"  onkeydown="return (event.keyCode!=13);"  [(ngModel)]="preview.image" [readonly]="dis" >
+
+                    <!-- (change)="onFileChanged($event)" -->
+                    <!-- <label class="custom-file-label text-left" for="exampleInputFile" data-browse="تصویر"></label> -->
+                  </div>
+                </div>
+                
+                <div class="col-lg-3 " style="text-align: center; padding-right: 0;" >
+                  <div class="border" style="border-radius: 5px;">
+
+                    <span class="close " (click)="deleteImage()">&times;</span>
+  
+                    <img  height="85px" width="100" [src]="preview.image">
+                  </div>
+                </div>
+              </div>
+                <!-- <input class="filestyle mb-2"  type="file" id="formFile" formControlName="image"/> -->
               
-              <textarea class="form-control mb-2"  type="text" placeholder="توضیحات" formControlName="discription" [(ngModel)]="preview.description" [readonly]="dis"></textarea>
+              
+              <textarea class="form-control mb-2"  type="text" placeholder="توضیحات" formControlName="discription" [(ngModel)]="preview.description" ></textarea><!--[readonly]="dis"-->
               <div class="row" style="padding: 0 15px">
                 
                   <div class="tags btn" *ngFor="let tag of all_tags;let i=index">
@@ -191,7 +192,7 @@
                   <button type="button" class="btn btn-block btn-danger" data-dismiss="modal" style="border-radius: 10px;" (click)="showAddPost()">بستن</button>
                 </div>
                 <div class="col">
-                  <button  type="submit" class="btn btn-block btn-success post-add" style="border-radius: 10px;" (click)="addedPostMessage() " [disabled]="!postaddForm.valid" disabled >پیش نمایش</button>
+                  <button  type="submit" class="btn btn-block btn-success post-add" style="border-radius: 10px;" (click)="addedPostMessage() " [disabled]="!postaddForm.valid" disabled >ثبت</button>
                 </div>
               </div>
             </form>
