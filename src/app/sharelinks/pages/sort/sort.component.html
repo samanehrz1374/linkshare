@@ -53,7 +53,7 @@
         <div class="col-sm-5 text-left mt-1">
   
           <label class="switch">
-            <input type="checkbox" (change)="newest('newest')">
+            <input type="checkbox" [checked]="Isnewst" (change)="newest('newest')">
             <span class="slider round"></span>
           </label>
         </div>
@@ -68,7 +68,7 @@
         <div class="col-sm-5 text-left mt-1">
   
           <label class="switch">
-            <input type="checkbox" (change)="newest('oldest')">
+            <input type="checkbox" [checked]="IsOldest"  (change)="newest('oldest')">
             <span class="slider round"></span>
           </label>
         </div>
@@ -83,7 +83,7 @@
         <div class="col-sm-5 text-left mt-1">
   
           <label class="switch">
-            <input type="checkbox" (change)="newest('mostliked')" >
+            <input type="checkbox" [checked]="IsMostLike" (change)="newest('mostliked')" >
             <span class="slider round"></span>
           </label>
         </div>
@@ -98,7 +98,7 @@
         <div class="col-sm-5 text-left mt-1">
   
           <label class="switch">
-            <input type="checkbox" (change)="newest('leastliked')" >
+            <input type="checkbox" [checked]="IsLeastLike" (change)="newest('leastliked')" >
             <span class="slider round"></span>
           </label>
         </div>

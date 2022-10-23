@@ -89,6 +89,30 @@ export class PostsComponent implements OnInit,OnChanges {
       })
       this.typeOfEvent="";
 
+    }else if(changes.typeOfEvent.currentValue==='newestleastliked'){
+      this.postservice.getPostByFilter("newestleastliked").subscribe((result:IPosts[])=>{
+        this.posts=result;
+      })
+      this.typeOfEvent="";
+
+    }else if(changes.typeOfEvent.currentValue==='newestmostliked'){
+      this.postservice.getPostByFilter("newestmostliked").subscribe((result:IPosts[])=>{
+        this.posts=result;
+      })
+      this.typeOfEvent="";
+
+    }else if(changes.typeOfEvent.currentValue==='oldestleastliked'){
+      this.postservice.getPostByFilter("oldestleastliked").subscribe((result:IPosts[])=>{
+        this.posts=result;
+      })
+      this.typeOfEvent="";
+
+    }else if(changes.typeOfEvent.currentValue==='oldestmostliked'){
+      this.postservice.getPostByFilter("oldestmostliked").subscribe((result:IPosts[])=>{
+        this.posts=result;
+      })
+      this.typeOfEvent="";
+
     }
   }
 
