@@ -27,5 +27,9 @@ export class PostService {
   deletePost(id:number):Observable<IPosts>{
     return this.http.delete<IPosts>(environment.api+"/Post"+`/${id}`)
   }
+
+  getPostByFilter(filter:string):Observable<IPosts[]>{
+    return this.http.get<IPosts[]>(environment.api+"/Post/filter"+`/${filter}`)
+  }
   
 }

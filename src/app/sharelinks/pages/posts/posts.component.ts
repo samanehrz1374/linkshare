@@ -13,6 +13,7 @@ import { LikeService } from '../../services/like.service';
 import { CommentlikeService } from '../../services/commentlike.service';
 import { PostService } from '../../services/post.service';
 import { CommentsService } from '../../services/comments.service';
+import { IPosts } from '../../models/posts.model';
 
 
 
@@ -56,31 +57,38 @@ export class PostsComponent implements OnInit,OnChanges {
 
 
  ngOnChanges(changes:any) {
-
+  // getPremiumUnits(filters: FilterPremiumUnit): Observable<PremiumUnit[]> {
+  //   return this.http.get<PremiumUnit[]>(this._apiUrl, { params: UrlHelper.fromModel(filters) });
+  // }
 
   if (this.typeOfEvent && changes.typeOfEvent){
  
     if(changes.typeOfEvent.currentValue==='newest'){
-      this.posts=this.posts.sort((a:any, b:any) => {return  (new Date(b.date)).getTime() -(new Date(a.date)).getTime();});
-      // console.log(this.posts.sort((a:any, b:any) => parseInt(a.id) - parseInt(b.id))) 
-    
+
+      this.postservice.getPostByFilter("newest").subscribe((result:IPosts[])=>{
+        this.posts=result;
+      })
+      this.typeOfEvent="";
    
     }else if(changes.typeOfEvent.currentValue==='oldest'){
-      this.posts=this.posts.sort((a:any, b:any) => {return (new Date(a.date)).getTime() - (new Date(b.date)).getTime();});
+      
+      this.postservice.getPostByFilter("oldest").subscribe((result:IPosts[])=>{
+        this.posts=result;
+      })
+      this.typeOfEvent="";
 
-     
-  
-  
     }else if(changes.typeOfEvent.currentValue==='mostliked'){
-      this.posts=this.posts.sort((a:any, b:any) => {return  parseInt(b.likes) -parseInt(a.likes);});
-  
-
-  
+      this.postservice.getPostByFilter("mostliked").subscribe((result:IPosts[])=>{
+        this.posts=result;
+      })
+      this.typeOfEvent="";
   
     }else if(changes.typeOfEvent.currentValue==='leastliked'){
-      this.posts=this.posts.sort((a:any, b:any) => {return parseInt(a.likes) - parseInt(b.likes);});
+      this.postservice.getPostByFilter("leastliked").subscribe((result:IPosts[])=>{
+        this.posts=result;
+      })
+      this.typeOfEvent="";
 
-  
     }
   }
 
@@ -342,6 +350,29 @@ export class PostsComponent implements OnInit,OnChanges {
   
    
     return hms;
+
+  }
+
+  dateToIso(value:string){
+    let date= value.substring(0,4)+"-"+value.substring(4,6)+"-"+value.substring(6,8)+"T";
+    let timee= value.substring(8)
+    if(timee.length ==5){
+      timee="0"+timee;
+    }
+    timee= timee.substring(0,2)+":"+timee.substring(2,4)+":"+timee.substring(4,6)
+    value=date+timee;
+    return value;
+    
+  }
+
+  IsoToDate(value:string){
+    
+    let date= value.substring(0,4)+value.substring(5,7)+value.substring(8,10);
+
+    let timee= value.substring(11,13)+value.substring(14,16)+value.substring(17);
+
+    value=date+timee;
+    return value;
 
   }
 
