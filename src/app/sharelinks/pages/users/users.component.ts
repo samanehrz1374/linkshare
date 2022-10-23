@@ -65,11 +65,14 @@ export class UsersComponent implements OnInit {
     image:environment.link_image
 
   }
+  isLoading:boolean=false;
 
   dis:boolean=true;
+  diss:boolean=true;
   modalRef: BsModalRef;
 
   result:IWeather[];
+  
 
   
   
@@ -249,45 +252,44 @@ export class UsersComponent implements OnInit {
   }
 
   onClickSubmit(data:any){
+    let date= new Date();
+    let date1=date.getFullYear().toString()+(date.getMonth()+1).toString()+date.getUTCDate().toString();
+    let time1:string = this.customHour(date.getHours()).toString()+this.customHour(date.getMinutes()).toString()+this.customHour(date.getSeconds()).toString();
 
+   
 
     const newpost={
-      id:this.posts.length+1,
+    
       userName:data.username,
       link:`${data.link}`,
-      caption:`${data.caption || ""}`,
       discription:`${data.discription || ""}`,
       image:`${data.image||this.preview.image}`,
       title:`${data.title}`,
-      tags:this.all_tags,
-      vote:0,
-      sharedDate:new Date(),
-      comments:0,
-      shared:0,
-      userProfile:`${this.user_posts.userProfile}`
+      Tags:this.all_tags,
+      date:parseInt(date1),
+      time:parseInt(time1),
+ 
       
     }
 
-  //   const dommypost={
-  //     "id":2,
-  //     "userName":"نسیم",
-  //     "link":"https://jsonplaceholder.typicode.com/",
-  //     "caption":"برای ساخت فایل json از لینک زیر میتونی کمک بگیری",
-  //     "discription":"ساختار دستورات JSON زیر مجموعه ای از ساختار ایجاد شیء در جاوا اسکریپت (JavaScript) است، در این مقاله چگونگی ایجاد یک فایل JSON را با استفاده از کلاس JavaScriptSerializer توضیح می دهیم.",
-  //     "image":"http://localhost:4200/assets/images/post_images/json_placeholder.png",
-  //     "tags":["انگولار","ساختار", "فولدربندی", "طراحی", "سایت", "UI", "UX"],
-  //     "vote":10,
-  //     "sharedDate":"2015-02-01T09:28:56.321-10:00",
-  //     "userProfile":"http://localhost:4200/assets/images/user_images/user4.jpg",
-  //     "comments":70,
-  //     "shared":5,
+    this.postservice.registerPost(newpost).subscribe();
 
-  // }
-
-    ////////////////// this.posts.push(newpost)
-    ////////////////// this.postaddForm.reset();
 
     
+      this.username=[this.id];
+      // console.log(this.id)
+
+
+      setTimeout(()=>{                       
+        this.postservice.getUserAllPost(this.id).subscribe((result:IPosts[])=>{
+          this.posts = result;
+          console.log(this.posts)
+  
+        })
+      }, 1000);
+      
+      
+   
  
   }
 
@@ -352,9 +354,13 @@ export class UsersComponent implements OnInit {
   }
   
   onPreview(link:string) {
+    this.isLoading=true;
     this.getLinkPreview(link)
     .subscribe(coming_preview => {
       this.preview = coming_preview;
+      this.diss=false;
+      this.isLoading=false;
+      
      
       // console.log(this.preview)
 
@@ -394,6 +400,12 @@ export class UsersComponent implements OnInit {
     this.preview.image=environment.link_image;
   }
 
+  customHour(hms:any){
+
+    if (hms   < 10) {hms   = "0"+hms;}
+    return hms;
+
+  }
   
 
 

@@ -102,11 +102,20 @@
         <div  *ngIf="username[0]===logged_in_username_user">
           <button type="button" class="btn post-add-bottom" (click)="showAddPost()" >+</button>
         </div>
-        <div id="addpost" *ngIf="showPostAddDiv" class="mt-3 postadd-container">
+
+        <div id="addpost" *ngIf="showPostAddDiv" class="mt-3 postadd-container" style="position: relative;">
+
+          <div class="spinner-container spinn" *ngIf="isLoading">
+            <div class="d-flex justify-content-center ">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          </div>
+
+
 
           <div class="row mb-3 border-bottom">
-
-         
             <div class="col-1" >
               <img class="userimage rounded-circle postadd-image" style="width: 50px; height:50px;" [src]="User.userProfile!=null ? User.userProfile:'../../../assets/images/profile.jpg'" alt="">
               <!-- <a href="#"> <img class="img " src={{user_posts.userProfile}} style="height: 300px;"></a> -->
@@ -143,7 +152,7 @@
 
                 
                 <div class="col-lg-9">
-                  <input class="form-control mb-2" required type="text" placeholder="عنوان" formControlName="title"  onkeydown="return (event.keyCode!=13);"  [(ngModel)]="preview.title" ><!--[readonly]="dis"-->
+                  <input class="form-control mb-2" required type="text" placeholder="عنوان" formControlName="title"  onkeydown="return (event.keyCode!=13);"  [(ngModel)]="preview.title" [readonly]="diss" ><!--[readonly]="dis"-->
                   
                   <div class="custom-file mb-2">
                     <!-- <input type="text" class="custom-file-input" id="exampleInputFile" formControlName="image"  [(ngModel)]="preview" > -->
@@ -167,7 +176,7 @@
                 <!-- <input class="filestyle mb-2"  type="file" id="formFile" formControlName="image"/> -->
               
               
-              <textarea class="form-control mb-2"  type="text" placeholder="توضیحات" formControlName="discription" [(ngModel)]="preview.description" ></textarea><!--[readonly]="dis"-->
+              <textarea class="form-control mb-2"  type="text" placeholder="توضیحات" formControlName="discription" [(ngModel)]="preview.description" [readonly]="diss"></textarea><!--[readonly]="dis"-->
               <div class="row" style="padding: 0 15px">
                 
                   <div class="tags btn" *ngFor="let tag of all_tags;let i=index">

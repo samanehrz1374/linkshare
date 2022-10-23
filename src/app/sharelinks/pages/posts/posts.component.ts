@@ -371,12 +371,10 @@ export class PostsComponent implements OnInit,OnChanges {
   customHour(hms:any){
 
     if (hms   < 10) {hms   = "0"+hms;}
-  
-   
     return hms;
 
   }
-
+  
   dateToIso(value:string){
     let date= value.substring(0,4)+"-"+value.substring(4,6)+"-"+value.substring(6,8)+"T";
     let timee= value.substring(8)

@@ -16,3 +16,14 @@ export interface IPosts {
     isActive:true;
 
 }
+
+export interface IAddPost{
+    userName:string,
+    link:string,
+    discription:string,
+    image:string,
+    title:string,
+    Tags:string[],
+    date:number,
+    time:number,
+}
