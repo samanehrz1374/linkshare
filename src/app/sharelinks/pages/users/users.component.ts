@@ -146,7 +146,7 @@ export class UsersComponent implements OnInit {
       this.postservice.getUserAllPost(this.id).subscribe((result:IPosts[])=>{
 
         for(let i=0;i<result.length; i++){
-          this.likes +=this.posts[i].likes
+          this.likes +=result[i].likes
         }
 
       })
