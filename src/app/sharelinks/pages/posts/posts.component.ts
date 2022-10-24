@@ -14,6 +14,7 @@ import { CommentlikeService } from '../../services/commentlike.service';
 import { PostService } from '../../services/post.service';
 import { CommentsService } from '../../services/comments.service';
 import { IPosts } from '../../models/posts.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -47,9 +48,13 @@ export class PostsComponent implements OnInit,OnChanges {
   profileImage:"../../../assets/images/profile.jpg"
   
   
-  constructor(private postsApi:PostApiService,private http:HttpClient,private modalService: BsModalService,private likeservice:LikeService,private commentlikeservice:CommentlikeService,private postservice:PostService, private commentservice:CommentsService) { }
+  constructor(private postsApi:PostApiService,private http:HttpClient,private modalService: BsModalService,private likeservice:LikeService,private commentlikeservice:CommentlikeService,private postservice:PostService, private commentservice:CommentsService,private router:Router, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    // this.route.params.subscribe((params)=>{
+    //   console.log(params['tag'])
+    // })
     
   
   }
@@ -144,23 +149,13 @@ export class PostsComponent implements OnInit,OnChanges {
 
 
   tag_search(tag:string){
-    this.http.get(environment.url).subscribe((result:any=[])=>{
-      this.posts=result;
 
-      // console.log(this.posts)
-      const indexes = [];
-      for (let index = 0; index < this.posts.length; index++) {
-      
-      //   indexes.push(this.posts[index].userName);
-        // console.log(this.posts[index].tags);
-        if(this.posts[index].tags.includes(tag)){
-
-          indexes.push(this.posts[index]);
-        }
-       }
-      this.posts=indexes;
-
-  })
+    
+    // this.postservice.getAllPostByTag(tag).subscribe((result)=>{
+    //   this.posts = result;
+    // })
+    this.router.navigate(['search',tag])
+  
 
   }
 

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -51,7 +52,7 @@ export class HomeComponent implements OnInit {
   
 
 
-  constructor(private postsApi:PostApiService,private http:HttpClient,private modalService: BsModalService,private postservice:PostService) { }
+  constructor(private postsApi:PostApiService,private http:HttpClient,private modalService: BsModalService,private postservice:PostService,private route:ActivatedRoute) { }
 
   
   onchangelogint(logininformation:any){
@@ -61,20 +62,41 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit(): void {
 
-   
+    
     this.http.get(environment.userUrl).subscribe((result:any=[])=>{
       this.logged_in_username=result[1];
       
     })
+    
+    
+    
+    
+    
+    this.route.params.subscribe((params)=>{
+      if(params['tag']){
 
+        this.postservice.getAllPostByTag(params['tag']).subscribe((result)=>{
+        this.posts = result;
+        })
+      }
+      else{
+        this.postservice.getAllPost().subscribe((result)=>{
+          this.posts=result;
+          
+          
+        })
 
-    this.postservice.getAllPost().subscribe((result)=>{
-      this.posts=result;
-      // console.log(this.posts)
-      // console.log(this.posts)
-      
-
+      }
+     
+    
     })
+
+    
+  
+     
+
+
+
 
     
 

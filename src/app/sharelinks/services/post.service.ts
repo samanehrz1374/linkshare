@@ -35,5 +35,10 @@ export class PostService {
   registerPost(post:IAddPost):Observable<IAddPost>{
     return this.http.post<IAddPost>(environment.api+"/Post",post)
   }
+
+
+  getAllPostByTag(tag:string):Observable<IPosts[]>{
+    return this.http.get<IPosts[]>(environment.api+"/Post/search"+`/${tag}`)
+  }
   
 }
