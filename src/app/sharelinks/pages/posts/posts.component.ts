@@ -27,7 +27,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PostsComponent implements OnInit,OnChanges {
   @Input() username:any[];
   @Input() typeOfEvent:string='';
-  @Input() searchValue:string;
+ 
   @Input() posts:any;
   @Input() logged_in_username:any;
 
@@ -121,30 +121,30 @@ export class PostsComponent implements OnInit,OnChanges {
     }
   }
 
-  if (this.searchValue && changes.searchValue){
+  // if (this.searchValue && changes.searchValue){
     
-    this.http.get(environment.url).subscribe((result:any=[])=>{
-          this.posts=result;
+  //   this.http.get(environment.url).subscribe((result:any=[])=>{
+  //         this.posts=result;
     
-          // console.log(this.posts)
-          const indexes = [];
-          for (let index = 0; index < this.posts.length; index++) {
+  //         // console.log(this.posts)
+  //         const indexes = [];
+  //         for (let index = 0; index < this.posts.length; index++) {
           
-          //   indexes.push(this.posts[index].userName);
-            // console.log(this.posts[index].tags);
-            if(this.posts[index].tags.includes(this.searchValue)){
-              this.didnMatchSearchValue=false;
+  //         //   indexes.push(this.posts[index].userName);
+  //           // console.log(this.posts[index].tags);
+  //           if(this.posts[index].tags.includes(this.searchValue)){
+  //             this.didnMatchSearchValue=false;
 
-              indexes.push(this.posts[index]);
-            }
-            else{
-              this.didnMatchSearchValue=true;
-            }
-           }
-          this.posts=indexes;
+  //             indexes.push(this.posts[index]);
+  //           }
+  //           else{
+  //             this.didnMatchSearchValue=true;
+  //           }
+  //          }
+  //         this.posts=indexes;
     
-      })
-  }
+  //     })
+  // }
   }
 
 

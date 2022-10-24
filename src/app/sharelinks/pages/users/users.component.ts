@@ -249,6 +249,15 @@ export class UsersComponent implements OnInit {
 
   search(searchValue:string){
     this.searchValue=searchValue;
+    console.log(this.searchValue)
+    if(searchValue!==undefined){
+
+      this.postservice.getAllPostByTag(searchValue).subscribe((result)=>{
+        this.posts = result;
+        })
+    }
+
+    
   }
 
   onClickSubmit(data:any){

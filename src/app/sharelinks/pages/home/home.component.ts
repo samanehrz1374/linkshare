@@ -182,6 +182,12 @@ export class HomeComponent implements OnInit {
 
   search(searchValue:string){
     this.searchValue=searchValue;
+    if(searchValue!==undefined){
+
+      this.postservice.getAllPostByTag(searchValue).subscribe((result)=>{
+        this.posts = result;
+        })
+    }
 
 
   }
