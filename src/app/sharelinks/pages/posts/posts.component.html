@@ -101,7 +101,7 @@
                         </div>
                         
                         <div style="margin-top: 15px;" >
-                            <span class="tags btn "  *ngFor="let tag of post.tags" (click)="tag_search(tag)">
+                            <span class="tags btn "  *ngFor="let tag of post.tags" (click)="tag_search_pesonal(tag,post.userName)">
                               {{'#'+tag}}
                             </span>
                         </div>

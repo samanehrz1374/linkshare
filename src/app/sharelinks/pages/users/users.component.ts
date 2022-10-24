@@ -125,24 +125,33 @@ export class UsersComponent implements OnInit {
 
     this.route.params.subscribe((params)=>{
       this.id=params['userName']
-  
-     
-  
+
       this.username=[this.id];
+      if(params['tag']){
+        this.postservice.getAllPostByTag(params['tag']).subscribe((result)=>{
+          this.posts = result;
+          })
+
+      }
+      else{
+        this.postservice.getUserAllPost(this.id).subscribe((result:IPosts[])=>{
+          this.posts = result
+        })
+  
+
+      }
   
       // this.id = this.route.snapshot.params['userName'];
     
-      
       this.postservice.getUserAllPost(this.id).subscribe((result:IPosts[])=>{
-        this.posts = result
-        console.log(this.posts)
 
-        for(let i=0;i<this.posts.length; i++){
+        for(let i=0;i<result.length; i++){
           this.likes +=this.posts[i].likes
         }
 
       })
-
+      
+      
 
 
       this.userservice.getUser(this.id).subscribe((result:IUser)=>{

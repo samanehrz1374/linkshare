@@ -159,6 +159,14 @@ export class PostsComponent implements OnInit,OnChanges {
 
   }
 
+  tag_search_pesonal(tag:string,userName:string){
+    // console.log(userName)
+
+    this.router.navigate([`personalpage/${userName}/search`,tag])
+
+
+  }
+
 
   onLiked(post_id:number){
     // console.log(post_id)

@@ -6,6 +6,7 @@ import { UsersComponent } from './pages/users/users.component';
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'personalpage/:userName',component:UsersComponent},
+  {path:'personalpage/:userName/search/:tag',component:UsersComponent},
   {path:'search/:tag',component:HomeComponent}
   // {path:':userName',component:UsersComponent}
 ];
