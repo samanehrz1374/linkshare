@@ -38,7 +38,7 @@ export class PostsComponent implements OnInit,OnChanges {
   isMore:boolean[]=[];
   editing:boolean[]=[];
   all_tags:string[]=[]
-  didnMatchSearchValue:boolean=false;
+  @Input() didnMatchSearchValue:boolean;
   editFormGroup:any;
   selected_post_image:string;
   isCommentShow:boolean=false;
@@ -183,18 +183,20 @@ export class PostsComponent implements OnInit,OnChanges {
       
     }
 
-    this.likeservice.registerLike(like).subscribe();
-
-    this.postservice.getPostById(post_id).subscribe((result)=>{
-      for (let i=0;i<this.posts.length;i++){
-        if(this.posts[i].postId==post_id){
-          this.posts[i]=result;
-          console.log(result)
-
+    this.likeservice.registerLike(like).subscribe((result)=>{
+      this.postservice.getPostById(post_id).subscribe((result)=>{
+        for (let i=0;i<this.posts.length;i++){
+          if(this.posts[i].postId==post_id){
+            this.posts[i]=result;
+            console.log(result)
+  
+          }
+          
         }
-        
-      }
-    })
+      })
+    });
+
+    
 
 
 
@@ -207,11 +209,13 @@ export class PostsComponent implements OnInit,OnChanges {
 
   
   onDeletePost(postid:number){
-    this.postservice.deletePost(postid).subscribe();
+    this.postservice.deletePost(postid).subscribe((result)=>{
 
-    this.postservice.getAllPost().subscribe((result)=>{
-     this.posts=result;
-    })
+      this.postservice.getAllPost().subscribe((result)=>{
+       this.posts=result;
+      })
+    });
+
 
   }
 
@@ -332,36 +336,40 @@ export class PostsComponent implements OnInit,OnChanges {
       
     }
 
-    this.commentlikeservice.registerCommentLike(commentlike).subscribe();
+    this.commentlikeservice.registerCommentLike(commentlike).subscribe((result)=>{
+
+      this.postservice.getPostById(postId).subscribe((result)=>{
+       
+        for (let i=0;i<this.posts.length;i++){
+          this.posts[i]=result;
+      
+          this.post_comments=this.posts[i].comments;
+        }
+  
+      })
+    });
 
 
-    this.postservice.getPostById(postId).subscribe((result)=>{
-     
-      for (let i=0;i<this.posts.length;i++){
-        this.posts[i]=result;
-    
-        this.post_comments=this.posts[i].comments;
-      }
-
-    })
 
   }
 
   onDeleteCommentClicked(postId:number,commentId:number){
     // console.log(postId,commentId)
 
-    this.commentservice.deletecomment(commentId).subscribe();
+    this.commentservice.deletecomment(commentId).subscribe((result)=>{
+
+      this.postservice.getPostById(postId).subscribe((result)=>{
+       
+        for (let i=0;i<this.posts.length;i++){
+          this.posts[i]=result;
+      
+          this.post_comments=this.posts[i].comments;
+        }
+  
+      })
+    });
 
 
-    this.postservice.getPostById(postId).subscribe((result)=>{
-     
-      for (let i=0;i<this.posts.length;i++){
-        this.posts[i]=result;
-    
-        this.post_comments=this.posts[i].comments;
-      }
-
-    })
 
     // this.post_comments.splice(commentindex,1);
     // console.log(this.post_comments)

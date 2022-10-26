@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnChanges, OnInit, SimpleChanges, TemplateRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, TemplateRef, ViewChild } from '@angular/core';
 import { PostApiService } from '../../http/post-api.service';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -70,6 +70,8 @@ export class UsersComponent implements OnInit {
   dis:boolean=true;
   diss:boolean=true;
   modalRef: BsModalRef;
+  didnMatchSearchValue:boolean=false;
+
 
   result:IWeather[];
   
@@ -106,11 +108,11 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.wheatherService.get_Weather().subscribe((result:IWeather[]) => {
-      this.result=result
-      console.log(this.result)
-    }
-    )
+    // this.wheatherService.get_Weather().subscribe((result:IWeather[]) => {
+    //   this.result=result
+    //   console.log(this.result)
+    // }
+    // )
     
 
 
@@ -130,10 +132,17 @@ export class UsersComponent implements OnInit {
       if(params['tag']){
         this.postservice.getAllPostByTag(params['tag']).subscribe((result)=>{
           this.posts = result;
+          if(this.posts.length==0){
+            this.didnMatchSearchValue=true;
+   
+
+          }
+         
           })
 
       }
       else{
+        this.router.navigate([`personalpage/${this.username}`])
         this.postservice.getUserAllPost(this.id).subscribe((result:IPosts[])=>{
           this.posts = result
         })
@@ -149,15 +158,15 @@ export class UsersComponent implements OnInit {
           this.likes +=result[i].likes
         }
 
+        this.userservice.getUser(this.id).subscribe((result:IUser)=>{
+          this.User = result;
+          console.log(this.User)
+        })
       })
       
       
 
 
-      this.userservice.getUser(this.id).subscribe((result:IUser)=>{
-        this.User = result;
-        console.log(this.User)
-      })
 
       
     
@@ -257,14 +266,15 @@ export class UsersComponent implements OnInit {
   }
 
   search(searchValue:string){
-    this.searchValue=searchValue;
-    console.log(this.searchValue)
-    if(searchValue!==undefined){
+    this.router.navigate([`personalpage/${this.User.userName}/search`,searchValue])
+    // this.searchValue=searchValue;
+    // console.log(this.searchValue)
+    // if(searchValue!==undefined){
 
-      this.postservice.getAllPostByTag(searchValue).subscribe((result)=>{
-        this.posts = result;
-        })
-    }
+    //   this.postservice.getAllPostByTag(searchValue).subscribe((result)=>{
+    //     this.posts = result;
+    //     })
+    // }
 
     
   }
@@ -290,21 +300,13 @@ export class UsersComponent implements OnInit {
       
     }
 
-    this.postservice.registerPost(newpost).subscribe();
+    this.postservice.registerPost(newpost).subscribe((result)=>{
+      this.postservice.getUserAllPost(this.id).subscribe((result:IPosts[])=>{
+        this.posts = result;
+      });
 
+    });
 
-    
-      this.username=[this.id];
-      // console.log(this.id)
-
-
-      setTimeout(()=>{                       
-        this.postservice.getUserAllPost(this.id).subscribe((result:IPosts[])=>{
-          this.posts = result;
-          console.log(this.posts)
-  
-        })
-      }, 1000);
       
       
    

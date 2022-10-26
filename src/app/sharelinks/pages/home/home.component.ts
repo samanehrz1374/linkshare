@@ -44,15 +44,17 @@ export class HomeComponent implements OnInit {
   all_posts:any[];
   @Input() login_clicked:boolean;
   modalRef: BsModalRef;
-  
+  didnMatchSearchValue:boolean=false;
 
   
 
   
+
+  
   
 
 
-  constructor(private postsApi:PostApiService,private http:HttpClient,private modalService: BsModalService,private postservice:PostService,private route:ActivatedRoute) { }
+  constructor(private postsApi:PostApiService,private http:HttpClient,private modalService: BsModalService,private postservice:PostService,private route:ActivatedRoute, private router: Router) { }
 
   
   onchangelogint(logininformation:any){
@@ -77,9 +79,15 @@ export class HomeComponent implements OnInit {
 
         this.postservice.getAllPostByTag(params['tag']).subscribe((result)=>{
         this.posts = result;
+        if(this.posts.length==0){
+          this.didnMatchSearchValue=true;
+ 
+
+        }
         })
       }
       else{
+        this.router.navigate(['/'])
         this.postservice.getAllPost().subscribe((result)=>{
           this.posts=result;
           
@@ -181,13 +189,15 @@ export class HomeComponent implements OnInit {
   }
 
   search(searchValue:string){
-    this.searchValue=searchValue;
-    if(searchValue!==undefined){
+    this.router.navigate(['search',searchValue])
 
-      this.postservice.getAllPostByTag(searchValue).subscribe((result)=>{
-        this.posts = result;
-        })
-    }
+    // this.searchValue=searchValue;
+    // if(searchValue!==undefined){
+
+    //   this.postservice.getAllPostByTag(searchValue).subscribe((result)=>{
+    //     this.posts = result;
+    //     })
+    // }
 
 
   }
